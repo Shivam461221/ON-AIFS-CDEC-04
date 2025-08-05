@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav{
+            background-color: skyblue;
+            height: 70px;
+            padding: 18px;
+        }
+        .nav ul li{
+            /* descendent selector */
+             display: inline;
+             font-size: 28px;
+             margin-right: 25px;
+             
+             padding: 10px;
+             border-radius: 20px;
+             transition: all 2s ease;
+        }
+
+        .nav ul li:hover{
+            background-color: blueviolet;
+            color: white;
+        }
+
+        input{
+            padding: 10px;
+            width: 300px;
+            border-radius: 15px;
+        } 
+
+        button{
+            padding: 10px;
+            border-radius: 15px;
+            background-color: white;
+
+        }
+
+        button:hover{
+            background-color: blueviolet;
+            color: white;
+        }
+
+        .box div{
+            height: 150px;
+            border:2px solid black;
+            margin: 10px;
+            width: 200px;
+            background-color: skyblue;
+        }
+
+        .box div:hover{
+            width: 600px;
+            background-color: blue;
+            color: white;
+        }
+
+        .box-1{
+            transition: all 1s ease;
+        }
+
+        .box-2{
+            transition: all 1s linear;
+        }
+
+        .box-3{
+            transition: all 1s ease-in;
+        }
+
+        .box-4{
+            transition: all 1s ease-out;
+        }
+
+        .box-5{
+            transition: all 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav"> 
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Courses</li>
+            <li>Career</li>
+            <li>Contact</li>
+            <li style="padding: 0;">
+                <input placeholder="Search" type="text">
+            </li>
+            <li style="padding: 0;">
+                <button>Search</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <div class="box-1">Ease</div>
+        <div class="box-2">Linear</div>
+        <div class="box-3">Ease-in</div>
+        <div class="box-4">Ease-out</div>
+        <div class="box-5">Ease-in-out</div>
+    </div>
+
+    
+</body>
+</html>
