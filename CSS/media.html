@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            height: 70px;
+            border: 1px solid grey;
+            padding: 15px;
+        }
+
+        .options {
+            display: flex;
+           
+        }
+
+        .options div {
+            margin-right: 20px;
+            font-size: 26px;
+            padding: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.6s linear;
+        }
+
+        .options div:hover{
+            background-color: coral;
+            box-shadow: 5px 10px 10px rgb(241, 113, 66);
+            color: white;
+        }
+
+        .menu {
+            display: none;
+            padding: 0;
+        }
+
+        .menu i{
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            
+        }
+
+        .logo-left {
+            background-color: coral;
+            padding: 5px;
+        }
+
+        .logo-right {
+            background-color: black;
+            color: white;
+            padding: 5px;
+        }
+
+        .home{
+            height: 90vh;
+           
+            display: flex;
+        }
+
+        .home-left{
+           
+            height: 100%;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-right{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        @media screen and (max-width:600px) {
+            .option {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+
+             .logo {
+                font-size: 28px;
+                font-weight: bold;
+            }
+        }
+
+        @media (min-width:600px) and (max-width:786px) {
+            .options div {
+                margin-right: 15px;
+                font-size: 20px;
+            }
+
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+        }
+
+        @media (min-width:786px) and (max-width:998px) {
+             .logo {
+                font-size: 28px;
+                font-weight: bold;
+            }
+        }
+
+        @media screen and (min-width:998px) {}
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <p><span class="logo-left">WEB</span><span class="logo-right"> DEVELOPMENT</span></p>
+        </div>
+        <div class="options">
+            <div class="option">Home</div>
+            <div class="option">About</div>
+            <div class="option">Portfolio</div>
+            <div class="option">Contact</div>
+            <div class="menu"><i class='bxr bx-menu-wider'></i> </div>
+        </div>
+    </div>
+
+    <div class="home">
+        <div class="home-left">
+            <div>
+                <img src="../HTML/image1.png" alt="">
+            </div>
+        </div>
+        <div class="home-right">
+            <h1>Welcome Guys</h1>
+            <h2>My Name is Shivam Lowanshi</h2>
+            <h2>I am a web developer</h2>
+        </div>
+    </div>
+</body>
+
+</html>
