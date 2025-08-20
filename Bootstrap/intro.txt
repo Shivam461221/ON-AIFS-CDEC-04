@@ -1,0 +1,16 @@
+Bootsrap - It is a CSS Framework, It provides build in components and utility classes for CSS properties.
+
+components - It a part of code or we can say independent block of code.
+
+Utility Classes - Tese are the build in CSS classes.
+
+CDN - Content Delivery Network
+
+
+
+Screen Sizes - 
+xs-Extra Small, (Mobile devices)
+sm - Small,     (Tab)
+md- medium,     (Small PCs)
+lg- large,     (Large PCs)
+xl - Extra large  (Extra Large devices)
