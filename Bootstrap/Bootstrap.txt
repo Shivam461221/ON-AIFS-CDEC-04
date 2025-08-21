@@ -1,0 +1,102 @@
+1. Background - 
+   e.g. bg-primary
+
+2. Border - 
+   e.g. border border-1,2,3,4,5, 
+        bordet-top, border-start, end, bottom
+	border-primary,border-danger
+
+3. Border-radius - 
+   e.g - rounded, rounded-top, rounded-end, rounded-bottom, rounded-start,
+	 rounded-circle, rounded-pill
+
+4. Colors - 
+   e.g - text-primary, text-black, text-black-50, white-50
+          text-opacity-75, 50, 25
+
+5. Display - 
+   e.g - d-inline, d-flex, d-block, gap-3
+   hiding element :- d-none d-sm-block 
+
+6. Display flex - 
+   e.g - d-flex, flex-row, flex-column, flex-row-reverse, flex-sm-row, flex-md-column
+	 justify-content-center, align-items-center
+
+7. Text-selection - 
+   e.g. - user-select-all, user-select-none, user-select-auto
+
+8. Link - 
+   e.g. - link-opacity-10,25, 50, 75, 100
+	  link-opacity-10,25,50,75,100-hover
+	  link-underline-primary
+	  link-underline-danger
+  underline offset :- link-offset-1,2,3
+  underline opacity :- link-underline link-underline-opacity-0,10,25,50,75,100
+  link color :- link-primary, link-secondary
+
+9.Opacity -
+  e.g. - opacity-0,25,50,75,100
+
+10. Overflow - 
+   e.g. - overflow-auto, hidden, visible, scroll
+	  overflow-x-auto, hidden, visible, scroll
+	  overflow-y-auto, hidden, visible, scroll
+
+11.Position - 
+   e.g. - position-static, relative, absolute, fixed, sticky
+          start, end, bottom,top-0,50,100
+   z-index;- z-0,1,2,3
+
+12. Shadow - 
+   e.g. - shadow shadow-none, shadow-sm, lg
+
+13. Sizing - 
+   e.g. - w-25,50,75,100, auto
+          h-25,50,75,100,auto
+	
+14. Spacing - 
+   e.g - margin :- m-1,2,3,4,5, mt, mb, ms, me, mx, my
+         padding :- p-1,2,3,4,5, pt, pb, ps, pe, px, py
+
+15. Text - 
+    e.g. - text-start,center, end
+	   text-wrap, text-nowrap
+           text-lowercase, text-uppercase, text-capitalized
+
+    Font size :- fs-1,2,3,4,5,6
+
+    Font-weight :- fw-bold, bolder, semibold, medium, normal, light, lighter, italic
+    line height :- lh-1, lh-sm, lh-base, lh-lg
+    text decoration :- text-decoration-underline, text-decoration-none, line-through
+
+16. Container - 
+   e.g.- container, container-fluid
+
+17. Grid - 
+    e.g. - row, col, col-md-6
+           row row-cols-2(fix-number of column), col 	
+	   offset-1
+18. Typography - 
+    e.g.- h1,2,3,4,5,6
+          display-1,2,3,4,5,6
+         mark, small, lead(for paragraph)
+19. Image - 
+   e.g. - img-fluid, img-thumbnail
+          rounded float-start, float-end
+20 Table - 
+    e.g. - table, table-striped, table-striped-columns, table-hover
+
+21. Form :- 
+   e.g.- form-control, form-label, form-control-sm, lg
+         need-validation
+
+22. Button :- 
+    e.g. - btn btn-primary, btn-primary-outline
+           btn-group , btn-close
+
+23. Card - 
+    e.g. - card. card-img-top, card-body (card-title, card-text), card-footer
+
+
+      
+		
