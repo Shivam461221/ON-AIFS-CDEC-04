@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #3C1742;
+}
+
+.theme-button{
+    background-color: #3C1742;
+    color: white;
+}
+
+.skill{
+    height: 300px;
+    width: 400px;
+    background-color: #3C1742;
+}
+
