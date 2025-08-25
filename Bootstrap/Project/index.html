@@ -15,16 +15,16 @@
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="container-fluid text-white p-3">
             <div class="row">
                 <div class="col-md-4 col-10 col-sm-4  display-6">Porfolio</div>
                 <div class=" d-none d-sm-flex d-md-flex col-md-8 col-sm-8 d-flex fs-5 justify-content-evenly">
-                    <div>Home</div>
-                    <div>About</div>
-                    <div>Education</div>
-                    <div>Skills</div>
-                    <div>Contact</div>
+                    <div><a class="text-decoration-none text-white" href="#home">Home</a></div>
+                    <div><a class="text-decoration-none text-white" href="#about">About</a></div>
+                    <div><a class="text-decoration-none text-white" href="#education">Education</a></div>
+                    <div><a class="text-decoration-none text-white" href="#skills">Skills</a></div>
+                    <div><a class="text-decoration-none text-white" href="#contact">Contact</a></div>
                 </div>
                 <div class="col-2 display-6 d-md-none d-sm-none d-block">
                     <i class='bxr  bx-menu-wide'></i>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </section>
-        <section class="education">
+        <section id="education">
             <p class="text-center display-4 fw-semibold">Education</p>
             <div class="row p-5">
                 <div class="col-md-5 d-none d-sm-none d-md-flex align-items-center justify-content-end">
@@ -103,23 +103,101 @@
             </div>
         </section>
 
-        <section id="skills">
+        <section id="skills" class="my-5">
             <p class="text-center display-4 fw-semibold">Skills</p>
-            <div class="container d-flex flex-wrap justify-content-center gap-5">
-                <div class="skill rounded">
-
+            <div class="container d-flex flex-wrap justify-content-center gap-5 mb-5">
+                <div class="skill rounded d-flex justify-content-center align-items-center flex-column">
+                    <img src="images/html logo.png" width="180" alt="">
+                    <h1>HTML</h1>
                 </div>
-                <div class="skill"></div>
-                <div class="skill"></div>
-                <div class="skill"></div>
-                <div class="skill"></div>
-                <div class="skill"></div>
+                <div class="skill rounded d-flex justify-content-center align-items-center flex-column">
+                    <img src="images/css logo.png" width="140" alt="">
+                    <h1>CSS</h1>
+                </div>
+                <div class="skill rounded d-flex justify-content-center align-items-center flex-column">
+                    <img src="images/bootstrap-tutorial.png" width="180" alt="">
+                    <h1>Bootstrap</h1>
+                </div>
+                <div class="skill rounded d-flex justify-content-center align-items-center flex-column">
+                    <img src="images/html logo.png" width="180" alt="">
+                    <h1>HTML</h1>
+                </div>
+                <div class="skill rounded d-flex justify-content-center align-items-center flex-column">
+                    <img src="images/angular logo.png" width="180" alt="">
+                    <h1>Angular</h1>
+                </div>
+                <div class="skill rounded d-flex justify-content-center align-items-center flex-column">
+                    <img src="images/java-logo-vert-blk.png" width="180" alt="">
+                    <h1>Java</h1>
+                </div>
+                
             </div>
+        </section>
+
+        <section id="contact" >
+                <p class="text-center display-4 fw-semibold">Contact</p>
+                <div class="container form border border-dark p-5 rounded fs-5 w-75  text-white" >
+                    <div class="form-group my-2">
+                        <label for="" class="form-label">Your Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group my-2">
+                        <label for="" class="form-label">Your Email</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group my-2">
+                        <label for="" class="form-label">Your Contact</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group my-2">
+                        <label for="" class="form-label">Your Message</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-outline-light mt-2">Submit</button>
+                </div>
         </section>
     </main>
     <footer>
-
+        <div class="container-fluid p-3 text-white text-center fs-5 mt-5">
+                Designed & Developed By Shivam, All Rights reserved.
+        </div>
     </footer>
+    <div class="scroll bg-info"><a class="text-decoration-none text-dark" href="#header">^</a></div>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
