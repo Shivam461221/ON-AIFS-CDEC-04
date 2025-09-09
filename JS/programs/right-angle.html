@@ -1,0 +1,62 @@
+<script>
+    //WAP to print a star pattern right angle traingle
+
+    let num = 7;
+
+    //right angle traingle
+    console.log('right angle traingle')
+    for(let i = 0;i<num;i++){
+        let row = '';
+        for(let j = 0; j<=i;j++){
+            row += '* ';
+        }
+
+        console.log(row);
+    }
+
+
+    //reverse right angle triangle
+    console.log('reverse right angle traingle')
+    for(let i = 0;i<num;i++){
+        let row = '';
+        for(let j = num; j>i;j--){
+            row += '* ';
+        }
+
+        console.log(row);
+    }
+
+    //pyramid 
+    console.log('Pyramid')
+    for(let i = 0;i<num;i++){
+        let row = '';
+
+        for(let k = num; k>i; k--){
+            row += ' ';
+        }
+
+        for(let j = 0; j<=i;j++){
+            row += '* ';
+        }
+
+        console.log(row);
+    }
+
+    //reverse pyramid 
+    console.log('Reverse Pyramid')
+    for(let i = 0;i<num;i++){
+        let row = '';
+
+        for(let k = 0; k<i; k++){
+            row += ' ';
+        }
+
+        for(let j = num; j>i;j--){
+            row += '* ';
+        }
+
+        console.log(row);
+    }
+
+
+</script>
