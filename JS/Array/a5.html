@@ -1,0 +1,50 @@
+<script>
+    //Loops in array
+
+    let fruits = ['apple', 'banana', 'mango', 'pineapple', 'orange', 'watermelon'];
+
+    console.log(fruits);
+    console.log(fruits[2]);
+
+    console.log(fruits.length);
+
+    let index = 0;
+
+    console.log('While loop');
+    
+    while(index<fruits.length){
+        console.log(fruits[index]);
+        index++;
+    }
+
+    console.log('For loop');
+    for(let i=0; i<fruits.length; i++){
+        console.log(fruits[i]);
+    }
+
+    //for in loop
+    console.log('For in loop');
+    for(let i in fruits){       //index
+        console.log(fruits[i]);
+        
+    }
+
+    //for of loop
+    console.log('for of loop');
+
+    for(let j of fruits ){
+        console.log(j);
+        
+    }
+
+    //forEach loop
+    console.log('for each loop');
+    fruits.forEach(element=> console.log(element));
+    
+    
+
+    
+
+    
+    
+</script>
