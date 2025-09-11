@@ -1,0 +1,23 @@
+<script>
+    //plaindrome - 
+    //  SaaS - SaaS  - palindrome
+
+    let str = prompt('Enter a Word or number');
+
+    console.log('Original String -',str);
+    
+
+    let revStr = str.split('').reverse().join('');
+
+    console.log('Reverse -', revStr);
+    
+
+    if(str==revStr){
+        console.log('Its a palindrome');
+        
+    }
+    else{
+        console.log('Not palindrome');
+        
+    }
+</script>
