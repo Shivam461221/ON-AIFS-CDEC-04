@@ -1,0 +1,53 @@
+<script>
+    //Object - Object is a real world entity which has attribute and behaviour;
+
+    //attributes - what object is
+    //behaviour/functions - what object do
+
+    //bottle - price, size, color, material, company, model no // store water or liquid
+    //fan - price, color, watt, type, company  // to spread air
+
+    //Object is javascript is a collection of key-value pairs
+
+    //keys are string or symbol in javascript
+    //values can be of any data type
+
+    const person = {
+        name:'Shivam',
+        gender: 'Male',
+        age:25,
+        isMarried:false
+    };
+
+    console.log(person);
+
+    const product = {
+        title:'Mouse',
+        price:250,
+        brand:'logitech',
+        color:'Black',
+        model:'nano k20'
+    }
+
+    console.log(product);
+    
+
+    product.description = 'Bluetooth mouse';
+
+    console.log(product);
+    
+
+    console.log(product.price);
+    
+
+    console.log(Object.keys(person));
+
+    console.log(Object.values(person));
+    
+    console.log(Object.entries(person));
+    
+    for(let key in person){
+        console.log(key, person[key] );
+    }
+
+</script>

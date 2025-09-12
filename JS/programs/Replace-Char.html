@@ -5,17 +5,7 @@
 
     console.log(str);
 
-    console.log(str.charAt());
-
-    newStr = str.replace(/a/g, 'o');  //regex 
-    
-    //immutable - you can't change at runtime
-
-    // for(let i = 0; i<str.length; i++){
-    //     if(str.charAt(i)=='a'){
-    //         str.charAt(i) = 'o';
-    //     }
-    // }
+    let newStr = str.split('a').join('e');
 
     console.log(newStr);
     
