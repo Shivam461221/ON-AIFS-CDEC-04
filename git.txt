@@ -1,0 +1,95 @@
+✅ Step 1 – Create a GitHub account (if you don’t have one)
+
+Go to https://github.com
+
+Click Sign up and create your account.
+
+Verify your email.
+
+✅ Step 2 – Create a new repository on GitHub
+
+Log into GitHub.
+
+Click on the + icon on the top right → New repository.
+
+Fill in the repository details:
+
+Repository name: e.g., my-website
+
+Description (optional): e.g., "My website using HTML, CSS, Bootstrap"
+
+Public → anyone can see it
+
+Initialize this repository with a README → leave it unchecked if you want to push your existing folder
+
+Click Create repository.
+
+You'll be redirected to a page with instructions on how to push your code.
+
+✅ Step 3 – Install Git on your computer (if not installed)
+For Windows:
+
+Download Git from https://git-scm.com/download/win
+
+Install with default options.
+
+
+Verify by running:
+
+git --version
+
+✅ Step 4 – Configure Git
+
+After installing, set your Git identity:
+
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+
+This will associate your commits with your GitHub account.
+
+✅ Step 5 – Initialize Git in your project folder
+
+Open Command Prompt / Terminal.
+
+Navigate to your project folder. Example:
+
+cd path/to/your/website
+
+
+(You can drag and drop the folder into the terminal in some systems.)
+
+Initialize Git:
+
+git init
+
+
+This creates a .git folder and starts tracking your project.
+
+✅ Step 6 – Add files to the staging area
+git add .
+
+
+This adds all files (HTML, CSS, images, etc.) to be tracked by Git.
+
+✅ Step 7 – Commit the files
+git commit -m "Initial commit"
+
+
+This saves the current state of your project.
+
+✅ Step 8 – Link your local project with the GitHub repository
+
+You’ll now link your local folder to the GitHub repository you created.
+
+Copy the repository URL from GitHub. It will look like:
+
+https://github.com/your-username/my-website.git
+
+
+Run the following command in the terminal:
+
+git remote add origin https://github.com/your-username/my-website.git
+
+✅ Step 9 – Push your files to GitHub
+git push -u origin master

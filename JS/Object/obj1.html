@@ -13,41 +13,41 @@
     //values can be of any data type
 
     const person = {
-        name:'Shivam',
+        name: 'Shivam',
         gender: 'Male',
-        age:25,
-        isMarried:false
+        age: 25,
+        isMarried: false
     };
 
     console.log(person);
 
     const product = {
-        title:'Mouse',
-        price:250,
-        brand:'logitech',
-        color:'Black',
-        model:'nano k20'
+        title: 'Mouse',
+        price: 250,
+        brand: 'logitech',
+        color: 'Black',
+        model: 'nano k20'
     }
 
     console.log(product);
-    
+
 
     product.description = 'Bluetooth mouse';
 
     console.log(product);
-    
+
 
     console.log(product.price);
-    
+
 
     console.log(Object.keys(person));
 
     console.log(Object.values(person));
-    
+
     console.log(Object.entries(person));
-    
-    for(let key in person){
-        console.log(key, person[key] );
+
+    for (let key in person) {
+        console.log(key, person[key]);
     }
 
 </script>
