@@ -1,0 +1,35 @@
+<script>
+
+    const student = new Object();
+
+    student.name = 'Nilima';
+
+    student.age = 22;
+
+    student.gender = 'Female';
+
+    student.course = 'btech'
+
+
+    console.log(student);
+
+    console.log(student.name);
+
+
+    //destructuring
+
+    //let name = student.name;
+
+   // let age = student.age;
+
+   //let gender = student.gender;
+
+
+    let {name, age, gender} = student;
+
+    console.log(name, ':', age);
+    
+    
+    
+
+</script>

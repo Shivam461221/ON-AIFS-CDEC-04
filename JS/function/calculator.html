@@ -1,0 +1,35 @@
+<script>
+    let x = 1*prompt('Enter first number');
+
+    let y = 1*prompt('Enter second number');
+
+    let operation = prompt('Enter operation which you want to perform')
+
+    console.log('x:',x, 'y:',y);
+    console.log(operation);
+    
+
+    function getSum(a, b) {
+        return a + b;
+    }
+
+    function getSubstraction(a, b) {
+        return a - b;
+    }
+
+    function getMultiplication(a, b) {
+        return a * b;
+    }
+
+    switch (operation) {
+        case 'sum': console.log(getSum(x, y));
+            break;
+        case 'substract': console.log(getSubstraction(x, y));
+            break;
+        case 'multiply': console.log(getMultiplication(x, y));
+            break;
+        default: console.log('Please enter sum, substract or multiply');
+    }
+
+
+</script>
