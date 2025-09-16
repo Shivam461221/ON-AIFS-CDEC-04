@@ -1,0 +1,16 @@
+<script>
+
+    //callback - It is a function which passed as an argument to another function
+
+    function sayHello(name, c1){
+        console.log(`Hello ${name}`);
+        c1(name);
+    }
+
+    function sayBye(name){
+        console.log(`Bye ${name}`);
+        
+    }
+
+    sayHello('Shivam', sayBye)
+</script>
