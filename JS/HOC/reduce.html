@@ -1,0 +1,19 @@
+<script>
+    //reduce - it returns only a single value
+
+    //accumlator - its a initial value 
+
+    let arr = [21,2,33,4,5,16,7,78,9];
+
+    let sum = arr.reduce((acc, num)=>num+acc, 0)
+
+    console.log(sum);
+
+    let max = arr.reduce((acc, num)=> (num>acc) ? num : acc, arr[0]);
+
+    console.log(max);
+    
+
+
+    
+</script>
