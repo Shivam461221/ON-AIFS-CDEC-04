@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+       
+    </style>
+</head>
+<body>
+    <div id="box" style="border: 2px solid black;">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, consectetur?
+    </div>
+
+    
+
+    <div class="box-2"> </div>
+
+    <span class="box-2"></span>
+
+    <script>
+
+        //get element
+        // getElementById(), getElementByClassName(), getElementByTagName()
+        //querySelector(), querySelectorAll()
+        let div = document.getElementById('box');
+
+        console.log(div);
+        
+
+        div.textContent = 'This is a div';
+
+        div.style.backgroundColor = 'skyblue'
+
+        let div2 = document.getElementsByClassName('box-2');  //it retruns a html collection with specific class
+
+        console.log(div2);
+
+        div2[0].textContent = 'div-2';
+
+        div2[1].textContent = 'span tag';
+
+        let d = document.getElementsByTagName('div');  //it return a html collection with specific tag
+
+        console.log(d);
+
+        let element = document.querySelector('#box');  //it returns a single element bases on a css selector
+        
+        console.log(element);
+
+        let list = document.querySelectorAll('div');
+
+        console.log(list);
+        
+    
+    </script>
+</body>
+</html>

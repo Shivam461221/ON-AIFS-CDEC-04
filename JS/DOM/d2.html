@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .dark {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <h1>Container</h1>
+        <button onclick="changeMode()" id="btn">dark</button>
+    </div>
+
+    <script>
+
+
+
+        function changeMode() {
+            let container = document.getElementById('container');
+            let btn = document.getElementById('btn');
+
+            container.classList.toggle('dark');
+
+            if(btn.innerText=='dark'){
+                btn.innerText = 'light';
+            }
+            else{
+                btn.innerText = 'dark';
+            }
+        }
+    </script>
+</body>
+
+</html>
