@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container{
+            height: 70px;
+            display: flex;
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="option">Home</div>
+        <div class="option">About</div>
+        <div class="option">Career</div>
+        <div class="option">Contact</div>
+        <div class="option">Options</div>
+    </div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="option"></div>
+
+    <center>
+        <img src="../../HTML/image1.png" alt="" width="300">
+
+        
+    </center>
+    <center>
+        <button onclick="increaseSize()" >Increase</button>
+        <button onclick="decreaseSize()" >Decrease</button>
+    </center>
+
+    <script>
+        let container = document.getElementById('container');
+
+        container.style.justifyContent = 'space-evenly';
+
+        let options = document.getElementsByClassName('option');
+
+       // options[0].style.fontSize = '30px';
+
+        for(let element of options){
+            element.style.fontSize = '30px';
+        }
+
+        let div = document.getElementsByTagName('div');
+
+        div[0].style.backgroundColor = 'skyblue';
+
+        
+
+        function increaseSize(){
+            let img = document.querySelector('img');
+
+            img.width += 20;
+            img.height += 20;
+            
+        }
+
+         function decreaseSize(){
+            let img = document.querySelector('img');
+
+            img.width -= 20;
+            img.height -= 20;
+            
+        }
+
+    </script>
+</body>
+</html>
