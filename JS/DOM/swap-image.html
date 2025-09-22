@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .top img{
+            border: 1px solid black;
+            border-radius: 15px;
+            height: 300px;
+            width: 300px;
+        }
+
+        .bottom img{
+            height: 60px;
+            width: 60px;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <img id="main" src="images/download.png" alt="">
+    </div>
+    <div class="bottom">
+        <!-- <img onmouseenter="swapImage(this)" src="images/images (1).png" alt="">
+        <img onmouseenter="swapImage(this)" src="images/images (2).png" alt="">
+        <img onmouseenter="swapImage(this)" src="images/images.jpeg" alt="">
+        <img onmouseenter="swapImage(this)" src="images/images.png" alt=""> -->
+
+        <img onmouseenter="swapImage(event)" src="images/images (1).png" alt="">
+        <img onmouseenter="swapImage(event)" src="images/images (2).png" alt="">
+        <img onmouseenter="swapImage(event)" src="images/images.jpeg" alt="">
+        <img onmouseenter="swapImage(event)" src="images/images.png" alt="">
+    </div>
+    
+    <script>
+
+        // function swapImage(imageObject){
+        //     let main = document.getElementById('main');
+
+        //     let temp = main.src;
+
+        //     main.src = imageObject.src;
+
+        //     imageObject.src = temp;
+
+        // }
+
+        function swapImage(e){
+            let main = document.getElementById('main');
+
+            let icon = e.target;
+
+            let temp = main.src;
+
+            main.src = icon.src;
+
+            icon.src = temp;
+
+        }
+    </script>
+</body>
+</html>

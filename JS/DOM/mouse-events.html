@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div{
+        div {
             height: 200px;
             border: 2px solid black;
         }
     </style>
 </head>
+
 <body>
-    <div >
+    <div>
     </div>
 
     <script>
@@ -22,19 +24,20 @@
         //     div.style.backgroundColor = 'red';
         // }
 
-        div.addEventListener('click', function(){
-             div.style.backgroundColor = 'blue';
+        div.addEventListener('click', function () {
+            div.style.backgroundColor = 'blue';
         });
 
-        div.addEventListener('mouseover', function(){
+        div.addEventListener('mouseover', function () {
             div.style.background = 'yellow';
         });
 
-        div.addEventListener('mouseout', function(){
+        div.addEventListener('mouseout', function () {
             div.textContent = 'Mouse out';
 
             div.style.fontSize = '30px';
         });
     </script>
 </body>
+
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onreset="show(event)" >
+
+        <label for="">Username</label>
+        <input type="text">
+
+        <label >Password</label>
+        <input type="password" name="" id="">
+
+        <button type="reset">Reset</button>
+
+        <p></p>
+    </form>
+
+    <script>
+
+        //form lavel - submit, reset
+
+        //input level - focus, blur, change, input
+
+        // function show(e){
+        //     e.preventDefault();
+        //     alert('Submitted');
+        //     let para = document.querySelector('p');
+
+        //     para.textContent = 'Submitted';
+        // }
+
+         function show(e){
+           // e.preventDefault();
+            alert('Reset');
+            let para = document.querySelector('p');
+
+            para.textContent = 'From Reset';
+        }
+
+    </script>
+</body>
+</html>
