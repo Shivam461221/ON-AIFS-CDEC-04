@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // localStorage 
+        //sessionStorage
+
+       // JSON - JavaScript Object Notation
+
+       // JSON.stringfy - It converts JS object into JSON String
+        //JSON.parse -   It convers JSON string into JS object
+
+        localStorage.setItem("user", "shivam");
+
+        localStorage.setItem("age", 25);
+
+        localStorage.setItem('array', [1,2,3,4,5,6,7])
+
+        let person = {
+            name:'Shivam',
+            age:25
+        }
+
+        localStorage.setItem('object', JSON.stringify(person));
+
+        let name = localStorage.getItem("user");
+
+        console.log(name);
+
+        console.log(JSON.parse(localStorage.getItem("object")));
+
+        //localStorage.removeItem("array");
+
+       // localStorage.clear();
+        
+        sessionStorage.setItem("user", "shivam")
+        
+    </script>
+</body>
+</html>
