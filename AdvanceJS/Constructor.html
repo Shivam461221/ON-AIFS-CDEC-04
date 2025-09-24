@@ -1,0 +1,39 @@
+<script>
+    //Constructor function :- 
+
+    function Teacher(name, age, gender, qualification){
+        this.name = name,
+        this.age = age,
+        this.gender=gender,
+        this.qualification=qualification
+        this.greet = function(){
+            console.log(`hello ${this.name}`);
+        }
+    }
+
+    const obj1 = new Teacher("Shivam", 25, "male", "Masters");
+
+    console.log(obj1);
+
+    const obj2 = new Teacher("Sujit", 23, "Male", "Graduate");
+
+    console.log(obj2);
+
+    Teacher.prototype.location = 'Nagpur';
+
+    Teacher.prototype.sayBye = function(){
+        console.log(`Bye ${this.name}`);
+        
+    }
+    console.log(obj1.location);
+
+    console.log(obj1);
+    
+    obj1.greet();
+
+    obj2.greet();
+
+    obj1.sayBye();
+        
+    
+</script>
