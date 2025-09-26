@@ -1,0 +1,9 @@
+<script>
+
+
+    fetch('https://dummyjson.com/users')
+    .then(data=>data.json())
+    .then(result => console.log(result))
+    .catch(error=>console.log('error',error));
+
+</script>

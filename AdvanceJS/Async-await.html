@@ -1,0 +1,19 @@
+<script>
+
+
+    async function getData(){
+        try{
+            let data = await fetch('https://dummyjson.com/users');
+            let user = await data.json();
+            console.log(user);
+
+
+        }
+        catch(error){
+            console.log(error);
+        }
+        
+    }
+
+    getData();
+</script>

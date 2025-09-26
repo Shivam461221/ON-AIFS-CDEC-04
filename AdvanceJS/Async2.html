@@ -1,0 +1,15 @@
+<script>
+
+let count = 0;
+let x =  setInterval(()=>{
+    count++;
+    console.log('Interval', count);
+}, 1000);
+
+
+setTimeout(function(){
+    clearInterval(x);
+    console.log('Hello');
+}, 5000);
+
+</script>

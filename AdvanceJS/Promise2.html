@@ -1,0 +1,30 @@
+<script>
+    //Math   less than 0.3
+    //let num = Math.random();
+
+    //console.log(num);
+
+
+    function orderFood(food) {
+        return new Promise((resolve, reject) => {
+            let value;
+            console.log("Order noted", food);
+
+            setTimeout(() => {
+                value = Math.random() > 0.3;
+                if (value) {
+                    resolve('Order Successful, food served');
+                }
+                else {
+                    reject('Ingredients missing, order failed');
+                }
+            }, 3000);
+
+        })
+    }
+
+    orderFood("Pizza")
+        .then(result => console.log(result))
+        .catch(error => console.log(error))
+        .finally(console.log('Finally'));
+</script>
