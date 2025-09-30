@@ -7,11 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid bg-info p-2 display-6">Dashboard</div>
+    <div class="container-fluid bg-info d-flex justify-content-between  p-2 display-6">Dashboard
+
+        <button class="btn btn-secondary">
+            <a href="Cart.html" class="text-decoration-none text-white">Cart</a>
+        </button>
+    </div>
 
     <div class="container d-flex justify-content-between p-2">
         <span id="user" class="display-6"></span>
         <button onclick="logout()" class="btn btn-danger">Logout</button>
+    </div>
+
+    <div class="container-fluid">
+        <div id="main" class="row"></div>
     </div>
 
 
@@ -31,6 +40,38 @@
 
                 window.location.href = 'login.html';
             }
+
+            async function getProducts(){
+                try{
+                    let data = await fetch('https://dummyjson.com/products');
+                    let products = await data.json();
+                    creatProductList(products);
+                    console.log(products)
+
+                }
+                catch(error){
+                    console.log(error)
+                }
+            }
+
+            function creatProductList(data){
+                let main = document.getElementById('main');
+                main.innerHTML = '';
+
+                let products = data.products;
+
+                products.forEach(product=> main.innerHTML+= `
+                    <div class="col-md-4 text-center border p-3">
+                        <img src="${product.thumbnail}" />
+                        <h3>${product.title}</h3>
+                        <h3>RS. ${parseInt(product.price*80)}</h3>
+                        <button class="btn btn-primary form-control" >Add to cart</button>
+                        <button class="btn btn-warning form-control mt-1" >Buy Now</button>
+                        </div>
+                `)
+            }
+
+            getProducts();
         </script>
 </body>
 </html>
