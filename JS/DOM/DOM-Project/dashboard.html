@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container-fluid bg-info d-flex justify-content-between  p-2 display-6">Dashboard
-
         <button class="btn btn-secondary">
             <a href="Cart.html" class="text-decoration-none text-white">Cart</a>
         </button>
@@ -20,7 +19,7 @@
     </div>
 
     <div class="container-fluid">
-        <div id="main" class="row"></div>
+        <div  id="main" class="row"></div>
     </div>
 
 
@@ -45,6 +44,7 @@
                 try{
                     let data = await fetch('https://dummyjson.com/products');
                     let products = await data.json();
+                    localStorage.setItem("products", JSON.stringify(products.products));
                     creatProductList(products);
                     console.log(products)
 
@@ -65,10 +65,32 @@
                         <img src="${product.thumbnail}" />
                         <h3>${product.title}</h3>
                         <h3>RS. ${parseInt(product.price*80)}</h3>
-                        <button class="btn btn-primary form-control" >Add to cart</button>
+                        <button onclick="addToCart(${product.id})" class="btn btn-primary form-control" >Add to cart</button>
                         <button class="btn btn-warning form-control mt-1" >Buy Now</button>
                         </div>
                 `)
+            }
+
+            function addToCart(productId){
+                //console.log('called');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                let products = JSON.parse(localStorage.getItem('products')) || [];
+
+               
+
+                let existingItem = cart.find(item=>item.id===productId);
+
+                if(existingItem){
+                    existingItem.quantity += 1;
+                }
+                else{
+                    let item = products.find(product=>product.id===productId);
+                    cart.push({...item, quantity:1});
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`added to cart`);
             }
 
             getProducts();

@@ -1,12 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
-    <h1>Cart</h1>
+    <div class="container-fluid bg-info d-flex justify-content-between  p-2 display-6">Dashboard
+        <button class="btn btn-secondary">
+            <a href="dashboard.html" class="text-decoration-none text-white">Home</a>
+        </button>
+    </div>
+    <div class="container-fluid">
+        <div id="main" class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S.no</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+
+
+        // function creatCartList() {
+        //     let main = document.getElementById('main');
+        //     main.innerHTML = '';
+
+        //     let products = JSON.parse(localStorage.getItem('cart'));
+
+        //     products.forEach(product => main.innerHTML += `
+        //             <div class="col-md-4 text-center border p-3">
+        //                 <img src="${product.thumbnail}" />
+        //                 <h3>${product.title}</h3>
+        //                 <h3>RS. ${parseInt(product.price * 80)}</h3>
+        //                 <p>Quantity: ${product.quantity}</p>
+        //                 <button onclick="removeFromCart(${product.id})" class="btn btn-danger form-control" >Remove</button>
+                        
+        //                 </div>
+        //         `)
+        // }
+
+        function creatCartList() {
+            let tbody = document.getElementById('tbody');
+            tbody.innerHTML = '';
+
+            let products = JSON.parse(localStorage.getItem('cart'));
+
+            products.forEach((product,index) => tbody.innerHTML += `
+                   
+                        <tr>
+                            <td>${index+1}</td>
+                            <td>${product.title}</td>
+                            <td>${parseInt(product.price*85)}</td>
+                            <td>${product.quantity}</td>
+                            <td><button onclick="removeFromCart(${product.id})" class="btn btn-danger form-control">Remove</button></td>
+                        </tr>
+                `)
+        }
+
+        function removeFromCart(productId){
+            let cart = JSON.parse(localStorage.getItem('cart'));
+
+            let itemIndex = cart.findIndex(item=>item.id===productId);
+
+            cart.splice(itemIndex, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            creatCartList();
+        }
+
+        creatCartList();
+    </script>
 </body>
+
 </html>
