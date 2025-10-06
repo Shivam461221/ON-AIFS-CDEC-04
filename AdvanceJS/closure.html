@@ -1,0 +1,20 @@
+<script>
+    //closure - it is created when a function remembers the variables from its outer scope
+    //even after that outer function has finished executing
+
+    //function + its(lexical) environment = closure
+
+    function outer(){
+        let x = 10;
+        return function(){
+            x++;
+            return x;
+        }
+    }
+
+    let inner = outer();
+
+    console.log(inner());
+    console.log(inner());
+    
+</script>

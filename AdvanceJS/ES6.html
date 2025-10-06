@@ -1,0 +1,52 @@
+<script>
+    //ES^ features
+    //1. let & const 
+
+    //2. Arrow function
+
+    //3. Template literals  - ` ${} `
+    
+    //4. Default parameters 
+
+    function greet(name = "Shivam"){
+        console.log(`Hello ${name}`);
+    }
+
+    greet("Amrapali");
+    greet();
+
+    //5.Destructuring - Array, Object
+
+    let arr = [1,2, 3];
+
+    let [,x,y] = arr;
+
+    console.log(x, y);
+
+    const person = {name: 'Shivam', age: 24};
+
+    const {name, age} = person;
+
+    //6. Spread & Rest operator(...)
+
+    //rest
+    function sum(...numbers){
+        return numbers.reduce((a,b)=>a+b, 0);
+    }
+
+    console.log(sum(1,2,3,4,5,6,7,8));
+
+    //Spread
+
+    const arr1 = [1,2,3];
+    const arr2 = [4,5,6];
+
+    //const arr3 = arr1;
+
+    const arr3 = [1,2,3,...arr1,33,...arr2, 11,12];
+
+    console.log(arr3);
+
+    //export {greet};
+
+</script>

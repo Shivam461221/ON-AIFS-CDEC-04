@@ -1,0 +1,27 @@
+<script>
+    //Set - It is a collection of uniques values. It automatically removes duplicate values;
+
+    const mySet = new Set([1,2,3,3,4,5,6,6,7]);
+
+    console.log(mySet);
+
+    mySet.add(12);
+
+    console.log(mySet);
+
+    mySet.delete(3);
+
+    console.log(mySet);
+
+    console.log(mySet.size);
+
+    console.log(mySet.has(7));
+
+    console.log(mySet.values());
+
+    mySet.forEach(element=>{
+        console.log(element);
+    })
+
+
+</script>
