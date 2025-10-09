@@ -1,0 +1,32 @@
+export default [
+    {
+        studentId:101,
+        studentName:"Nilima",
+        studentCourse:'Btech',
+        studentBranch:'CS'
+    },
+    {
+        studentId:102,
+        studentName:"Kalpana",
+        studentCourse:'Btech',
+        studentBranch:'CSE'
+    },
+    {
+        studentId:103,
+        studentName:"Amrapali",
+        studentCourse:'Btech',
+        studentBranch:'EC'
+    },
+    {
+        studentId:104,
+        studentName:"Sujit",
+        studentCourse:'Btech',
+        studentBranch:'CIVIL'
+    },
+    {
+        studentId:105,
+        studentName:"Swapnil",
+        studentCourse:'Btech',
+        studentBranch:'CS'
+    }
+]
