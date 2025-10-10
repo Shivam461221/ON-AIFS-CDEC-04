@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import stduentList from './StudentList.jsx'
 import StudentList from './StudentList.jsx'
 
 function App() {
