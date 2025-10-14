@@ -70,7 +70,7 @@ function App() {
       <Header/>
       <RegistrationForm idRef={idRef} nameRef={nameRef} courseRef={courseRef} branchRef={branchRef} addStudent={addStudent} />
       <List filteredStudents={filteredStudents} removeStudent={removeStudent} />
-      
+
     </>
   )
 }
