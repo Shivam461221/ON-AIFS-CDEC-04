@@ -9,8 +9,6 @@ export default function Home() {
     return <>
 
         <div className="text-center p-5" style={{height:'530px'}}>
-            
-        
         </div>
         
     </>
