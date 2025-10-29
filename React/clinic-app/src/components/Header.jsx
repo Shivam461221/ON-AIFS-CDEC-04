@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
 
 export default function Header() {
+    const { token, isLoggedIn } = useContext(UserContext);
 
     return <>
         <header className="header_section">
@@ -45,44 +48,41 @@ export default function Header() {
                             <div className="d-flex mr-auto flex-column flex-lg-row align-items-center">
                                 <ul className="navbar-nav  ">
                                     <li className="nav-item active">
-                                        {/* <a className="nav-link" href="index.html"></a> */}
                                         <Link to={'/'} className="nav-link">Home <span className="sr-only">(current)</span></Link>
                                     </li>
                                     <li className="nav-item">
-                                        {/* <a className="nav-link" href="about.html"> About</a> */}
                                         <Link to={'/about'} className="nav-link">About <span className="sr-only">(current)</span></Link>
                                     </li>
                                     <li className="nav-item">
-                                        {/* <a className="nav-link" href="treatment.html">Treatment</a> */}
                                         <Link to={'/treatment'} className="nav-link">Treatment <span className="sr-only">(current)</span></Link>
                                     </li>
                                     <li className="nav-item">
-                                        {/* <a className="nav-link" href="doctor.html">Doctors</a> */}
                                         <Link to={'/team'} className="nav-link">Doctors <span className="sr-only">(current)</span></Link>
                                     </li>
+
                                     <li className="nav-item">
-                                        {/* <a className="nav-link" href="testimonial.html">Testimonial</a>
-                                        <Link to={'/client'} className="nav-link">Testimonial <span className="sr-only">(current)</span></Link> */}
-                                    </li>
-                                    <li className="nav-item">
-                                        {/* <a className="nav-link" href="contact.html">Contact Us</a> */}
                                         <Link to={'/contact'} className="nav-link">Contact Us <span className="sr-only">(current)</span></Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className="quote_btn-container">
-                                <a href="">
-                                    <i className="fa fa-user" aria-hidden="true"></i>
-                                    <span>
-                                        Login
-                                    </span>
-                                </a>
-                                <a href="">
-                                    <i className="fa fa-user" aria-hidden="true"></i>
-                                    <span>
-                                        Sign Up
-                                    </span>
-                                </a>
+
+                                {
+                                    (isLoggedIn) ?
+                                        <Link to={'/login'}>  <i className="fa fa-user" aria-hidden="true"></i>
+                                            <span>
+                                                Logout
+                                            </span>
+                                        </Link>
+                                        :
+                                        <Link to={'/login'}>  <i className="fa fa-user" aria-hidden="true"></i>
+                                            <span>
+                                                Login
+                                            </span>
+                                        </Link>
+
+                                }
+
                                 <form className="form-inline">
                                     <button className="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                         <i className="fa fa-search" aria-hidden="true"></i>

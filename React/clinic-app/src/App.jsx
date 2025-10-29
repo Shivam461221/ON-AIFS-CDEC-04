@@ -11,6 +11,8 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Home'
+import Login from './components/Login'
+import AdminDashboard from './components/AdminDashboard'
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
         <Route path='/team' element={<Team />} />
         <Route path='/client' element={<Client />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='admin-dashboard' element={<AdminDashboard/>} />
       </Routes>
       <Footer />
     </>
