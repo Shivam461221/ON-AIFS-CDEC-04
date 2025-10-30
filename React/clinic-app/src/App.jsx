@@ -10,9 +10,9 @@ import Client from './components/Client'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { Route, Routes } from 'react-router-dom'
-import Home from './Home'
+import Home from './components/Home'
 import Login from './components/Login'
-import AdminDashboard from './components/AdminDashboard'
+import Dashboard from './components/Dashboard'
 
 function App() {
 
@@ -29,7 +29,9 @@ function App() {
         <Route path='/client' element={<Client />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login/>} />
-        <Route path='admin-dashboard' element={<AdminDashboard/>} />
+        <Route path='dashboard' element={<Dashboard/>} />
+        
+
       </Routes>
       <Footer />
     </>

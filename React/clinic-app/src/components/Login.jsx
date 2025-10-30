@@ -13,12 +13,13 @@ export default function Login(){
         e.preventDefault();
         try{
             let response = await axios.post('http://localhost:8000/api/auth/login', {email, password});
-            console.log(response);
+            
             if(response.data.token){
                 setToken(response.data.token);
                 setUser(response.data.user);
                 setIsLoggedIn(true);
-                navigate('/admin-dashboard');
+                navigate('/dashboard');
+
             }
         }
         catch(error){
