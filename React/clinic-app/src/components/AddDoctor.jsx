@@ -1,16 +1,19 @@
+import { useContext, useState } from "react";
+import { UserContext } from "../Context/UserContext";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { useState } from "react"
-import { ToastContainer, toast } from 'react-toastify';
 
-export default function Booking() {
+export default function AddDoctor(){
+
+    const {token} = useContext(UserContext);
+
 const [formData, setFormData] = useState({
     firstName:"",
     lastName:"",
-    age:"",
+    email:"",
     phoneNumber:"",
     gender:"",
-    appointmentDate:"",
-    daignosis:"not done yet"
+    password:""
 });
 
 
@@ -18,12 +21,17 @@ const handleUpdate=(e)=>{
     setFormData(prev=>({...prev, [e.target.name]:e.target.value}));
 }
 
-const getAppointment = async(e)=>{
+const addDoctor = async(e)=>{
     e.preventDefault();
     try{
-        let response = await axios.post('http://localhost:8000/api/patients/book-appointment', formData);
+        let response = await axios.post('http://localhost:8000/api/doctors/register', formData, {
+            headers:{
+                'Authorization':`Bearer ${token}`,
+                'Content-Type':'application/json'
+            }
+        });
         if(response.status===201){
-            toast.success('Appointment done')
+            toast.success('Doctor Added')
         }
 
 
@@ -42,46 +50,40 @@ const getAppointment = async(e)=>{
                     <div className="col">
                         <form>
                             <h4>
-                                BOOK <span>APPOINTMENT</span>
+                                ADD <span>DOCTOR</span>
                             </h4>
                             <div className="form-row ">
                                 <div className="form-group col-lg-4">
                                     <label for="inputPatientName">First Name </label>
-                                    <input onChange={(e)=>handleUpdate(e)} name="firstName" type="text" className="form-control" id="inputPatientName" placeholder="" />
+                                    <input onChange={(e)=>handleUpdate(e)} name="firstName" type="text" className="form-control"  placeholder="" />
                                 </div>
                                 <div className="form-group col-lg-4">
                                     <label for="inputPatientName">Last Name </label>
-                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="lastName" className="form-control" id="inputPatientName" placeholder="" />
+                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="lastName" className="form-control"  placeholder="" />
                                 </div>
                                  <div className="form-group col-lg-4">
-                                    <label for="inputPatientName">Age</label>
-                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="age" className="form-control" id="inputPatientName" placeholder="" />
+                                    <label for="inputPatientName">Email</label>
+                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="email" className="form-control"  placeholder="" />
                                 </div>
                                                                
                             </div>
                             <div className="form-row ">
                                 <div className="form-group col-lg-4">
                                     <label for="inputPatientName">Gender</label>
-                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="gender" className="form-control" id="inputPatientName" placeholder="" />
+                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="gender" className="form-control"  placeholder="" />
                                 </div>
                                 <div className="form-group col-lg-4">
                                     <label for="inputPatientName">Phone Number</label>
-                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="phoneNumber" className="form-control" id="inputPatientName" placeholder="" />
+                                    <input onChange={(e)=>handleUpdate(e)} type="text" name="phoneNumber" className="form-control"  placeholder="" />
                                 </div>
                                  <div className="form-group col-lg-4">
-                                    <label for="inputPatientName">Branch</label>
-                                    <input onChange={(e)=>handleUpdate(e)} name="branch" type="text" className="form-control" id="inputPatientName" placeholder="" />
+                                    <label for="inputPatientName">Password</label>
+                                    <input onChange={(e)=>handleUpdate(e)} name="password" type="password" className="form-control"  placeholder="" />
                                 </div>                             
                             </div>
-                            <div className="form-row ">
-                                <div className="form-group col-lg-4">
-                                    <label for="inputPatientName">Date</label>
-                                    <input onChange={(e)=>handleUpdate(e)} type="date" name="appointmentDate" className="form-control" id="inputPatientName" placeholder="" />
-                                </div>
-                                                          
-                            </div>
+            
                             <div className="btn-box">
-                                <button onClick={getAppointment} type="submit" className="btn ">Book</button>
+                                <button onClick={addDoctor} type="submit" className="btn ">Book</button>
                             </div>
                         </form>
                     </div>

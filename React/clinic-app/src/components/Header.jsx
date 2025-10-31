@@ -61,17 +61,12 @@ export default function Header() {
                                                 <Link to={'/dashboard'} className="nav-link">Dashboard <span className="sr-only">(current)</span></Link>
                                             </li>
                                             <li className="nav-item active">
-                                                <Link to={'/'} className="nav-link">Admin <span className="sr-only">(current)</span></Link>
+                                                <Link to={'/add-doctor'} className="nav-link">Add Doctor <span className="sr-only">(current)</span></Link>
                                             </li>
                                             <li className="nav-item active">
-                                                <Link to={'/'} className="nav-link">Doctor <span className="sr-only">(current)</span></Link>
+                                                <Link to={'/view-doctors'} className="nav-link">View Doctor <span className="sr-only">(current)</span></Link>
                                             </li>
-                                            <li className="nav-item active">
-                                                <Link to={'/'} className="nav-link">Receptionist <span className="sr-only">(current)</span></Link>
-                                            </li>
-                                            <li className="nav-item active">
-                                                <Link to={'/'} className="nav-link">Patient <span className="sr-only">(current)</span></Link>
-                                            </li>
+                                            
                                         </ul>
                                         :
                                         (isLoggedIn && user.role === 'doctor')

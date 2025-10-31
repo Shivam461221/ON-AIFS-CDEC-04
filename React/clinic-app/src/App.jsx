@@ -1,5 +1,6 @@
 
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header'
 import Slider from './components/Slider'
 import Booking from './components/Booking'
@@ -13,6 +14,8 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
+import AddDoctor from './components/AddDoctor';
+import DoctorsList from './components/DoctorsList';
 
 function App() {
 
@@ -30,7 +33,9 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login/>} />
         <Route path='dashboard' element={<Dashboard/>} />
-        
+        <Route path='/add-doctor' element={<AddDoctor/>} />
+        <Route path='/view-doctors' element={<DoctorsList/>} />
+
 
       </Routes>
       <Footer />
