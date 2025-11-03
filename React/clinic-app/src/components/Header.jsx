@@ -76,10 +76,10 @@ export default function Header() {
                                                     <Link to={'/dashboard'} className="nav-link">Dashboard <span className="sr-only">(current)</span></Link>
                                                 </li>
                                                 <li className="nav-item active">
-                                                    <Link to={'/'} className="nav-link">Receptionist <span className="sr-only">(current)</span></Link>
+                                                    <Link to={'/receptionist-list'} className="nav-link">Receptionist List<span className="sr-only">(current)</span></Link>
                                                 </li>
                                                 <li className="nav-item active">
-                                                    <Link to={'/'} className="nav-link">Patient <span className="sr-only">(current)</span></Link>
+                                                    <Link to={'/add-receptionist'} className="nav-link">Add Receptionist <span className="sr-only">(current)</span></Link>
                                                 </li>
                                             </ul>
                                             :
@@ -90,7 +90,10 @@ export default function Header() {
                                                         <Link to={'/'} className="nav-link">Dashboard <span className="sr-only">(current)</span></Link>
                                                     </li>
                                                     <li className="nav-item active">
-                                                        <Link to={'/'} className="nav-link">Patient <span className="sr-only">(current)</span></Link>
+                                                        <Link to={'/add-patient'} className="nav-link">Add Patient<span className="sr-only">(current)</span></Link>
+                                                    </li>
+                                                    <li className="nav-item active">
+                                                        <Link to={'/patient-list'} className="nav-link">Patient List<span className="sr-only">(current)</span></Link>
                                                     </li>
 
                                                 </ul>

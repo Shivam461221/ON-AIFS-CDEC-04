@@ -3,9 +3,9 @@ import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../Context/UserContext";
 import { toast, ToastContainer } from "react-toastify";
 
-export default function DoctorsList() {
-    const { token } = useContext(UserContext);
-    const [doctors, setDoctors] = useState([]);
+export default function ReceptionistList() {
+    const { token, user } = useContext(UserContext);
+    const [receptionists, setReceptionists] = useState([]);
 
     const config = {
         headers: {
@@ -14,12 +14,12 @@ export default function DoctorsList() {
         }
     }
 
-    const getAllDoctors = async () => {
+    const getAllReceptionist = async () => {
         try {
-            let response = await axios.get('http://localhost:8000/api/doctors/getAll', config);
+            let response = await axios.get('http://localhost:8000/api/receptionist/all', config);
 
             if (response.status === 200) {
-                setDoctors(response.data);
+                setReceptionists(response.data);
             }
         }
         catch (error) {
@@ -27,15 +27,15 @@ export default function DoctorsList() {
         }
     }
 
-    const deleteDoctor = async (id) => {
+    const deleteReceptionist = async (id) => {
         try {
-            let response = await axios.delete(`http://localhost:8000/api/doctors/delete/${id}`, config,)
+            let response = await axios.delete(`http://localhost:8000/api/receptionist/delete/${id}`, config,)
             console.log(response);
             if (response) {
                 toast.success("doctor deleted...");
-                let index = doctors.findIndex((obj) => obj._id === id);
-                doctors.splice(index, 1);
-                setDoctors([...doctors]);
+                let index = receptionists.findIndex((obj) => obj._id === id);
+                receptionists.splice(index, 1);
+                setReceptionists([...receptionists]);
             }
         }
         catch (error) {
@@ -44,7 +44,7 @@ export default function DoctorsList() {
     }
 
     useEffect(() => {
-        getAllDoctors();
+        getAllReceptionist();
     }, []);
 
     return <>
@@ -59,21 +59,19 @@ export default function DoctorsList() {
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Gender</th>
-                        <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        doctors.map((doctor, index) => <tr key={index}>
+                        receptionists.filter(receptionist=>receptionist.doctor===user._id).map((receptionist, index) => <tr key={index}>
                             <th>{index + 1}</th>
-                            <td>{doctor.firstName}</td>
-                            <th>{doctor.lastName}</th>
-                            <th>{doctor.phoneNumber}</th>
-                            <th>{doctor.email}</th>
-                            <th>{doctor.gender}</th>
-                            <th>{doctor.role}</th>
-                            <th><button onClick={() => deleteDoctor(doctor._id)} className="btn btn-danger">Delete</button></th>
+                            <td>{receptionist.firstName}</td>
+                            <th>{receptionist.lastName}</th>
+                            <th>{receptionist.phoneNumber}</th>
+                            <th>{receptionist.email}</th>
+                            <th>{receptionist.gender}</th>
+                            <th><button onClick={() => deleteReceptionist(receptionist._id)} className="btn btn-danger">Delete</button></th>
                         </tr>)
                     }
                 </tbody>

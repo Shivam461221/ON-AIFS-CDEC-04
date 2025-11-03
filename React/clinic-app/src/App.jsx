@@ -16,6 +16,11 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import AddDoctor from './components/AddDoctor';
 import DoctorsList from './components/DoctorsList';
+import ProtectedRoute from './components/ProtectedRoute';
+import ReceptionistList from './components/ReceptionistList';
+import AddReceptionist from './components/AddReceptionist';
+import PatientList from './components/PatientList';
+import AddPatient from './components/AddPatient';
 
 function App() {
 
@@ -32,9 +37,13 @@ function App() {
         <Route path='/client' element={<Client />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login/>} />
-        <Route path='dashboard' element={<Dashboard/>} />
-        <Route path='/add-doctor' element={<AddDoctor/>} />
-        <Route path='/view-doctors' element={<DoctorsList/>} />
+        <Route path='dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path='/add-doctor' element={<ProtectedRoute><AddDoctor/></ProtectedRoute>} />
+        <Route path='/view-doctors' element={<ProtectedRoute><DoctorsList/></ProtectedRoute>} />
+        <Route path='/receptionist-list' element={<ReceptionistList/>} />
+        <Route path='/add-receptionist' element={<AddReceptionist/>} />
+        <Route path='/patient-list' element={<PatientList/>} />
+        <Route path='/add-patient' element={<AddPatient/>} />
 
 
       </Routes>

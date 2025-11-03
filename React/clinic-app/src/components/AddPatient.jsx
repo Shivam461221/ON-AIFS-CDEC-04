@@ -3,17 +3,19 @@ import { UserContext } from "../Context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
-export default function AddDoctor() {
+export default function AddPatient() {
 
-    const { token } = useContext(UserContext);
+    const { token, user } = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
-        email: "",
+        age: "",
         phoneNumber: "",
         gender: "",
-        password: ""
+        appointmentDate: "",
+        receptionist: user._id,
+        doctor: user.doctor
     });
 
 
@@ -21,24 +23,24 @@ export default function AddDoctor() {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
-    const addDoctor = async (e) => {
+    const addPatient = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.post('http://localhost:8000/api/doctors/register', formData, {
+            let response = await axios.post('http://localhost:8000/api/patients/register', formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
             if (response.status === 201) {
-                toast.success('Doctor Added')
+                toast.success('Patient Added')
                 setFormData({
                     firstName: "",
                     lastName: "",
-                    email: "",
+                    age: "",
                     phoneNumber: "",
                     gender: "",
-                    password: "",
+                    appointmentDate: ""
                 });
             }
 
@@ -58,7 +60,7 @@ export default function AddDoctor() {
                     <div className="col">
                         <form>
                             <h4>
-                                ADD <span>DOCTOR</span>
+                                ADD <span>PATIENT</span>
                             </h4>
                             <div className="form-row ">
                                 <div className="form-group col-lg-4">
@@ -70,8 +72,8 @@ export default function AddDoctor() {
                                     <input onChange={(e) => handleUpdate(e)} type="text" name="lastName" className="form-control" placeholder="" />
                                 </div>
                                 <div className="form-group col-lg-4">
-                                    <label for="inputPatientName">Email</label>
-                                    <input onChange={(e) => handleUpdate(e)} type="text" name="email" className="form-control" placeholder="" />
+                                    <label for="inputPatientName">Age</label>
+                                    <input onChange={(e) => handleUpdate(e)} type="text" name="age" className="form-control" placeholder="" />
                                 </div>
 
                             </div>
@@ -85,13 +87,14 @@ export default function AddDoctor() {
                                     <input onChange={(e) => handleUpdate(e)} type="text" name="phoneNumber" className="form-control" placeholder="" />
                                 </div>
                                 <div className="form-group col-lg-4">
-                                    <label for="inputPatientName">Password</label>
-                                    <input onChange={(e) => handleUpdate(e)} name="password" type="password" className="form-control" placeholder="" />
+                                    <label for="inputPatientName">Appointment Date</label>
+                                    <input onChange={(e) => handleUpdate(e)} name="appointmentDate" type="date" className="form-control" placeholder="" />
                                 </div>
                             </div>
+                            
 
                             <div className="btn-box">
-                                <button onClick={addDoctor} type="submit" className="btn ">Book</button>
+                                <button onClick={addPatient} type="submit" className="btn ">Add</button>
                             </div>
                         </form>
                     </div>

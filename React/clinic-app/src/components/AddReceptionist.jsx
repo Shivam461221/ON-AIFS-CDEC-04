@@ -3,9 +3,9 @@ import { UserContext } from "../Context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
-export default function AddDoctor() {
+export default function AddReceptionist() {
 
-    const { token } = useContext(UserContext);
+    const { token, user } = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -13,7 +13,9 @@ export default function AddDoctor() {
         email: "",
         phoneNumber: "",
         gender: "",
-        password: ""
+        password: "",
+        clinicAddress:"",
+        doctor:user._id
     });
 
 
@@ -21,17 +23,17 @@ export default function AddDoctor() {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
-    const addDoctor = async (e) => {
+    const addReceptionist = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.post('http://localhost:8000/api/doctors/register', formData, {
+            let response = await axios.post('http://localhost:8000/api/receptionist/register', formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
             if (response.status === 201) {
-                toast.success('Doctor Added')
+                toast.success('Receptionist Added')
                 setFormData({
                     firstName: "",
                     lastName: "",
@@ -39,6 +41,7 @@ export default function AddDoctor() {
                     phoneNumber: "",
                     gender: "",
                     password: "",
+                    clinicAddress:"",
                 });
             }
 
@@ -58,7 +61,7 @@ export default function AddDoctor() {
                     <div className="col">
                         <form>
                             <h4>
-                                ADD <span>DOCTOR</span>
+                                ADD <span>RECEPTIONIST</span>
                             </h4>
                             <div className="form-row ">
                                 <div className="form-group col-lg-4">
@@ -89,9 +92,15 @@ export default function AddDoctor() {
                                     <input onChange={(e) => handleUpdate(e)} name="password" type="password" className="form-control" placeholder="" />
                                 </div>
                             </div>
+                             <div className="form-row ">
+                                <div className="form-group col-lg-4">
+                                    <label for="inputPatientName">Clinic Address</label>
+                                    <input onChange={(e) => handleUpdate(e)} type="text" name="clinicAddress" className="form-control" placeholder="" />
+                                </div>
+                                                        </div>
 
                             <div className="btn-box">
-                                <button onClick={addDoctor} type="submit" className="btn ">Book</button>
+                                <button onClick={addReceptionist} type="submit" className="btn ">Add</button>
                             </div>
                         </form>
                     </div>
