@@ -1,0 +1,153 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use mydb;
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_mydb  |
++-----------------+
+| customers       |
+| user            |
+| user_delete_log |
+| user_log        |
+| users           |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+-------------+-------------+
+| id | name        | email       |
++----+-------------+-------------+
+|  2 | SAGAR       | sagar@123   |
+|  3 | SWALEHA     | swaleha@123 |
+|  4 | Aditi khute | aditi@123   |
+|  5 | shiv        | shivam@123  |
+|  6 | KULDEEP     | kuldeep@123 |
++----+-------------+-------------+
+5 rows in set (0.03 sec)
+
+mysql> insert into users (id, name, email) values (7, 'swapnil', swapnil@123);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@123)' at line 1
+mysql> insert into users (id, name, email) values (7, 'swapnil', 'swapnil@123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from users;
++----+-------------+-------------+
+| id | name        | email       |
++----+-------------+-------------+
+|  2 | SAGAR       | sagar@123   |
+|  3 | SWALEHA     | swaleha@123 |
+|  4 | Aditi khute | aditi@123   |
+|  5 | shiv        | shivam@123  |
+|  6 | KULDEEP     | kuldeep@123 |
+|  7 | SWAPNIL     | swapnil@123 |
++----+-------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into users (id, name, email, age) values (7, 'swapnil', 'swapnil@123', 25);
+ERROR 1054 (42S22): Unknown column 'age' in 'field list'
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bank_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> create database aifs;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| bank_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table users(id int primary key , name varchar(60), email varchar(50) unique, age int, admission_date date);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| users          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> desc users;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int         | NO   | PRI | NULL    |       |
+| name           | varchar(60) | YES  |     | NULL    |       |
+| email          | varchar(50) | YES  | UNI | NULL    |       |
+| age            | int         | YES  |     | NULL    |       |
+| admission_date | date        | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into users values (1, 'shivam', 'shivam@123', 25, new date());
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'date())' at line 1
+mysql> insert into users values (1, 'shivam', 'shivam@123', 25, new Date());
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Date())' at line 1
+mysql> insert into users values (1, 'shivam', 'shivam@123', 25, 2025-11-04);
+ERROR 1292 (22007): Incorrect date value: '2010' for column 'admission_date' at row 1
+mysql> insert into users values (1, 'shivam', 'shivam@123', 25, now());
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> select * from users;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  1 | shivam | shivam@123 |   25 | 2025-11-04     |
++----+--------+------------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> insert into users values (2, 'aditi', 'aditi@123', 23, '2025-11-04');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from users;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  1 | shivam | shivam@123 |   25 | 2025-11-04     |
+|  2 | aditi  | aditi@123  |   23 | 2025-11-04     |
++----+--------+------------+------+----------------+
+2 rows in set (0.00 sec)
+
+mysql>
