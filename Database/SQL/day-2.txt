@@ -1,0 +1,693 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| users          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  1 | shivam | shivam@123 |   25 | 2025-11-04     |
+|  2 | aditi  | aditi@123  |   23 | 2025-11-04     |
++----+--------+------------+------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into users values(3, 'amrapali', 24, '2025-11-05'), (4, 'swapnil', 24, '2025-11-05');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into users values(3, 'amrapali','amrapali@123', 24, '2025-11-05'), (4, 'swapnil', 'swapnil@123', 24, '2025-11-05');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  1 | shivam   | shivam@123   |   25 | 2025-11-04     |
+|  2 | aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select id, name from users;
++----+----------+
+| id | name     |
++----+----------+
+|  1 | shivam   |
+|  2 | aditi    |
+|  3 | amrapali |
+|  4 | swapnil  |
++----+----------+
+4 rows in set (0.00 sec)
+
+mysql> delete from users where id=1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select id, name from users;
++----+----------+
+| id | name     |
++----+----------+
+|  2 | aditi    |
+|  3 | amrapali |
+|  4 | swapnil  |
++----+----------+
+3 rows in set (0.00 sec)
+
+mysql> create table courses (id int primary key, name varchar(50), duration varchar(50));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| courses        |
+| users          |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table courses;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| users          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> desc users;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int         | NO   | PRI | NULL    |       |
+| name           | varchar(60) | YES  |     | NULL    |       |
+| email          | varchar(50) | YES  | UNI | NULL    |       |
+| age            | int         | YES  |     | NULL    |       |
+| admission_date | date        | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> update users set name='Aditi' where id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> update users set name = Amrapali where email='amrapali@123';
+ERROR 1054 (42S22): Unknown column 'Amrapali' in 'field list'
+mysql> update users set name = 'Amrapali' where email='amrapali@123';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select name, email from users;
++----------+--------------+
+| name     | email        |
++----------+--------------+
+| Aditi    | aditi@123    |
+| Amrapali | amrapali@123 |
+| swapnil  | swapnil@123  |
++----------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users where age = 24;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users where age>24;
+Empty set (0.00 sec)
+
+mysql> select * from users where age<24;
++----+-------+-----------+------+----------------+
+| id | name  | email     | age  | admission_date |
++----+-------+-----------+------+----------------+
+|  2 | Aditi | aditi@123 |   23 | 2025-11-04     |
++----+-------+-----------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users where age<=24;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO users VALUES
+    -> (5, 'rahul', 'rahul@123', 25, '2025-11-05'),
+    -> (6, 'priya', 'priya@123', 23, '2025-11-05'),
+    -> (7, 'neha', 'neha@123', 26, '2025-11-05'),
+    -> (8, 'vikram', 'vikram@123', 27, '2025-11-05'),
+    -> (9, 'sonia', 'sonia@123', 22, '2025-11-05'),
+    -> (10, 'arjun', 'arjun@123', 28, '2025-11-05');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO users VALUES
+    -> (11, 'meera', 'meera@123', 29, '2025-11-05'),
+    -> (12, 'karan', 'karan@123', 24, '2025-11-05'),
+    -> (13, 'anita', 'anita@123', 26, '2025-11-05'),
+    -> (14, 'rohit', 'rohit@123', 31, '2025-11-05'),
+    -> (15, 'pooja', 'pooja@123', 22, '2025-11-05'),
+    -> (16, 'sanjay', 'sanjay@123', 33, '2025-11-05'),
+    -> (17, 'divya', 'divya@123', 27, '2025-11-05'),
+    -> (18, 'manoj', 'manoj@123', 30, '2025-11-05'),
+    -> (19, 'kavita', 'kavita@123', 25, '2025-11-05'),
+    -> (19, 'kavita', 'kavita@123', 25, '2025-11-03'),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 11
+mysql> INSERT INTO users VALUES
+    -> (11, 'meera', 'meera@123', 29, '2025-11-05'),
+    -> (12, 'karan', 'karan@123', 24, '2025-11-05'),
+    -> (13, 'anita', 'anita@123', 26, '2025-11-05'),
+    -> (14, 'rohit', 'rohit@123', 31, '2025-11-05'),
+    -> (15, 'pooja', 'pooja@123', 22, '2025-11-05'),
+    -> (16, 'sanjay', 'sanjay@123', 33, '2025-11-05'),
+    -> (17, 'divya', 'divya@123', 27, '2025-11-05'),
+    -> (18, 'manoj', 'manoj@123', 30, '2025-11-05'),
+    -> (19, 'kavita', 'kavita@123', 25, '2025-11-05'),
+    -> (20, 'rajesh', 'rajesh@123', 32, '2025-11-05');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by age asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by age dsc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsc' at line 1
+mysql> select * from users order by age des;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'des' at line 1
+mysql> select * from users order by age desc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by name asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by name desc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users where age<25;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from users where age>25;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 10 | arjun  | arjun@123  |   28 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 14 | rohit  | rohit@123  |   31 | 2025-11-05     |
+| 16 | sanjay | sanjay@123 |   33 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 18 | manoj  | manoj@123  |   30 | 2025-11-05     |
+| 20 | rajesh | rajesh@123 |   32 | 2025-11-05     |
++----+--------+------------+------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from users where admission_date='2025-11-04';
++----+-------+-----------+------+----------------+
+| id | name  | email     | age  | admission_date |
++----+-------+-----------+------+----------------+
+|  2 | Aditi | aditi@123 |   23 | 2025-11-04     |
++----+-------+-----------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users where age!=25;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+17 rows in set (0.00 sec)
+
+mysql> select distinct age from users;
++------+
+| age  |
++------+
+|   23 |
+|   24 |
+|   25 |
+|   26 |
+|   27 |
+|   22 |
+|   28 |
+|   29 |
+|   31 |
+|   33 |
+|   30 |
+|   32 |
++------+
+12 rows in set (0.00 sec)
+
+mysql> select * from users where age>25 and admission_date='2025-11-05';
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 10 | arjun  | arjun@123  |   28 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 14 | rohit  | rohit@123  |   31 | 2025-11-05     |
+| 16 | sanjay | sanjay@123 |   33 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 18 | manoj  | manoj@123  |   30 | 2025-11-05     |
+| 20 | rajesh | rajesh@123 |   32 | 2025-11-05     |
++----+--------+------------+------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from users where age>25 or admission_date='2025-11-05';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users where not age = 24;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  2 | Aditi  | aditi@123  |   23 | 2025-11-04     |
+|  5 | rahul  | rahul@123  |   25 | 2025-11-05     |
+|  6 | priya  | priya@123  |   23 | 2025-11-05     |
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+|  9 | sonia  | sonia@123  |   22 | 2025-11-05     |
+| 10 | arjun  | arjun@123  |   28 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 14 | rohit  | rohit@123  |   31 | 2025-11-05     |
+| 15 | pooja  | pooja@123  |   22 | 2025-11-05     |
+| 16 | sanjay | sanjay@123 |   33 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 18 | manoj  | manoj@123  |   30 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
+| 20 | rajesh | rajesh@123 |   32 | 2025-11-05     |
++----+--------+------------+------+----------------+
+16 rows in set (0.00 sec)
+
+mysql> select * from users where name like 'a%';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from users where name like '%a';
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  6 | priya  | priya@123  |   23 | 2025-11-05     |
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  9 | sonia  | sonia@123  |   22 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 15 | pooja  | pooja@123  |   22 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from users where name like '%a%';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users where name like '%s%';
++----+---------+-------------+------+----------------+
+| id | name    | email       | age  | admission_date |
++----+---------+-------------+------+----------------+
+|  4 | swapnil | swapnil@123 |   24 | 2025-11-05     |
+|  9 | sonia   | sonia@123   |   22 | 2025-11-05     |
+| 16 | sanjay  | sanjay@123  |   33 | 2025-11-05     |
+| 20 | rajesh  | rajesh@123  |   32 | 2025-11-05     |
++----+---------+-------------+------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from users where name like '%r%';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from users where name like 's%';
++----+---------+-------------+------+----------------+
+| id | name    | email       | age  | admission_date |
++----+---------+-------------+------+----------------+
+|  4 | swapnil | swapnil@123 |   24 | 2025-11-05     |
+|  9 | sonia   | sonia@123   |   22 | 2025-11-05     |
+| 16 | sanjay  | sanjay@123  |   33 | 2025-11-05     |
++----+---------+-------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users where name like 'am%';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users where name like 'pr%';
++----+-------+-----------+------+----------------+
+| id | name  | email     | age  | admission_date |
++----+-------+-----------+------+----------------+
+|  6 | priya | priya@123 |   23 | 2025-11-05     |
++----+-------+-----------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users where age betweem 25 and 28;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'betweem 25 and 28' at line 1
+mysql> select * from users where age between 25 and 28;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  5 | rahul  | rahul@123  |   25 | 2025-11-05     |
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 10 | arjun  | arjun@123  |   28 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from users where age in (25, 27);
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  5 | rahul  | rahul@123  |   25 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select name, age from users;
++----------+------+
+| name     | age  |
++----------+------+
+| Aditi    |   23 |
+| Amrapali |   24 |
+| swapnil  |   24 |
+| rahul    |   25 |
+| priya    |   23 |
+| neha     |   26 |
+| vikram   |   27 |
+| sonia    |   22 |
+| arjun    |   28 |
+| meera    |   29 |
+| karan    |   24 |
+| anita    |   26 |
+| rohit    |   31 |
+| pooja    |   22 |
+| sanjay   |   33 |
+| divya    |   27 |
+| manoj    |   30 |
+| kavita   |   25 |
+| rajesh   |   32 |
++----------+------+
+19 rows in set (0.00 sec)
