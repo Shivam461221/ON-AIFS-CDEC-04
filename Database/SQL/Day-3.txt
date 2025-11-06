@@ -1,0 +1,623 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| users          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| users          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select name, email from users;
++----------+--------------+
+| name     | email        |
++----------+--------------+
+| Aditi    | aditi@123    |
+| Amrapali | amrapali@123 |
+| swapnil  | swapnil@123  |
+| rahul    | rahul@123    |
+| priya    | priya@123    |
+| neha     | neha@123     |
+| vikram   | vikram@123   |
+| sonia    | sonia@123    |
+| arjun    | arjun@123    |
+| meera    | meera@123    |
+| karan    | karan@123    |
+| anita    | anita@123    |
+| rohit    | rohit@123    |
+| pooja    | pooja@123    |
+| sanjay   | sanjay@123   |
+| divya    | divya@123    |
+| manoj    | manoj@123    |
+| kavita   | kavita@123   |
+| rajesh   | rajesh@123   |
++----------+--------------+
+19 rows in set (0.00 sec)
+
+mysql> select id, name, age from users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  2 | Aditi    |   23 |
+|  3 | Amrapali |   24 |
+|  4 | swapnil  |   24 |
+|  5 | rahul    |   25 |
+|  6 | priya    |   23 |
+|  7 | neha     |   26 |
+|  8 | vikram   |   27 |
+|  9 | sonia    |   22 |
+| 10 | arjun    |   28 |
+| 11 | meera    |   29 |
+| 12 | karan    |   24 |
+| 13 | anita    |   26 |
+| 14 | rohit    |   31 |
+| 15 | pooja    |   22 |
+| 16 | sanjay   |   33 |
+| 17 | divya    |   27 |
+| 18 | manoj    |   30 |
+| 19 | kavita   |   25 |
+| 20 | rajesh   |   32 |
++----+----------+------+
+19 rows in set (0.00 sec)
+
+mysql> select name from students where age>25;
+ERROR 1146 (42S02): Table 'aifs.students' doesn't exist
+mysql> select name from users where age>25;
++--------+
+| name   |
++--------+
+| neha   |
+| vikram |
+| arjun  |
+| meera  |
+| anita  |
+| rohit  |
+| sanjay |
+| divya  |
+| manoj  |
+| rajesh |
++--------+
+10 rows in set (0.00 sec)
+
+mysql> select name, age from users where age>25;
++--------+------+
+| name   | age  |
++--------+------+
+| neha   |   26 |
+| vikram |   27 |
+| arjun  |   28 |
+| meera  |   29 |
+| anita  |   26 |
+| rohit  |   31 |
+| sanjay |   33 |
+| divya  |   27 |
+| manoj  |   30 |
+| rajesh |   32 |
++--------+------+
+10 rows in set (0.00 sec)
+
+mysql> select name, age from users where age>=25;
++--------+------+
+| name   | age  |
++--------+------+
+| rahul  |   25 |
+| neha   |   26 |
+| vikram |   27 |
+| arjun  |   28 |
+| meera  |   29 |
+| anita  |   26 |
+| rohit  |   31 |
+| sanjay |   33 |
+| divya  |   27 |
+| manoj  |   30 |
+| kavita |   25 |
+| rajesh |   32 |
++--------+------+
+12 rows in set (0.00 sec)
+
+mysql> select name, age from users where age >30;
++--------+------+
+| name   | age  |
++--------+------+
+| rohit  |   31 |
+| sanjay |   33 |
+| rajesh |   32 |
++--------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by age asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by age desc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by name asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users order by name desc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from users where name like 'a%';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from users where name like 'b%';
+Empty set (0.00 sec)
+
+mysql> select * from users where name like 'd%';
++----+-------+-----------+------+----------------+
+| id | name  | email     | age  | admission_date |
++----+-------+-----------+------+----------------+
+| 17 | divya | divya@123 |   27 | 2025-11-05     |
++----+-------+-----------+------+----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users where name like '%a';
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  6 | priya  | priya@123  |   23 | 2025-11-05     |
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  9 | sonia  | sonia@123  |   22 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 15 | pooja  | pooja@123  |   22 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from users where name like '%d%';
++----+-------+-----------+------+----------------+
+| id | name  | email     | age  | admission_date |
++----+-------+-----------+------+----------------+
+|  2 | Aditi | aditi@123 |   23 | 2025-11-04     |
+| 17 | divya | divya@123 |   27 | 2025-11-05     |
++----+-------+-----------+------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users where age between 25 and 30;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  5 | rahul  | rahul@123  |   25 | 2025-11-05     |
+|  7 | neha   | neha@123   |   26 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 10 | arjun  | arjun@123  |   28 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 13 | anita  | anita@123  |   26 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 18 | manoj  | manoj@123  |   30 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from users where age in (27, 29);
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
++----+--------+------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users where age in (27, 29, 25);
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  5 | rahul  | rahul@123  |   25 | 2025-11-05     |
+|  8 | vikram | vikram@123 |   27 | 2025-11-05     |
+| 11 | meera  | meera@123  |   29 | 2025-11-05     |
+| 17 | divya  | divya@123  |   27 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> create table orders(id int primary key auto_increment, price double, order_date date, user_id int, foreign key(user_id) references users(id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc orders;
++------------+--------+------+-----+---------+----------------+
+| Field      | Type   | Null | Key | Default | Extra          |
++------------+--------+------+-----+---------+----------------+
+| id         | int    | NO   | PRI | NULL    | auto_increment |
+| price      | double | YES  |     | NULL    |                |
+| order_date | date   | YES  |     | NULL    |                |
+| user_id    | int    | YES  | MUL | NULL    |                |
++------------+--------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into orders (price, order_date, user_id) values(20000, '2025-11-01', 2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from orders;
++----+-------+------------+---------+
+| id | price | order_date | user_id |
++----+-------+------------+---------+
+|  1 | 20000 | 2025-11-01 |       2 |
++----+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> delete from users where id = 2;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`aifs`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))
+mysql> alter table orders drop foreign key user_id;
+ERROR 1091 (42000): Can't DROP 'user_id'; check that column/key exists
+mysql> SHOW CREATE TABLE orders;
++--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table  | Create Table                                                                                                                                                                                                                                                                                                                                                                     |
++--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| orders | CREATE TABLE `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `price` double DEFAULT NULL,
+  `order_date` date DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table orders drop foreign key orders_ibfk_1;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table orders add constraints fk_users foreign key(user_id) references users(id) on delete cascade;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk_users foreign key(user_id) references users(id) on delete cascade' at line 1
+mysql> alter table orders add constraint fk_users foreign key(user_id) references users(id) on delete cascade;
+Query OK, 1 row affected (0.03 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  2 | Aditi    | aditi@123    |   23 | 2025-11-04     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+19 rows in set (0.00 sec)
+
+mysql> select * from orders;
++----+-------+------------+---------+
+| id | price | order_date | user_id |
++----+-------+------------+---------+
+|  1 | 20000 | 2025-11-01 |       2 |
++----+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into orders (price, order_date, user_id) values(1000, now(), 3);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into orders (price, order_date, user_id) values(10000, now(), 6);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert into orders (price, order_date, user_id) values(30000, now(), 4);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> select * from orders;
++----+-------+------------+---------+
+| id | price | order_date | user_id |
++----+-------+------------+---------+
+|  1 | 20000 | 2025-11-01 |       2 |
+|  2 |  1000 | 2025-11-06 |       3 |
+|  3 | 10000 | 2025-11-06 |       6 |
+|  4 | 30000 | 2025-11-06 |       4 |
++----+-------+------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> delete from users where id = 2;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from orders;
++----+-------+------------+---------+
+| id | price | order_date | user_id |
++----+-------+------------+---------+
+|  2 |  1000 | 2025-11-06 |       3 |
+|  3 | 10000 | 2025-11-06 |       6 |
+|  4 | 30000 | 2025-11-06 |       4 |
++----+-------+------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> create table products (id int primary key auto_increment, title varchar(50) unique, price double, rating double check <=5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<=5)' at line 1
+mysql> create table products (id int primary key auto_increment, title varchar(50) unique, price double, rating double check (rating<=5));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc products;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| title  | varchar(50) | YES  | UNI | NULL    |                |
+| price  | double      | YES  |     | NULL    |                |
+| rating | double      | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('bootle', 500, 4.5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('Samsung A30', 15000, 6);
+ERROR 3819 (HY000): Check constraint 'products_chk_1' is violated.
+mysql> insert into products (title, price, rating) values ('Samsung A30', 15000, 5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('Chair', 1000, 3.5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from products;
++----+-------------+-------+--------+
+| id | title       | price | rating |
++----+-------------+-------+--------+
+|  1 | bootle      |   500 |    4.5 |
+|  2 | Samsung A30 | 15000 |      5 |
+|  3 | Chair       |  1000 |    3.5 |
++----+-------------+-------+--------+
+3 rows in set (0.00 sec)
