@@ -1,0 +1,533 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| orders         |
+| products       |
+| users          |
++----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select name, email from users;
++----------+--------------+
+| name     | email        |
++----------+--------------+
+| Amrapali | amrapali@123 |
+| swapnil  | swapnil@123  |
+| rahul    | rahul@123    |
+| priya    | priya@123    |
+| neha     | neha@123     |
+| vikram   | vikram@123   |
+| sonia    | sonia@123    |
+| arjun    | arjun@123    |
+| meera    | meera@123    |
+| karan    | karan@123    |
+| anita    | anita@123    |
+| rohit    | rohit@123    |
+| pooja    | pooja@123    |
+| sanjay   | sanjay@123   |
+| divya    | divya@123    |
+| manoj    | manoj@123    |
+| kavita   | kavita@123   |
+| rajesh   | rajesh@123   |
++----------+--------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users where age = 25;
++----+--------+------------+------+----------------+
+| id | name   | email      | age  | admission_date |
++----+--------+------------+------+----------------+
+|  5 | rahul  | rahul@123  |   25 | 2025-11-05     |
+| 19 | kavita | kavita@123 |   25 | 2025-11-05     |
++----+--------+------------+------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users where name like 'a%';
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users order by age desc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users order by age asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users order by name asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from users order by email asc;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> desc users;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int         | NO   | PRI | NULL    |       |
+| name           | varchar(60) | YES  |     | NULL    |       |
+| email          | varchar(50) | YES  | UNI | NULL    |       |
+| age            | int         | YES  |     | NULL    |       |
+| admission_date | date        | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| orders         |
+| products       |
+| users          |
++----------------+
+3 rows in set (0.00 sec)
+
+mysql> desc products;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| title  | varchar(50) | YES  | UNI | NULL    |                |
+| price  | double      | YES  |     | NULL    |                |
+| rating | double      | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products add quantity int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(50) | YES  | UNI | NULL    |                |
+| price    | double      | YES  |     | NULL    |                |
+| rating   | double      | YES  |     | NULL    |                |
+| quantity | int         | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table products change quantity bigint;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bigint' at line 1
+mysql> alter table products modify quantity bigint;
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(50) | YES  | UNI | NULL    |                |
+| price    | double      | YES  |     | NULL    |                |
+| rating   | double      | YES  |     | NULL    |                |
+| quantity | bigint      | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table products change column quantity product_quantity bigint;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++------------------+-------------+------+-----+---------+----------------+
+| Field            | Type        | Null | Key | Default | Extra          |
++------------------+-------------+------+-----+---------+----------------+
+| id               | int         | NO   | PRI | NULL    | auto_increment |
+| title            | varchar(50) | YES  | UNI | NULL    |                |
+| price            | double      | YES  |     | NULL    |                |
+| rating           | double      | YES  |     | NULL    |                |
+| product_quantity | bigint      | YES  |     | NULL    |                |
++------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from products;
++----+-------------+-------+--------+------------------+
+| id | title       | price | rating | product_quantity |
++----+-------------+-------+--------+------------------+
+|  1 | bootle      |   500 |    4.5 |             NULL |
+|  2 | Samsung A30 | 15000 |      5 |             NULL |
+|  3 | Chair       |  1000 |    3.5 |             NULL |
++----+-------------+-------+--------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> update products set product_quantity = 5;
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from products;
++----+-------------+-------+--------+------------------+
+| id | title       | price | rating | product_quantity |
++----+-------------+-------+--------+------------------+
+|  1 | bootle      |   500 |    4.5 |                5 |
+|  2 | Samsung A30 | 15000 |      5 |                5 |
+|  3 | Chair       |  1000 |    3.5 |                5 |
++----+-------------+-------+--------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table products drop product_quantity;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++----+-------------+-------+--------+
+| id | title       | price | rating |
++----+-------------+-------+--------+
+|  1 | bootle      |   500 |    4.5 |
+|  2 | Samsung A30 | 15000 |      5 |
+|  3 | Chair       |  1000 |    3.5 |
++----+-------------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> alter table products remane to product;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'remane to product' at line 1
+mysql> alter table products rename to product;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| orders         |
+| product        |
+| users          |
++----------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table product rename to products;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| orders         |
+| products       |
+| users          |
++----------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table products add quantity int default 5;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++----+-------------+-------+--------+----------+
+| id | title       | price | rating | quantity |
++----+-------------+-------+--------+----------+
+|  1 | bootle      |   500 |    4.5 |        5 |
+|  2 | Samsung A30 | 15000 |      5 |        5 |
+|  3 | Chair       |  1000 |    3.5 |        5 |
++----+-------------+-------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('mouse', 1000, 6);
+ERROR 3819 (HY000): Check constraint 'products_chk_1' is violated.
+mysql> insert into products (title, price, rating) values ('mouse', 1000, 4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from products;
++----+-------------+-------+--------+----------+
+| id | title       | price | rating | quantity |
++----+-------------+-------+--------+----------+
+|  1 | bootle      |   500 |    4.5 |        5 |
+|  2 | Samsung A30 | 15000 |      5 |        5 |
+|  3 | Chair       |  1000 |    3.5 |        5 |
+|  4 | mouse       |  1000 |      4 |        5 |
++----+-------------+-------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products drop deafult quantity;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'quantity' at line 1
+mysql> show create table products;
++----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table    | Create Table                                                                                                                                                                                                                                                                                                                                                                                   |
++----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| products | CREATE TABLE `products` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `rating` double DEFAULT NULL,
+  `quantity` int DEFAULT '5',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title` (`title`),
+  CONSTRAINT `products_chk_1` CHECK ((`rating` <= 5))
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table products drop default quantity;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default quantity' at line 1
+mysql> ALTER TABLE products ALTER COLUMN quantity DROP DEFAULT;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++----+-------------+-------+--------+----------+
+| id | title       | price | rating | quantity |
++----+-------------+-------+--------+----------+
+|  1 | bootle      |   500 |    4.5 |        5 |
+|  2 | Samsung A30 | 15000 |      5 |        5 |
+|  3 | Chair       |  1000 |    3.5 |        5 |
+|  4 | mouse       |  1000 |      4 |        5 |
++----+-------------+-------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('mouse', 1000, 6);
+ERROR 1364 (HY000): Field 'quantity' doesn't have a default value
+mysql> insert into products (title, price, rating) values ('mouse', 1000, 4);
+ERROR 1364 (HY000): Field 'quantity' doesn't have a default value
+mysql> desc products;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(50) | YES  | UNI | NULL    |                |
+| price    | double      | YES  |     | NULL    |                |
+| rating   | double      | YES  |     | NULL    |                |
+| quantity | int         | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('mouse', 1000, 4);
+ERROR 1364 (HY000): Field 'quantity' doesn't have a default value
+mysql> insert into products (title, price, rating, quantity) values ('mouse', 1000, 4, 6);
+ERROR 1062 (23000): Duplicate entry 'mouse' for key 'products.title'
+mysql> insert into products (title, price, rating, quantity) values ('Keyboard', 1000, 4, 6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from products;
++----+-------------+-------+--------+----------+
+| id | title       | price | rating | quantity |
++----+-------------+-------+--------+----------+
+|  1 | bootle      |   500 |    4.5 |        5 |
+|  2 | Samsung A30 | 15000 |      5 |        5 |
+|  3 | Chair       |  1000 |    3.5 |        5 |
+|  4 | mouse       |  1000 |      4 |        5 |
+|  6 | Keyboard    |  1000 |      4 |        6 |
++----+-------------+-------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('lunchbox', 100, 2);
+ERROR 1364 (HY000): Field 'quantity' doesn't have a default value
+mysql> LTER TABLE products MODIFY COLUMN quantity INT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LTER TABLE products MODIFY COLUMN quantity INT NULL' at line 1
+mysql> ALTER TABLE products MODIFY COLUMN quantity INT NULL;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(50) | YES  | UNI | NULL    |                |
+| price    | double      | YES  |     | NULL    |                |
+| rating   | double      | YES  |     | NULL    |                |
+| quantity | int         | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into products (title, price, rating) values ('lunchbox', 100, 2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from products;
++----+-------------+-------+--------+----------+
+| id | title       | price | rating | quantity |
++----+-------------+-------+--------+----------+
+|  1 | bootle      |   500 |    4.5 |        5 |
+|  2 | Samsung A30 | 15000 |      5 |        5 |
+|  3 | Chair       |  1000 |    3.5 |        5 |
+|  4 | mouse       |  1000 |      4 |        5 |
+|  6 | Keyboard    |  1000 |      4 |        6 |
+|  7 | lunchbox    |   100 |      2 |     NULL |
++----+-------------+-------+--------+----------+
+6 rows in set (0.00 sec)
+
+mysql> alter table products add constraint default_val default(quantity=5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default(quantity=5)' at line 1
+mysql> alter table products add constraint default_val default 5(quantity);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default 5(quantity)' at line 1
+mysql> alter table products modify qyantity int default 5;
+ERROR 1054 (42S22): Unknown column 'qyantity' in 'products'
+mysql> alter table products modify quantity int default 5;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(50) | YES  | UNI | NULL    |                |
+| price    | double      | YES  |     | NULL    |                |
+| rating   | double      | YES  |     | NULL    |                |
+| quantity | int         | YES  |     | 5       |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql>
