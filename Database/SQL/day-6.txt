@@ -1,0 +1,393 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| employees      |
+| orders         |
+| products       |
+| users          |
++----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from departments;
+ERROR 1146 (42S02): Table 'aifs.departments' doesn't exist
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from orders;
++----+-------+------------+---------+
+| id | price | order_date | user_id |
++----+-------+------------+---------+
+|  2 |  1000 | 2025-11-06 |       3 |
+|  3 | 10000 | 2025-11-06 |       6 |
+|  4 | 30000 | 2025-11-06 |       4 |
+|  5 |  2000 | 2025-11-10 |       3 |
+|  6 |  3000 | 2025-11-10 |    NULL |
+|  7 |  5000 | 2025-11-10 |    NULL |
++----+-------+------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select o.id, o.price, o.order_date, u.name as customer from orders o inner join users u on o.user_id = u.id;
++----+-------+------------+----------+
+| id | price | order_date | customer |
++----+-------+------------+----------+
+|  2 |  1000 | 2025-11-06 | Amrapali |
+|  3 | 10000 | 2025-11-06 | priya    |
+|  4 | 30000 | 2025-11-06 | swapnil  |
+|  5 |  2000 | 2025-11-10 | Amrapali |
++----+-------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select o.id, o.price, o.order_date, u.name from orders o left join users u on o.user_id = u.id;
++----+-------+------------+----------+
+| id | price | order_date | name     |
++----+-------+------------+----------+
+|  2 |  1000 | 2025-11-06 | Amrapali |
+|  3 | 10000 | 2025-11-06 | priya    |
+|  4 | 30000 | 2025-11-06 | swapnil  |
+|  5 |  2000 | 2025-11-10 | Amrapali |
+|  6 |  3000 | 2025-11-10 | NULL     |
+|  7 |  5000 | 2025-11-10 | NULL     |
++----+-------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select o.id, o.price, o.order_date, u.name from orders o right join users u on o.user_id = u.id;
++------+-------+------------+----------+
+| id   | price | order_date | name     |
++------+-------+------------+----------+
+|    2 |  1000 | 2025-11-06 | Amrapali |
+|    5 |  2000 | 2025-11-10 | Amrapali |
+|    4 | 30000 | 2025-11-06 | swapnil  |
+| NULL |  NULL | NULL       | rahul    |
+|    3 | 10000 | 2025-11-06 | priya    |
+| NULL |  NULL | NULL       | neha     |
+| NULL |  NULL | NULL       | vikram   |
+| NULL |  NULL | NULL       | sonia    |
+| NULL |  NULL | NULL       | arjun    |
+| NULL |  NULL | NULL       | meera    |
+| NULL |  NULL | NULL       | karan    |
+| NULL |  NULL | NULL       | anita    |
+| NULL |  NULL | NULL       | rohit    |
+| NULL |  NULL | NULL       | pooja    |
+| NULL |  NULL | NULL       | sanjay   |
+| NULL |  NULL | NULL       | divya    |
+| NULL |  NULL | NULL       | manoj    |
+| NULL |  NULL | NULL       | kavita   |
+| NULL |  NULL | NULL       | rajesh   |
++------+-------+------------+----------+
+19 rows in set (0.00 sec)
+
+mysql> select * from employee;
+ERROR 1146 (42S02): Table 'aifs.employee' doesn't exist
+mysql> select * from employees;
++----+----------+------------+
+| id | name     | manager_id |
++----+----------+------------+
+|  1 | Shivam   |       NULL |
+|  2 | Nilima   |          1 |
+|  3 | Kalpana  |          1 |
+|  4 | Amrapali |          3 |
++----+----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select e.id, e.name, m.name as manager from employees e inner join employees m on m.id = e.manager_id;
++----+----------+---------+
+| id | name     | manager |
++----+----------+---------+
+|  2 | Nilima   | Shivam  |
+|  3 | Kalpana  | Shivam  |
+|  4 | Amrapali | Kalpana |
++----+----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select e.id, e.name, m.name as manager from employees e left join employees m on m.id = e.manager_id;
++----+----------+---------+
+| id | name     | manager |
++----+----------+---------+
+|  1 | Shivam   | NULL    |
+|  2 | Nilima   | Shivam  |
+|  3 | Kalpana  | Shivam  |
+|  4 | Amrapali | Kalpana |
++----+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from users;
++----+----------+--------------+------+----------------+
+| id | name     | email        | age  | admission_date |
++----+----------+--------------+------+----------------+
+|  3 | Amrapali | amrapali@123 |   24 | 2025-11-05     |
+|  4 | swapnil  | swapnil@123  |   24 | 2025-11-05     |
+|  5 | rahul    | rahul@123    |   25 | 2025-11-05     |
+|  6 | priya    | priya@123    |   23 | 2025-11-05     |
+|  7 | neha     | neha@123     |   26 | 2025-11-05     |
+|  8 | vikram   | vikram@123   |   27 | 2025-11-05     |
+|  9 | sonia    | sonia@123    |   22 | 2025-11-05     |
+| 10 | arjun    | arjun@123    |   28 | 2025-11-05     |
+| 11 | meera    | meera@123    |   29 | 2025-11-05     |
+| 12 | karan    | karan@123    |   24 | 2025-11-05     |
+| 13 | anita    | anita@123    |   26 | 2025-11-05     |
+| 14 | rohit    | rohit@123    |   31 | 2025-11-05     |
+| 15 | pooja    | pooja@123    |   22 | 2025-11-05     |
+| 16 | sanjay   | sanjay@123   |   33 | 2025-11-05     |
+| 17 | divya    | divya@123    |   27 | 2025-11-05     |
+| 18 | manoj    | manoj@123    |   30 | 2025-11-05     |
+| 19 | kavita   | kavita@123   |   25 | 2025-11-05     |
+| 20 | rajesh   | rajesh@123   |   32 | 2025-11-05     |
++----+----------+--------------+------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from orders;
++----+-------+------------+---------+
+| id | price | order_date | user_id |
++----+-------+------------+---------+
+|  2 |  1000 | 2025-11-06 |       3 |
+|  3 | 10000 | 2025-11-06 |       6 |
+|  4 | 30000 | 2025-11-06 |       4 |
+|  5 |  2000 | 2025-11-10 |       3 |
+|  6 |  3000 | 2025-11-10 |    NULL |
+|  7 |  5000 | 2025-11-10 |    NULL |
++----+-------+------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select count(*) from users;
++----------+
+| count(*) |
++----------+
+|       18 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) as total_user from users;
++------------+
+| total_user |
++------------+
+|         18 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(age) from users;
++----------+
+| avg(age) |
++----------+
+|  26.5556 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(price) as total_price from orders;
++-------------+
+| total_price |
++-------------+
+|       51000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select min(age) as youngest from users;
++----------+
+| youngest |
++----------+
+|       22 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select max(age) as oldest from users;
++--------+
+| oldest |
++--------+
+|     33 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| demo_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> use demo_db;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_demo_db |
++-------------------+
+| department        |
+| employee          |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc department;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(45) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int         | NO   | PRI | NULL    | auto_increment |
+| name          | varchar(45) | NO   |     | NULL    |                |
+| email         | varchar(45) | NO   | UNI | NULL    |                |
+| salary        | double      | NO   |     | NULL    |                |
+| age           | int         | NO   |     | NULL    |                |
+| department_id | int         | YES  | MUL | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_demo_db |
++-------------------+
+| department        |
+| employee          |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_demo_db |
++-------------------+
+| city              |
+| country           |
+| department        |
+| employee          |
+| state             |
++-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from country;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | India |
++----+-------+
+1 row in set (0.00 sec)
+
+mysql> desc country;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(45) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into country (name) values ('USA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from country;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | India |
+|  2 | USA   |
++----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from state;
++----+----------------+------------+
+| id | name           | country_id |
++----+----------------+------------+
+|  1 | MAharashtra    |          1 |
+|  2 | Madhya Pradesh |          1 |
+|  3 | Washington DC  |          2 |
++----+----------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update state set name = 'Maharashtra' where id = 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from state;
++----+----------------+------------+
+| id | name           | country_id |
++----+----------------+------------+
+|  1 | Maharashtra    |          1 |
+|  2 | Madhya Pradesh |          1 |
+|  3 | Washington DC  |          2 |
++----+----------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from city;
++----+--------+----------+
+| id | name   | state_id |
++----+--------+----------+
+|  1 | Nagpur |        1 |
+|  2 | Indore |        2 |
++----+--------+----------+
+2 rows in set (0.00 sec)
