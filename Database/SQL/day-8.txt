@@ -1,0 +1,749 @@
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| employee       |
+| employees      |
+| orders         |
+| products       |
+| users          |
++----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees;
++----+----------+------------+
+| id | name     | manager_id |
++----+----------+------------+
+|  1 | Shivam   |       NULL |
+|  2 | Nilima   |          1 |
+|  3 | Kalpana  |          1 |
+|  4 | Amrapali |          3 |
++----+----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  51422 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee where salary > (select avg(salary) from employee);
++----+---------+------------+--------+
+| id | name    | department | salary |
++----+---------+------------+--------+
+|  1 | shivam  | IT         |  70223 |
+|  4 | Neha    | HR         |  76601 |
+|  6 | Rohit   | IT         |  72273 |
+|  7 | Vikas   | Sales      |  72118 |
+|  8 | Meera   | Finance    |  63772 |
+|  9 | Karan   | Admin      |  72507 |
+| 11 | Deepak  | Operations |  58572 |
+| 15 | Arjun   | Sales      |  68732 |
+| 17 | Manish  | Admin      |  73130 |
+| 22 | Nisha   | Sales      |  60704 |
+| 23 | Harsh   | Marketing  |  57405 |
+| 24 | Garima  | Finance    |  74916 |
+| 25 | Akash   | IT         |  72363 |
+| 26 | Ritika  | HR         |  57070 |
+| 29 | Aditya  | IT         |  55717 |
+| 30 | Jaya    | Operations |  78282 |
+| 32 | Yash    | Finance    |  56451 |
+| 33 | Rohan   | Marketing  |  69477 |
+| 39 | Deepika | Finance    |  78888 |
++----+---------+------------+--------+
+19 rows in set (0.00 sec)
+
+mysql> select avg(salary) from employee;
++-------------------+
+| avg(salary)       |
++-------------------+
+| 54429.07317073171 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where salary = (select max(salary) from employee);
++----+---------+------------+--------+
+| id | name    | department | salary |
++----+---------+------------+--------+
+| 39 | Deepika | Finance    |  78888 |
++----+---------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where salary = (select max(salary) from employee where salary < (select max(salary) from employee));
++----+------+------------+--------+
+| id | name | department | salary |
++----+------+------------+--------+
+| 30 | Jaya | Operations |  78282 |
++----+------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee order by salary desc;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+| 39 | Deepika  | Finance    |  78888 |
+| 30 | Jaya     | Operations |  78282 |
+|  4 | Neha     | HR         |  76601 |
+| 24 | Garima   | Finance    |  74916 |
+| 17 | Manish   | Admin      |  73130 |
+|  9 | Karan    | Admin      |  72507 |
+| 25 | Akash    | IT         |  72363 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  1 | shivam   | IT         |  70223 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 15 | Arjun    | Sales      |  68732 |
+|  8 | Meera    | Finance    |  63772 |
+| 22 | Nisha    | Sales      |  60704 |
+| 11 | Deepak   | Operations |  58572 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 26 | Ritika   | HR         |  57070 |
+| 32 | Yash     | Finance    |  56451 |
+| 29 | Aditya   | IT         |  55717 |
+| 38 | Anjali   | HR         |  54339 |
+| 14 | Pooja    | HR         |  53932 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 35 | Aarav    | Finance    |  51731 |
+| 40 | Mohit    | IT         |  51422 |
+| 19 | Saurabh  | Operations |  50888 |
+| 34 | Rekha    | Admin      |  48032 |
+|  2 | Shivam   | IT         |  45906 |
+| 31 | Nitin    | Sales      |  44259 |
+| 10 | Anushka  | IT         |  41218 |
+| 41 | Payal    | Marketing  |  40446 |
+| 13 | Sneha    | Finance    |  40309 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 12 | Rahul    | IT         |  39205 |
+|  3 | Amit     | Finance    |  38864 |
+| 21 | Abhishek | IT         |  38705 |
+| 27 | Sameer   | Admin      |  38262 |
+| 37 | Vivek    | Sales      |  37603 |
+|  5 | Priya    | Marketing  |  36415 |
+| 36 | Shruti   | IT         |  34559 |
+| 20 | Komal    | HR         |  34274 |
+| 18 | Divya    | Finance    |  30056 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee order by salary desc limit 1;
++----+---------+------------+--------+
+| id | name    | department | salary |
++----+---------+------------+--------+
+| 39 | Deepika | Finance    |  78888 |
++----+---------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee order by salary desc limit 1 offset 1;
++----+------+------------+--------+
+| id | name | department | salary |
++----+------+------------+--------+
+| 30 | Jaya | Operations |  78282 |
++----+------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select name, department, case when salay < 50000 then 'low_salary' when salary between 50000 and 60000 then 'medium_salary' else 'high_salary' end as salary_category from employee;
+ERROR 1054 (42S22): Unknown column 'salay' in 'field list'
+mysql> select name, department, case when salary < 50000 then 'low_salary' when salary between 50000 and 60000 then 'medium_salary' else 'high_salary' end as salary_category from employee;
++----------+------------+-----------------+
+| name     | department | salary_category |
++----------+------------+-----------------+
+| shivam   | IT         | high_salary     |
+| Shivam   | IT         | low_salary      |
+| Amit     | Finance    | low_salary      |
+| Neha     | HR         | high_salary     |
+| Priya    | Marketing  | low_salary      |
+| Rohit    | IT         | high_salary     |
+| Vikas    | Sales      | high_salary     |
+| Meera    | Finance    | high_salary     |
+| Karan    | Admin      | high_salary     |
+| Anushka  | IT         | low_salary      |
+| Deepak   | Operations | medium_salary   |
+| Rahul    | IT         | low_salary      |
+| Sneha    | Finance    | low_salary      |
+| Pooja    | HR         | medium_salary   |
+| Arjun    | Sales      | high_salary     |
+| Tanya    | Marketing  | medium_salary   |
+| Manish   | Admin      | high_salary     |
+| Divya    | Finance    | low_salary      |
+| Saurabh  | Operations | medium_salary   |
+| Komal    | HR         | low_salary      |
+| Abhishek | IT         | low_salary      |
+| Nisha    | Sales      | high_salary     |
+| Harsh    | Marketing  | medium_salary   |
+| Garima   | Finance    | high_salary     |
+| Akash    | IT         | high_salary     |
+| Ritika   | HR         | medium_salary   |
+| Sameer   | Admin      | low_salary      |
+| Bhavna   | Finance    | low_salary      |
+| Aditya   | IT         | medium_salary   |
+| Jaya     | Operations | high_salary     |
+| Nitin    | Sales      | low_salary      |
+| Yash     | Finance    | medium_salary   |
+| Rohan    | Marketing  | high_salary     |
+| Rekha    | Admin      | low_salary      |
+| Aarav    | Finance    | medium_salary   |
+| Shruti   | IT         | low_salary      |
+| Vivek    | Sales      | low_salary      |
+| Anjali   | HR         | medium_salary   |
+| Deepika  | Finance    | high_salary     |
+| Mohit    | IT         | medium_salary   |
+| Payal    | Marketing  | low_salary      |
++----------+------------+-----------------+
+41 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| employee       |
+| employees      |
+| orders         |
+| products       |
+| users          |
++----------------+
+5 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aifs               |
+| aifs_b4            |
+| bank_db            |
+| clinic_db          |
+| demo_db            |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tinkus_cafe        |
+| world              |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql> use mydb;
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_mydb  |
++-----------------+
+| account         |
+| departments     |
+| employee_self   |
+| employees       |
+| saving_accounts |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees;
++----+--------------------+--------------------------------+---------------+--------+
+| id | name               | email                          | department_id | salary |
++----+--------------------+--------------------------------+---------------+--------+
+|  1 | John Smith         | john.smith@company.com         |             2 |  75000 |
+|  2 | Emma Johnson       | emma.johnson@company.com       |             3 |  65000 |
+|  3 | Michael Brown      | michael.brown@company.com      |             2 |  82000 |
+|  4 | Sarah Davis        | sarah.davis@company.com        |             1 |  58000 |
+|  5 | David Wilson       | david.wilson@company.com       |             5 |  72000 |
+|  6 | Jennifer Miller    | jennifer.miller@company.com    |             4 |  68000 |
+|  7 | Christopher Taylor | christopher.taylor@company.com |             2 |  90000 |
+|  8 | Jessica Anderson   | jessica.anderson@company.com   |             1 |  55000 |
+|  9 | Matthew Thomas     | matthew.thomas@company.com     |             5 |  78000 |
+| 10 | Amanda Martinez    | amanda.martinez@company.com    |             3 |  62000 |
+| 11 | Daniel Garcia      | daniel.garcia@company.com      |             4 |  85000 |
+| 12 | Laura Rodriguez    | laura.rodriguez@company.com    |             1 |  52000 |
+| 13 | Kevin Lee          | kevin.lee@company.com          |             2 |  77000 |
+| 14 | Rachel White       | rachel.white@company.com       |             3 |  59000 |
+| 15 | Brian Harris       | brian.harris@company.com       |             5 |  88000 |
+| 16 | Nicole Clark       | nicole.clark@company.com       |             4 |  63000 |
+| 17 | Steven Lewis       | steven.lewis@company.com       |             2 |  71000 |
+| 18 | Michelle Walker    | michelle.walker@company.com    |             1 |  56000 |
+| 19 | Andrew Hall        | andrew.hall@company.com        |             5 |  79000 |
+| 20 | Emily Allen        | emily.allen@company.com        |             3 |  54000 |
+| 21 | Sophie Turner      | sophie.turner@company.com      |             2 |  88000 |
+| 22 | Ryan Cooper        | ryan.cooper@company.com        |             3 |  72000 |
+| 23 | Grace Mitchell     | grace.mitchell@company.com     |             4 |  79000 |
+| 24 | Jason Reed         | jason.reed@company.com         |             1 |  57000 |
+| 25 | Lily Patterson     | lily.patterson@company.com     |             5 |  69000 |
+| 26 | Ethan Brooks       | ethan.brooks@company.com       |             2 |  92000 |
+| 27 | Zoe Bennett        | zoe.bennett@company.com        |             3 |  68000 |
+| 28 | Nathan Hayes       | nathan.hayes@company.com       |             4 |  84000 |
+| 29 | Chloe Foster       | chloe.foster@company.com       |             1 |  54000 |
+| 30 | Caleb Richardson   | caleb.richardson@company.com   |             5 |  76000 |
+| 31 | Hannah Simmons     | hannah.simmons@company.com     |             2 |  81000 |
+| 32 | Owen Coleman       | owen.coleman@company.com       |             3 |  75000 |
+| 33 | Avery Barnes       | avery.barnes@company.com       |             4 |  77000 |
+| 34 | Lucas Price        | lucas.price@company.com        |             1 |  59000 |
+| 35 | Ella Sanders       | ella.sanders@company.com       |             5 |  71000 |
+| 36 | Mason Wallace      | mason.wallace@company.com      |             2 |  86000 |
+| 37 | Scarlett Jenkins   | scarlett.jenkins@company.com   |             3 |  64000 |
+| 38 | Logan Perry        | logan.perry@company.com        |             4 |  80000 |
+| 39 | Aria Powell        | aria.powell@company.com        |             1 |  55000 |
+| 40 | Jack Long          | jack.long@company.com          |             5 |  73000 |
++----+--------------------+--------------------------------+---------------+--------+
+40 rows in set (0.00 sec)
+
+mysql> select * from departments;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | HR        |
+|  2 | IT        |
+|  3 | SALES     |
+|  4 | Finance   |
+|  5 | Operation |
++----+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select name, email, salary, case when department_id = 1 then 'HR' when department_id = 2 then 'IT' when department_id = 3 then 'SALES' when department_id = 4 then 'Finance' when department_id = 5 then 'Operations' else 'Others' end as department_name from employees;
++--------------------+--------------------------------+--------+-----------------+
+| name               | email                          | salary | department_name |
++--------------------+--------------------------------+--------+-----------------+
+| John Smith         | john.smith@company.com         |  75000 | IT              |
+| Emma Johnson       | emma.johnson@company.com       |  65000 | SALES           |
+| Michael Brown      | michael.brown@company.com      |  82000 | IT              |
+| Sarah Davis        | sarah.davis@company.com        |  58000 | HR              |
+| David Wilson       | david.wilson@company.com       |  72000 | Operations      |
+| Jennifer Miller    | jennifer.miller@company.com    |  68000 | Finance         |
+| Christopher Taylor | christopher.taylor@company.com |  90000 | IT              |
+| Jessica Anderson   | jessica.anderson@company.com   |  55000 | HR              |
+| Matthew Thomas     | matthew.thomas@company.com     |  78000 | Operations      |
+| Amanda Martinez    | amanda.martinez@company.com    |  62000 | SALES           |
+| Daniel Garcia      | daniel.garcia@company.com      |  85000 | Finance         |
+| Laura Rodriguez    | laura.rodriguez@company.com    |  52000 | HR              |
+| Kevin Lee          | kevin.lee@company.com          |  77000 | IT              |
+| Rachel White       | rachel.white@company.com       |  59000 | SALES           |
+| Brian Harris       | brian.harris@company.com       |  88000 | Operations      |
+| Nicole Clark       | nicole.clark@company.com       |  63000 | Finance         |
+| Steven Lewis       | steven.lewis@company.com       |  71000 | IT              |
+| Michelle Walker    | michelle.walker@company.com    |  56000 | HR              |
+| Andrew Hall        | andrew.hall@company.com        |  79000 | Operations      |
+| Emily Allen        | emily.allen@company.com        |  54000 | SALES           |
+| Sophie Turner      | sophie.turner@company.com      |  88000 | IT              |
+| Ryan Cooper        | ryan.cooper@company.com        |  72000 | SALES           |
+| Grace Mitchell     | grace.mitchell@company.com     |  79000 | Finance         |
+| Jason Reed         | jason.reed@company.com         |  57000 | HR              |
+| Lily Patterson     | lily.patterson@company.com     |  69000 | Operations      |
+| Ethan Brooks       | ethan.brooks@company.com       |  92000 | IT              |
+| Zoe Bennett        | zoe.bennett@company.com        |  68000 | SALES           |
+| Nathan Hayes       | nathan.hayes@company.com       |  84000 | Finance         |
+| Chloe Foster       | chloe.foster@company.com       |  54000 | HR              |
+| Caleb Richardson   | caleb.richardson@company.com   |  76000 | Operations      |
+| Hannah Simmons     | hannah.simmons@company.com     |  81000 | IT              |
+| Owen Coleman       | owen.coleman@company.com       |  75000 | SALES           |
+| Avery Barnes       | avery.barnes@company.com       |  77000 | Finance         |
+| Lucas Price        | lucas.price@company.com        |  59000 | HR              |
+| Ella Sanders       | ella.sanders@company.com       |  71000 | Operations      |
+| Mason Wallace      | mason.wallace@company.com      |  86000 | IT              |
+| Scarlett Jenkins   | scarlett.jenkins@company.com   |  64000 | SALES           |
+| Logan Perry        | logan.perry@company.com        |  80000 | Finance         |
+| Aria Powell        | aria.powell@company.com        |  55000 | HR              |
+| Jack Long          | jack.long@company.com          |  73000 | Operations      |
++--------------------+--------------------------------+--------+-----------------+
+40 rows in set (0.00 sec)
+
+mysql> select * from employees;
++----+--------------------+--------------------------------+---------------+--------+
+| id | name               | email                          | department_id | salary |
++----+--------------------+--------------------------------+---------------+--------+
+|  1 | John Smith         | john.smith@company.com         |             2 |  75000 |
+|  2 | Emma Johnson       | emma.johnson@company.com       |             3 |  65000 |
+|  3 | Michael Brown      | michael.brown@company.com      |             2 |  82000 |
+|  4 | Sarah Davis        | sarah.davis@company.com        |             1 |  58000 |
+|  5 | David Wilson       | david.wilson@company.com       |             5 |  72000 |
+|  6 | Jennifer Miller    | jennifer.miller@company.com    |             4 |  68000 |
+|  7 | Christopher Taylor | christopher.taylor@company.com |             2 |  90000 |
+|  8 | Jessica Anderson   | jessica.anderson@company.com   |             1 |  55000 |
+|  9 | Matthew Thomas     | matthew.thomas@company.com     |             5 |  78000 |
+| 10 | Amanda Martinez    | amanda.martinez@company.com    |             3 |  62000 |
+| 11 | Daniel Garcia      | daniel.garcia@company.com      |             4 |  85000 |
+| 12 | Laura Rodriguez    | laura.rodriguez@company.com    |             1 |  52000 |
+| 13 | Kevin Lee          | kevin.lee@company.com          |             2 |  77000 |
+| 14 | Rachel White       | rachel.white@company.com       |             3 |  59000 |
+| 15 | Brian Harris       | brian.harris@company.com       |             5 |  88000 |
+| 16 | Nicole Clark       | nicole.clark@company.com       |             4 |  63000 |
+| 17 | Steven Lewis       | steven.lewis@company.com       |             2 |  71000 |
+| 18 | Michelle Walker    | michelle.walker@company.com    |             1 |  56000 |
+| 19 | Andrew Hall        | andrew.hall@company.com        |             5 |  79000 |
+| 20 | Emily Allen        | emily.allen@company.com        |             3 |  54000 |
+| 21 | Sophie Turner      | sophie.turner@company.com      |             2 |  88000 |
+| 22 | Ryan Cooper        | ryan.cooper@company.com        |             3 |  72000 |
+| 23 | Grace Mitchell     | grace.mitchell@company.com     |             4 |  79000 |
+| 24 | Jason Reed         | jason.reed@company.com         |             1 |  57000 |
+| 25 | Lily Patterson     | lily.patterson@company.com     |             5 |  69000 |
+| 26 | Ethan Brooks       | ethan.brooks@company.com       |             2 |  92000 |
+| 27 | Zoe Bennett        | zoe.bennett@company.com        |             3 |  68000 |
+| 28 | Nathan Hayes       | nathan.hayes@company.com       |             4 |  84000 |
+| 29 | Chloe Foster       | chloe.foster@company.com       |             1 |  54000 |
+| 30 | Caleb Richardson   | caleb.richardson@company.com   |             5 |  76000 |
+| 31 | Hannah Simmons     | hannah.simmons@company.com     |             2 |  81000 |
+| 32 | Owen Coleman       | owen.coleman@company.com       |             3 |  75000 |
+| 33 | Avery Barnes       | avery.barnes@company.com       |             4 |  77000 |
+| 34 | Lucas Price        | lucas.price@company.com        |             1 |  59000 |
+| 35 | Ella Sanders       | ella.sanders@company.com       |             5 |  71000 |
+| 36 | Mason Wallace      | mason.wallace@company.com      |             2 |  86000 |
+| 37 | Scarlett Jenkins   | scarlett.jenkins@company.com   |             3 |  64000 |
+| 38 | Logan Perry        | logan.perry@company.com        |             4 |  80000 |
+| 39 | Aria Powell        | aria.powell@company.com        |             1 |  55000 |
+| 40 | Jack Long          | jack.long@company.com          |             5 |  73000 |
++----+--------------------+--------------------------------+---------------+--------+
+40 rows in set (0.00 sec)
+
+mysql> explain select * from employees;
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------+
+| id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------+
+|  1 | SIMPLE      | employees | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   40 |   100.00 | NULL  |
++----+-------------+-----------+------------+------+---------------+------+---------+------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select * from employees where name = 'Jack Long';
++----+-----------+-----------------------+---------------+--------+
+| id | name      | email                 | department_id | salary |
++----+-----------+-----------------------+---------------+--------+
+| 40 | Jack Long | jack.long@company.com |             5 |  73000 |
++----+-----------+-----------------------+---------------+--------+
+1 row in set (0.00 sec)
+
+mysql> explain select * from employees where name = 'Jack Long';
++----+-------------+-----------+------------+------+---------------+----------+---------+-------+------+----------+-------+
+| id | select_type | table     | partitions | type | possible_keys | key      | key_len | ref   | rows | filtered | Extra |
++----+-------------+-----------+------------+------+---------------+----------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | employees | NULL       | ref  | name_idx      | name_idx | 203     | const |    1 |   100.00 | NULL  |
++----+-------------+-----------+------------+------+---------------+----------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> use aifs;
+Database changed
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  51422 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee where name = 'Rekha';
++----+-------+------------+--------+
+| id | name  | department | salary |
++----+-------+------------+--------+
+| 34 | Rekha | Admin      |  48032 |
++----+-------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> explain select * from employee where name = 'Rekha';
++----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table    | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | employee | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   41 |    10.00 | Using where |
++----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> create index name_idx on employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create index name_idx on employee(name);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select * from employee where name = 'Rekha';
++----+-------------+----------+------------+------+---------------+----------+---------+-------+------+----------+-------+
+| id | select_type | table    | partitions | type | possible_keys | key      | key_len | ref   | rows | filtered | Extra |
++----+-------------+----------+------------+------+---------------+----------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | employee | NULL       | ref  | name_idx      | name_idx | 203     | const |    1 |   100.00 | NULL  |
++----+-------------+----------+------------+------+---------------+----------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> show index from employee;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| employee |          0 | PRIMARY  |            1 | id          | A         |          41 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| employee |          1 | name_idx |            1 | name        | A         |          40 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+2 rows in set (0.01 sec)
+
+mysql> drop index name_idx on employee;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from employee;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| employee |          0 | PRIMARY  |            1 | id          | A         |          41 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  51422 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee where department = 'IT';
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  51422 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> create view IT_Employees as select * from employee where department = 'IT';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from IT_employees;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  51422 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select * from IT_employees where salary > 50000;
++----+--------+------------+--------+
+| id | name   | department | salary |
++----+--------+------------+--------+
+|  1 | shivam | IT         |  70223 |
+|  6 | Rohit  | IT         |  72273 |
+| 25 | Akash  | IT         |  72363 |
+| 29 | Aditya | IT         |  55717 |
+| 40 | Mohit  | IT         |  51422 |
++----+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update IT_employees set salary = 55000 where name = 'Mohit';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from IT_employees;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  55000 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> create or replace view IT_employees as select * from employee where department='IT' and salary>50000;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from IT_employees;
++----+--------+------------+--------+
+| id | name   | department | salary |
++----+--------+------------+--------+
+|  1 | shivam | IT         |  70223 |
+|  6 | Rohit  | IT         |  72273 |
+| 25 | Akash  | IT         |  72363 |
+| 29 | Aditya | IT         |  55717 |
+| 40 | Mohit  | IT         |  55000 |
++----+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> show full tables where table_type = 'VIEW';
++----------------+------------+
+| Tables_in_aifs | Table_type |
++----------------+------------+
+| it_employees   | VIEW       |
++----------------+------------+
+1 row in set (0.00 sec)
