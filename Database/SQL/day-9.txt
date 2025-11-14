@@ -1,0 +1,768 @@
+mysql> use aifs;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_aifs |
++----------------+
+| employee       |
+| employees      |
+| it_employees   |
+| orders         |
+| products       |
+| users          |
++----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select name, upper(name) as upper_case from employee;
++----------+------------+
+| name     | upper_case |
++----------+------------+
+| shivam   | SHIVAM     |
+| Shivam   | SHIVAM     |
+| Amit     | AMIT       |
+| Neha     | NEHA       |
+| Priya    | PRIYA      |
+| Rohit    | ROHIT      |
+| Vikas    | VIKAS      |
+| Meera    | MEERA      |
+| Karan    | KARAN      |
+| Anushka  | ANUSHKA    |
+| Deepak   | DEEPAK     |
+| Rahul    | RAHUL      |
+| Sneha    | SNEHA      |
+| Pooja    | POOJA      |
+| Arjun    | ARJUN      |
+| Tanya    | TANYA      |
+| Manish   | MANISH     |
+| Divya    | DIVYA      |
+| Saurabh  | SAURABH    |
+| Komal    | KOMAL      |
+| Abhishek | ABHISHEK   |
+| Nisha    | NISHA      |
+| Harsh    | HARSH      |
+| Garima   | GARIMA     |
+| Akash    | AKASH      |
+| Ritika   | RITIKA     |
+| Sameer   | SAMEER     |
+| Bhavna   | BHAVNA     |
+| Aditya   | ADITYA     |
+| Jaya     | JAYA       |
+| Nitin    | NITIN      |
+| Yash     | YASH       |
+| Rohan    | ROHAN      |
+| Rekha    | REKHA      |
+| Aarav    | AARAV      |
+| Shruti   | SHRUTI     |
+| Vivek    | VIVEK      |
+| Anjali   | ANJALI     |
+| Deepika  | DEEPIKA    |
+| Mohit    | MOHIT      |
+| Payal    | PAYAL      |
++----------+------------+
+41 rows in set (0.00 sec)
+
+mysql> select name, lower(name) as lower_case from employee;
++----------+------------+
+| name     | lower_case |
++----------+------------+
+| shivam   | shivam     |
+| Shivam   | shivam     |
+| Amit     | amit       |
+| Neha     | neha       |
+| Priya    | priya      |
+| Rohit    | rohit      |
+| Vikas    | vikas      |
+| Meera    | meera      |
+| Karan    | karan      |
+| Anushka  | anushka    |
+| Deepak   | deepak     |
+| Rahul    | rahul      |
+| Sneha    | sneha      |
+| Pooja    | pooja      |
+| Arjun    | arjun      |
+| Tanya    | tanya      |
+| Manish   | manish     |
+| Divya    | divya      |
+| Saurabh  | saurabh    |
+| Komal    | komal      |
+| Abhishek | abhishek   |
+| Nisha    | nisha      |
+| Harsh    | harsh      |
+| Garima   | garima     |
+| Akash    | akash      |
+| Ritika   | ritika     |
+| Sameer   | sameer     |
+| Bhavna   | bhavna     |
+| Aditya   | aditya     |
+| Jaya     | jaya       |
+| Nitin    | nitin      |
+| Yash     | yash       |
+| Rohan    | rohan      |
+| Rekha    | rekha      |
+| Aarav    | aarav      |
+| Shruti   | shruti     |
+| Vivek    | vivek      |
+| Anjali   | anjali     |
+| Deepika  | deepika    |
+| Mohit    | mohit      |
+| Payal    | payal      |
++----------+------------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select name, upper(department) from employee;
++----------+-------------------+
+| name     | upper(department) |
++----------+-------------------+
+| shivam   | IT                |
+| Shivam   | IT                |
+| Amit     | FINANCE           |
+| Neha     | HR                |
+| Priya    | MARKETING         |
+| Rohit    | IT                |
+| Vikas    | SALES             |
+| Meera    | FINANCE           |
+| Karan    | ADMIN             |
+| Anushka  | IT                |
+| Deepak   | OPERATIONS        |
+| Rahul    | IT                |
+| Sneha    | FINANCE           |
+| Pooja    | HR                |
+| Arjun    | SALES             |
+| Tanya    | MARKETING         |
+| Manish   | ADMIN             |
+| Divya    | FINANCE           |
+| Saurabh  | OPERATIONS        |
+| Komal    | HR                |
+| Abhishek | IT                |
+| Nisha    | SALES             |
+| Harsh    | MARKETING         |
+| Garima   | FINANCE           |
+| Akash    | IT                |
+| Ritika   | HR                |
+| Sameer   | ADMIN             |
+| Bhavna   | FINANCE           |
+| Aditya   | IT                |
+| Jaya     | OPERATIONS        |
+| Nitin    | SALES             |
+| Yash     | FINANCE           |
+| Rohan    | MARKETING         |
+| Rekha    | ADMIN             |
+| Aarav    | FINANCE           |
+| Shruti   | IT                |
+| Vivek    | SALES             |
+| Anjali   | HR                |
+| Deepika  | FINANCE           |
+| Mohit    | IT                |
+| Payal    | MARKETING         |
++----------+-------------------+
+41 rows in set (0.00 sec)
+
+mysql> select name, length(name) as length from employee;
++----------+--------+
+| name     | length |
++----------+--------+
+| shivam   |      6 |
+| Shivam   |      6 |
+| Amit     |      4 |
+| Neha     |      4 |
+| Priya    |      5 |
+| Rohit    |      5 |
+| Vikas    |      5 |
+| Meera    |      5 |
+| Karan    |      5 |
+| Anushka  |      7 |
+| Deepak   |      6 |
+| Rahul    |      5 |
+| Sneha    |      5 |
+| Pooja    |      5 |
+| Arjun    |      5 |
+| Tanya    |      5 |
+| Manish   |      6 |
+| Divya    |      5 |
+| Saurabh  |      7 |
+| Komal    |      5 |
+| Abhishek |      8 |
+| Nisha    |      5 |
+| Harsh    |      5 |
+| Garima   |      6 |
+| Akash    |      5 |
+| Ritika   |      6 |
+| Sameer   |      6 |
+| Bhavna   |      6 |
+| Aditya   |      6 |
+| Jaya     |      4 |
+| Nitin    |      5 |
+| Yash     |      4 |
+| Rohan    |      5 |
+| Rekha    |      5 |
+| Aarav    |      5 |
+| Shruti   |      6 |
+| Vivek    |      5 |
+| Anjali   |      6 |
+| Deepika  |      7 |
+| Mohit    |      5 |
+| Payal    |      5 |
++----------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select name, substring(name, 1, 4) from employee;
++----------+-----------------------+
+| name     | substring(name, 1, 4) |
++----------+-----------------------+
+| shivam   | shiv                  |
+| Shivam   | Shiv                  |
+| Amit     | Amit                  |
+| Neha     | Neha                  |
+| Priya    | Priy                  |
+| Rohit    | Rohi                  |
+| Vikas    | Vika                  |
+| Meera    | Meer                  |
+| Karan    | Kara                  |
+| Anushka  | Anus                  |
+| Deepak   | Deep                  |
+| Rahul    | Rahu                  |
+| Sneha    | Sneh                  |
+| Pooja    | Pooj                  |
+| Arjun    | Arju                  |
+| Tanya    | Tany                  |
+| Manish   | Mani                  |
+| Divya    | Divy                  |
+| Saurabh  | Saur                  |
+| Komal    | Koma                  |
+| Abhishek | Abhi                  |
+| Nisha    | Nish                  |
+| Harsh    | Hars                  |
+| Garima   | Gari                  |
+| Akash    | Akas                  |
+| Ritika   | Riti                  |
+| Sameer   | Same                  |
+| Bhavna   | Bhav                  |
+| Aditya   | Adit                  |
+| Jaya     | Jaya                  |
+| Nitin    | Niti                  |
+| Yash     | Yash                  |
+| Rohan    | Roha                  |
+| Rekha    | Rekh                  |
+| Aarav    | Aara                  |
+| Shruti   | Shru                  |
+| Vivek    | Vive                  |
+| Anjali   | Anja                  |
+| Deepika  | Deep                  |
+| Mohit    | Mohi                  |
+| Payal    | Paya                  |
++----------+-----------------------+
+41 rows in set (0.00 sec)
+
+mysql> select name, substring(name, 1, 4) as nickname from employee;
++----------+----------+
+| name     | nickname |
++----------+----------+
+| shivam   | shiv     |
+| Shivam   | Shiv     |
+| Amit     | Amit     |
+| Neha     | Neha     |
+| Priya    | Priy     |
+| Rohit    | Rohi     |
+| Vikas    | Vika     |
+| Meera    | Meer     |
+| Karan    | Kara     |
+| Anushka  | Anus     |
+| Deepak   | Deep     |
+| Rahul    | Rahu     |
+| Sneha    | Sneh     |
+| Pooja    | Pooj     |
+| Arjun    | Arju     |
+| Tanya    | Tany     |
+| Manish   | Mani     |
+| Divya    | Divy     |
+| Saurabh  | Saur     |
+| Komal    | Koma     |
+| Abhishek | Abhi     |
+| Nisha    | Nish     |
+| Harsh    | Hars     |
+| Garima   | Gari     |
+| Akash    | Akas     |
+| Ritika   | Riti     |
+| Sameer   | Same     |
+| Bhavna   | Bhav     |
+| Aditya   | Adit     |
+| Jaya     | Jaya     |
+| Nitin    | Niti     |
+| Yash     | Yash     |
+| Rohan    | Roha     |
+| Rekha    | Rekh     |
+| Aarav    | Aara     |
+| Shruti   | Shru     |
+| Vivek    | Vive     |
+| Anjali   | Anja     |
+| Deepika  | Deep     |
+| Mohit    | Mohi     |
+| Payal    | Paya     |
++----------+----------+
+41 rows in set (0.00 sec)
+
+mysql> select now() as current;
++---------------------+
+| current             |
++---------------------+
+| 2025-11-14 20:15:20 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate() as current;
++------------+
+| current    |
++------------+
+| 2025-11-14 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select datediff('2025-11-10', '2025-10-05');
++--------------------------------------+
+| datediff('2025-11-10', '2025-10-05') |
++--------------------------------------+
+|                                   36 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee where department='IT';
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  55000 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> delimiter $
+mysql> select * from employee where department='IT';
+    -> $
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  55000 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> create procedure getAllItEmployees() begin select * from employee where department='IT'; end $
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> call getAllItEmployees();
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  55000 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $
+mysql> create procedure getEmployeeWithDepartment(IN department_name varchar(50)) begin select * from employee where department = department_name; end $
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> call getEmployeeWithDepartment('IT');
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  6 | Rohit    | IT         |  72273 |
+| 10 | Anushka  | IT         |  41218 |
+| 12 | Rahul    | IT         |  39205 |
+| 21 | Abhishek | IT         |  38705 |
+| 25 | Akash    | IT         |  72363 |
+| 29 | Aditya   | IT         |  55717 |
+| 36 | Shruti   | IT         |  34559 |
+| 40 | Mohit    | IT         |  55000 |
++----+----------+------------+--------+
+10 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call getEmployeeWithDepartment('Sales');
++----+-------+------------+--------+
+| id | name  | department | salary |
++----+-------+------------+--------+
+|  7 | Vikas | Sales      |  72118 |
+| 15 | Arjun | Sales      |  68732 |
+| 22 | Nisha | Sales      |  60704 |
+| 31 | Nitin | Sales      |  44259 |
+| 37 | Vivek | Sales      |  37603 |
++----+-------+------------+--------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call getEmployeeWithDepartment('Finance');
++----+---------+------------+--------+
+| id | name    | department | salary |
++----+---------+------------+--------+
+|  3 | Amit    | Finance    |  38864 |
+|  8 | Meera   | Finance    |  63772 |
+| 13 | Sneha   | Finance    |  40309 |
+| 18 | Divya   | Finance    |  30056 |
+| 24 | Garima  | Finance    |  74916 |
+| 28 | Bhavna  | Finance    |  40101 |
+| 32 | Yash    | Finance    |  56451 |
+| 35 | Aarav   | Finance    |  51731 |
+| 39 | Deepika | Finance    |  78888 |
++----+---------+------------+--------+
+9 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $
+mysql> create procedure getEmployeeWIthAvgSalary (OUT avg_salary double ) begin select avg(salary) into avg_salary from employee; end $
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
+mysql> call getEmployeeWIthAvgSalary (@avgSal);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select @avg salary ;
++----------------+
+| salary         |
++----------------+
+| NULL           |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select @avg salary as avg_salary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as avg_salary' at line 1
+mysql> select @avgSal as avg_salary;
++-------------------+
+| avg_salary        |
++-------------------+
+| 54516.34146341463 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> drop procedure if exist getEmployeeWIthAvgSalary;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'exist getEmployeeWIthAvgSalary' at line 1
+mysql> drop procedure if exists getEmployeeWIthAvgSalary;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $
+mysql> create function getAnnualSalary(monthly_salary double ) return double deterministic begin monthly_salary*12; end $
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'return double deterministic begin monthly_salary*12; end' at line 1
+mysql> create function getAnnualSalary(monthly_salary double ) returns double deterministic begin return monthly_salary*12; end $
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from employee;
+    -> $
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> delimiter ;
+mysql> select name, department, salary, getAnnualSalary(salary) from employee;
++----------+------------+--------+-------------------------+
+| name     | department | salary | getAnnualSalary(salary) |
++----------+------------+--------+-------------------------+
+| shivam   | IT         |  70223 |                  842676 |
+| Shivam   | IT         |  45906 |                  550872 |
+| Amit     | Finance    |  38864 |                  466368 |
+| Neha     | HR         |  76601 |                  919212 |
+| Priya    | Marketing  |  36415 |                  436980 |
+| Rohit    | IT         |  72273 |                  867276 |
+| Vikas    | Sales      |  72118 |                  865416 |
+| Meera    | Finance    |  63772 |                  765264 |
+| Karan    | Admin      |  72507 |                  870084 |
+| Anushka  | IT         |  41218 |                  494616 |
+| Deepak   | Operations |  58572 |                  702864 |
+| Rahul    | IT         |  39205 |                  470460 |
+| Sneha    | Finance    |  40309 |                  483708 |
+| Pooja    | HR         |  53932 |                  647184 |
+| Arjun    | Sales      |  68732 |                  824784 |
+| Tanya    | Marketing  |  51865 |                  622380 |
+| Manish   | Admin      |  73130 |                  877560 |
+| Divya    | Finance    |  30056 |                  360672 |
+| Saurabh  | Operations |  50888 |                  610656 |
+| Komal    | HR         |  34274 |                  411288 |
+| Abhishek | IT         |  38705 |                  464460 |
+| Nisha    | Sales      |  60704 |                  728448 |
+| Harsh    | Marketing  |  57405 |                  688860 |
+| Garima   | Finance    |  74916 |                  898992 |
+| Akash    | IT         |  72363 |                  868356 |
+| Ritika   | HR         |  57070 |                  684840 |
+| Sameer   | Admin      |  38262 |                  459144 |
+| Bhavna   | Finance    |  40101 |                  481212 |
+| Aditya   | IT         |  55717 |                  668604 |
+| Jaya     | Operations |  78282 |                  939384 |
+| Nitin    | Sales      |  44259 |                  531108 |
+| Yash     | Finance    |  56451 |                  677412 |
+| Rohan    | Marketing  |  69477 |                  833724 |
+| Rekha    | Admin      |  48032 |                  576384 |
+| Aarav    | Finance    |  51731 |                  620772 |
+| Shruti   | IT         |  34559 |                  414708 |
+| Vivek    | Sales      |  37603 |                  451236 |
+| Anjali   | HR         |  54339 |                  652068 |
+| Deepika  | Finance    |  78888 |                  946656 |
+| Mohit    | IT         |  55000 |                  660000 |
+| Payal    | Marketing  |  40446 |                  485352 |
++----------+------------+--------+-------------------------+
+41 rows in set (0.00 sec)
+
+mysql> select name, department, salary as monthly, getAnnualSalary(salary) as Annual from employee;
++----------+------------+---------+--------+
+| name     | department | monthly | Annual |
++----------+------------+---------+--------+
+| shivam   | IT         |   70223 | 842676 |
+| Shivam   | IT         |   45906 | 550872 |
+| Amit     | Finance    |   38864 | 466368 |
+| Neha     | HR         |   76601 | 919212 |
+| Priya    | Marketing  |   36415 | 436980 |
+| Rohit    | IT         |   72273 | 867276 |
+| Vikas    | Sales      |   72118 | 865416 |
+| Meera    | Finance    |   63772 | 765264 |
+| Karan    | Admin      |   72507 | 870084 |
+| Anushka  | IT         |   41218 | 494616 |
+| Deepak   | Operations |   58572 | 702864 |
+| Rahul    | IT         |   39205 | 470460 |
+| Sneha    | Finance    |   40309 | 483708 |
+| Pooja    | HR         |   53932 | 647184 |
+| Arjun    | Sales      |   68732 | 824784 |
+| Tanya    | Marketing  |   51865 | 622380 |
+| Manish   | Admin      |   73130 | 877560 |
+| Divya    | Finance    |   30056 | 360672 |
+| Saurabh  | Operations |   50888 | 610656 |
+| Komal    | HR         |   34274 | 411288 |
+| Abhishek | IT         |   38705 | 464460 |
+| Nisha    | Sales      |   60704 | 728448 |
+| Harsh    | Marketing  |   57405 | 688860 |
+| Garima   | Finance    |   74916 | 898992 |
+| Akash    | IT         |   72363 | 868356 |
+| Ritika   | HR         |   57070 | 684840 |
+| Sameer   | Admin      |   38262 | 459144 |
+| Bhavna   | Finance    |   40101 | 481212 |
+| Aditya   | IT         |   55717 | 668604 |
+| Jaya     | Operations |   78282 | 939384 |
+| Nitin    | Sales      |   44259 | 531108 |
+| Yash     | Finance    |   56451 | 677412 |
+| Rohan    | Marketing  |   69477 | 833724 |
+| Rekha    | Admin      |   48032 | 576384 |
+| Aarav    | Finance    |   51731 | 620772 |
+| Shruti   | IT         |   34559 | 414708 |
+| Vivek    | Sales      |   37603 | 451236 |
+| Anjali   | HR         |   54339 | 652068 |
+| Deepika  | Finance    |   78888 | 946656 |
+| Mohit    | IT         |   55000 | 660000 |
+| Payal    | Marketing  |   40446 | 485352 |
++----------+------------+---------+--------+
+41 rows in set (0.00 sec)
