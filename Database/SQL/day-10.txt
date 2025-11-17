@@ -1,0 +1,611 @@
+mysql> use aifs;
+Database changed
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
++----+----------+------------+--------+
+41 rows in set (0.00 sec)
+
+mysql> select * from employee_log;
+Empty set (0.00 sec)
+
+mysql> delimiter $
+mysql> create trigger before_employee_insert before insert on employee for each row begin if new.salary < 10000 then set new.salary = 10000 end if ; end $
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end if ; end' at line 1
+mysql> create trigger before_employee_insert before insert on employee for each row begin if new.salary < 10000 then set new.salary = 10000; end if ; end $
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into employee (name, department, salary) values ('Pankaj', 'IT', 8000);
+    -> $
+Query OK, 1 row affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
++----+----------+------------+--------+
+42 rows in set (0.00 sec)
+
+mysql> insert into employee (name, department, salary) values ('Mayur', 'IT', 11000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 43 | Mayur    | IT         |  11000 |
++----+----------+------------+--------+
+43 rows in set (0.00 sec)
+
+mysql> create trigger after_employee_insert after insert on employee for each row begin ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> delimiter $
+mysql> create trigger after_employee_insert after insert on employee for each row begin insert into employee_log(employee_id, action, log_time) values (new.id, 'Insert ', now()); end$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> select * from employee_log;
+Empty set (0.00 sec)
+
+mysql> insert into employee (name, department, salary) values ('Khushi', 'HR', 4000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_log;
++--------+-------------+---------+---------------------+
+| log_id | employee_id | action  | log_time            |
++--------+-------------+---------+---------------------+
+|      1 |          44 | Insert  | 2025-11-17 20:25:48 |
++--------+-------------+---------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 43 | Mayur    | IT         |  11000 |
+| 44 | Khushi   | HR         |  10000 |
++----+----------+------------+--------+
+44 rows in set (0.00 sec)
+
+mysql> delimiter $
+mysql> create trigger before_employee_update before update on employee begin if new.salary < old.salary then new.salary = old.salary; end if; end$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'begin if new.salary < old.salary then new.salary = old.salary; end if; end' at line 1
+mysql> create trigger before_employee_update before update on employee for each row begin if new.salary < old.salary then new.salary = old.salary; end if; end$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.salary = old.salary; end if; end' at line 1
+mysql> create trigger before_employee_update before update on employee for each row begin if new.salary < old.salary then set new.salary = old.salary; end if; end$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> update employee set salary = 8000 where id = 44;
+    -> $
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> delimiter ;
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 43 | Mayur    | IT         |  11000 |
+| 44 | Khushi   | HR         |  10000 |
++----+----------+------------+--------+
+44 rows in set (0.00 sec)
+
+mysql> update employee set salary = 18000 where id = 44;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 43 | Mayur    | IT         |  11000 |
+| 44 | Khushi   | HR         |  18000 |
++----+----------+------------+--------+
+44 rows in set (0.00 sec)
+
+mysql> create trigger after_employee_update after update on employee for each row begin insert into employee_log(employee_id, action, log_time) values (new.id, 'UPDATE', now()); end$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end$' at line 1
+mysql> delimiter $
+mysql> create trigger after_employee_update after update on employee for each row begin insert into employee_log(employee_id, action, log_time) values (new.id, 'UPDATE', now()); end$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter :
+mysql> delimiter ;
+mysql> update employee set salary = 19000 where id = 44;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 43 | Mayur    | IT         |  11000 |
+| 44 | Khushi   | HR         |  19000 |
++----+----------+------------+--------+
+44 rows in set (0.00 sec)
+
+mysql> select * from employee_log;
++--------+-------------+---------+---------------------+
+| log_id | employee_id | action  | log_time            |
++--------+-------------+---------+---------------------+
+|      1 |          44 | Insert  | 2025-11-17 20:25:48 |
+|      2 |          44 | UPDATE  | 2025-11-17 20:34:33 |
++--------+-------------+---------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> delimiter $
+mysql> create trigger before_delete_employee before delete on employee for each row begin insert into employee_log(employee_id, action, log_time) values (old.id, 'DELETE', now()); end $
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> delete into employee where id = 43;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'into employee where id = 43' at line 1
+mysql> delete employee where id = 43;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id = 43' at line 1
+mysql> delete from employee where id = 43;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_log;
++--------+-------------+---------+---------------------+
+| log_id | employee_id | action  | log_time            |
++--------+-------------+---------+---------------------+
+|      1 |          44 | Insert  | 2025-11-17 20:25:48 |
+|      2 |          44 | UPDATE  | 2025-11-17 20:34:33 |
+|      3 |          43 | DELETE  | 2025-11-17 20:38:59 |
++--------+-------------+---------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 35 | Aarav    | Finance    |  51731 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 44 | Khushi   | HR         |  19000 |
++----+----------+------------+--------+
+43 rows in set (0.00 sec)
+
+mysql> create trigger after_employee_delete after delete on employee for each row begin insert into employee_log(employee_id, action, log_time) values (old.id, 'AFTER DELETE', now()); end$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end$' at line 1
+mysql> delimiter $
+mysql> create trigger after_employee_delete after delete on employee for each row begin insert into employee_log(employee_id, action, log_time) values (old.id, 'AFTER DELETE', now()); end $
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> delete from employee where id = 35;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_lof;
+ERROR 1146 (42S02): Table 'aifs.employee_lof' doesn't exist
+mysql> select * from employee_log;
++--------+-------------+--------------+---------------------+
+| log_id | employee_id | action       | log_time            |
++--------+-------------+--------------+---------------------+
+|      1 |          44 | Insert       | 2025-11-17 20:25:48 |
+|      2 |          44 | UPDATE       | 2025-11-17 20:34:33 |
+|      3 |          43 | DELETE       | 2025-11-17 20:38:59 |
+|      4 |          35 | DELETE       | 2025-11-17 20:42:38 |
+|      5 |          35 | AFTER DELETE | 2025-11-17 20:42:38 |
++--------+-------------+--------------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> drop trigger if exist before_employee_delete;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'exist before_employee_delete' at line 1
+mysql> drop trigger if exists before_employee_delete;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> delimiter $
+mysql> create trigger before_employee_insert_uppercase before insert on employee for each row begin set new.name = uppercase(new.name); end$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into employee(name, departmenty, salary ) values ('Mayur', 'Operation', 55000 );
+    -> $
+ERROR 1054 (42S22): Unknown column 'departmenty' in 'field list'
+mysql> delimiter;
+    -> delimiter ;
+    -> 4
+    -> $
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter;delimiter ;4' at line 1
+mysql> delimiter ;
+mysql> insert into employee(name, department, salary ) values ('Mayur', 'Operation', 55000 );
+ERROR 1305 (42000): FUNCTION aifs.uppercase does not exist
+mysql> drop trigger if exists before_employee_insert_uppercase;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $
+mysql> create trigger before_employee_insert_uppercase before insert on employee for each row begin set new.name = upper(new.name); end$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> insert into employee (name, department, salary) values ('Mayur', 'Operation', 60000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++----+----------+------------+--------+
+| id | name     | department | salary |
++----+----------+------------+--------+
+|  1 | shivam   | IT         |  70223 |
+|  2 | Shivam   | IT         |  45906 |
+|  3 | Amit     | Finance    |  38864 |
+|  4 | Neha     | HR         |  76601 |
+|  5 | Priya    | Marketing  |  36415 |
+|  6 | Rohit    | IT         |  72273 |
+|  7 | Vikas    | Sales      |  72118 |
+|  8 | Meera    | Finance    |  63772 |
+|  9 | Karan    | Admin      |  72507 |
+| 10 | Anushka  | IT         |  41218 |
+| 11 | Deepak   | Operations |  58572 |
+| 12 | Rahul    | IT         |  39205 |
+| 13 | Sneha    | Finance    |  40309 |
+| 14 | Pooja    | HR         |  53932 |
+| 15 | Arjun    | Sales      |  68732 |
+| 16 | Tanya    | Marketing  |  51865 |
+| 17 | Manish   | Admin      |  73130 |
+| 18 | Divya    | Finance    |  30056 |
+| 19 | Saurabh  | Operations |  50888 |
+| 20 | Komal    | HR         |  34274 |
+| 21 | Abhishek | IT         |  38705 |
+| 22 | Nisha    | Sales      |  60704 |
+| 23 | Harsh    | Marketing  |  57405 |
+| 24 | Garima   | Finance    |  74916 |
+| 25 | Akash    | IT         |  72363 |
+| 26 | Ritika   | HR         |  57070 |
+| 27 | Sameer   | Admin      |  38262 |
+| 28 | Bhavna   | Finance    |  40101 |
+| 29 | Aditya   | IT         |  55717 |
+| 30 | Jaya     | Operations |  78282 |
+| 31 | Nitin    | Sales      |  44259 |
+| 32 | Yash     | Finance    |  56451 |
+| 33 | Rohan    | Marketing  |  69477 |
+| 34 | Rekha    | Admin      |  48032 |
+| 36 | Shruti   | IT         |  34559 |
+| 37 | Vivek    | Sales      |  37603 |
+| 38 | Anjali   | HR         |  54339 |
+| 39 | Deepika  | Finance    |  78888 |
+| 40 | Mohit    | IT         |  55000 |
+| 41 | Payal    | Marketing  |  40446 |
+| 42 | Pankaj   | IT         |  10000 |
+| 44 | Khushi   | HR         |  19000 |
+| 45 | MAYUR    | Operation  |  60000 |
++----+----------+------------+--------+
+43 rows in set (0.00 sec)
