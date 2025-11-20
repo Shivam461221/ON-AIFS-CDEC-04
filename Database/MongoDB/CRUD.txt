@@ -1,0 +1,866 @@
+test> use aifs
+switched to db aifs
+aifs> show collectons
+MongoshInvalidInputError: [COMMON-10001] 'collectons' is not a valid argument for "show".
+aifs> show collections
+users
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123'
+  }
+]
+aifs> db.courses.insertOne({courseName:'AIFS', durartion: '6 months})
+Uncaught:
+SyntaxError: Unterminated string constant. (1:52)
+
+> 1 | db.courses.insertOne({courseName:'AIFS', durartion: '6 months})
+    |                                                     ^
+  2 |
+
+aifs> db.courses.insertOne({courseName:'AIFS', durartion: '6 months'})
+{
+  acknowledged: true,
+  insertedId: ObjectId('691ef69430d17be6ca735189')
+}
+aifs> show collections
+courses
+users
+aifs> db.courses.insertMany([{courseName:'CDEC', duration:'5 months'}, {courseName:'XDSAAI', duration:'6 months'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('691ef74430d17be6ca73518a'),
+    '1': ObjectId('691ef74430d17be6ca73518b')
+  }
+}
+aifs> db.courses.fins()
+TypeError: db.courses.fins is not a function
+aifs> db.courses.find()
+[
+  {
+    _id: ObjectId('691ef69430d17be6ca735189'),
+    courseName: 'AIFS',
+    durartion: '6 months'
+  },
+  {
+    _id: ObjectId('691ef74430d17be6ca73518a'),
+    courseName: 'CDEC',
+    duration: '5 months'
+  },
+  {
+    _id: ObjectId('691ef74430d17be6ca73518b'),
+    courseName: 'XDSAAI',
+    duration: '6 months'
+  }
+]
+aifs> db.courses.find().pretty()
+[
+  {
+    _id: ObjectId('691ef69430d17be6ca735189'),
+    courseName: 'AIFS',
+    durartion: '6 months'
+  },
+  {
+    _id: ObjectId('691ef74430d17be6ca73518a'),
+    courseName: 'CDEC',
+    duration: '5 months'
+  },
+  {
+    _id: ObjectId('691ef74430d17be6ca73518b'),
+    courseName: 'XDSAAI',
+    duration: '6 months'
+  }
+]
+aifs> db.courses.find({duration:'5 months'})
+[
+  {
+    _id: ObjectId('691ef74430d17be6ca73518a'),
+    courseName: 'CDEC',
+    duration: '5 months'
+  }
+]
+aifs> db.courses.find({duration:'6 months'})
+[
+  {
+    _id: ObjectId('691ef74430d17be6ca73518b'),
+    courseName: 'XDSAAI',
+    duration: '6 months'
+  }
+]
+aifs> db.find.users()
+TypeError: db.find.users is not a function
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123'
+  }
+]
+aifs> db.users.find({gender:{$eq:'female'}})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  }
+]
+aifs> db.users.find({gender:{$eq:'male'}})
+[
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123'
+  }
+]
+aifs> db.users.find({age:{$gt:23}})
+
+aifs> db.users.find({age:{$gt:22}})
+[
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false
+  }
+]
+aifs> db.users.find({age:{$gte:22}})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  }
+]
+aifs> db.users.find({age:{$lt:23}})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false
+  }
+]
+aifs> db.users.find({age:{$ne:22}})
+[
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123'
+  }
+]
+aifs> db.users.updateMany({{age:22},{$set:{courseName:'AIFS'}}})
+Uncaught:
+SyntaxError: Unexpected token (1:21)
+
+> 1 | db.users.updateMany({{age:22},{$set:{courseName:'AIFS'}}})
+    |                      ^
+  2 |
+
+aifs> db.users.updateMany({age:22},{$set:{courseName:'AIFS'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+aifs> db.users.updateMany({age: {$ne:22}},{$set:{courseName:'CDEC'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'CDEC'
+  }
+]
+aifs> db.users.find({courseName:{$in:['AIFS', 'CDEC']}})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'CDEC'
+  }
+]
+aifs> db.users.find({courseName:{$in:['AIFS', 'XDSAAI']}})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  }
+]
+aifs> db.users.find({age:22, courseName:'AIFS'})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  }
+]
+aifs> db.users.find({age:22, courseName:'CDEC'})
+
+aifs> db.users.find({$or:[{age:22}, {courseName:'AIFS'}]})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  }
+]
+aifs> db.users.find({$or:[{age:22}, {courseName:'CDEC'}]})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'CDEC'
+  }
+]
+aifs> db.users.find({age:22},{name:1, courseName:1:})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.users.find({age:22},{name:1, courseName:1:})
+    |                                             ^
+  2 |
+
+aifs> db.users.find({age:22},{name:1, courseName:1})
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    courseName: 'AIFS'
+  }
+]
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    ag: 28,
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'CDEC'
+  }
+]
+aifs> db.users.replaceOne({name:'Shekhar Gupta'}, {$set:{ag:age}})
+ReferenceError: age is not defined
+aifs> db.users.replaceOne({name:'Shekhar Gupta'}, {$set:{ag:age}})
+ReferenceError: age is not defined
+aifs> db.collection.updateMany(
+...   { <query> }, // Filter to select the documents to update
+...   { $rename: { "<oldFieldName>": "<newFieldName>" } }
+...
+Uncaught:
+SyntaxError: Unexpected token (2:4)
+
+  1 | db.collection.updateMany(
+> 2 |   { <query> }, // Filter to select the documents to update
+    |     ^
+  3 |   { $rename: { "<oldFieldName>": "<newFieldName>" } }
+  4 |
+  5 |
+
+aifs> db.users.updateOne({name:'Shekhar Gupta'}, {$rename:{'ag':'age'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'CDEC',
+    age: 28
+  }
+]
+aifs> db.users.updateOne({name:'Shekhar Gupta'},{$set:{courseName:'XDSAAI'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'XDSAAI',
+    age: 28
+  }
+]
+aifs> db.users.updateMany({courseName:'AIFS'},{$set:{fees:'100000'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'XDSAAI',
+    age: 28
+  }
+]
+aifs> db.users.updateMany({courseName:'CDEC'},{$set:{fees:'80000'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+aifs> db.users.updateMany({courseName:'XDSAAI'},{$set:{fees:'80000'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC',
+    fees: '80000'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'XDSAAI',
+    age: 28,
+    fees: '80000'
+  }
+]
+aifs> db.users.updateOne({name:'Nilima'},{$inc:{age:1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC',
+    fees: '80000'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'XDSAAI',
+    age: 28,
+    fees: '80000'
+  }
+]
+aifs> db.users.updateOne({name:'Nilima'},{$unset:{age:''}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC',
+    fees: '80000'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'XDSAAI',
+    age: 28,
+    fees: '80000'
+  }
+]
+aifs> db.courses.deleteOne({courseName:'AIFS'})
+{ acknowledged: true, deletedCount: 1 }
+aifs> db.courses.find()
+[
+  {
+    _id: ObjectId('691ef74430d17be6ca73518a'),
+    courseName: 'CDEC',
+    duration: '5 months'
+  },
+  {
+    _id: ObjectId('691ef74430d17be6ca73518b'),
+    courseName: 'XDSAAI',
+    duration: '6 months'
+  }
+]
+aifs> db.courses.deleteMany({})
+{ acknowledged: true, deletedCount: 2 }
+aifs> db.courses.find()
+
+aifs> db.users.isnertOne({name:'Om', age:21, gender:'male', email:'om@123', skills:['Java', 'SQL', 'JS']})
+TypeError: db.users.isnertOne is not a function
+aifs> db.users.insertOne({name:'Om', age:21, gender:'male', email:'om@123', skills:['Java', 'SQL', 'JS']})
+{
+  acknowledged: true,
+  insertedId: ObjectId('691eff9030d17be6ca73518c')
+}
+aifs> db.users.find()
+[
+  {
+    _id: ObjectId('691dab230d8e5ead8c73518a'),
+    name: 'Nilima',
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dab300d8e5ead8c73518b'),
+    name: 'Kalpana',
+    age: 23,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'CDEC',
+    fees: '80000'
+  },
+  {
+    _id: ObjectId('691dab380d8e5ead8c73518c'),
+    name: 'Amrapali',
+    age: 22,
+    gender: 'female',
+    isMarried: false,
+    courseName: 'AIFS',
+    fees: '100000'
+  },
+  {
+    _id: ObjectId('691dad320d8e5ead8c73518e'),
+    name: 'Shekhar Gupta',
+    gender: 'male',
+    email: 'shekhar@123',
+    courseName: 'XDSAAI',
+    age: 28,
+    fees: '80000'
+  },
+  {
+    _id: ObjectId('691eff9030d17be6ca73518c'),
+    name: 'Om',
+    age: 21,
+    gender: 'male',
+    email: 'om@123',
+    skills: [ 'Java', 'SQL', 'JS' ]
+  }
+]
+aifs>
