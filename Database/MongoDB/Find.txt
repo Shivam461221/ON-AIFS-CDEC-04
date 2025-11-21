@@ -1,0 +1,1827 @@
+
+test> show dbs
+admin        40.00 KiB
+aifs         72.00 KiB
+clinic-app  360.00 KiB
+companyDB   336.00 KiB
+config       48.00 KiB
+local        88.00 KiB
+mydb        112.00 KiB
+test> use aifs
+switched to db aifs
+aifs> show collections
+courses
+students
+users
+aifs> db.users.find()
+\
+aifs> db.users.find()
+
+aifs> db.students.find()
+[
+  {
+    _id: ObjectId('691f1e631e5a692f8173518d'),
+    name: 'Shivam',
+    age: 25,
+    course: 'MCA'
+  }
+]
+aifs> db.courses.find()
+
+aifs> db.posts.insertOne({postNo: 121, postTime: new Date(), postDescription:'Vaccation in Bali', tags:['winter', 'bali', 'vaccation']})
+{
+  acknowledged: true,
+  insertedId: ObjectId('692048cf70336f2930735189')
+}
+aifs> db.posts.find()
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  }
+]
+aifs> db.posts.insertMany([
+...   {
+...     postNo: 122,
+...     postTime: new Date("2025-12-01T10:00:00.000Z"),
+...     postDescription: "Hiking in the mountains",
+...     tags: ["adventure", "hiking", "nature"]
+...   },
+...   {
+...     postNo: 123,
+...     postTime: new Date("2025-12-05T14:30:00.000Z"),
+...     postDescription: "Beach holiday in Goa",
+...     tags: ["summer", "beach", "relaxation"]
+...   },
+...   {
+...     postNo: 124,
+...     postTime: new Date("2025-12-10T09:15:00.000Z"),
+...     postDescription: "City tour of Delhi",
+...     tags: ["urban", "sightseeing", "culture"]
+...   },
+...   {
+...     postNo: 125,
+...     postTime: new Date("2025-12-15T16:45:00.000Z"),
+...     postDescription: "Skiing in Manali",
+...     tags: ["winter", "snow", "sports"]
+...   },
+...   {
+...     postNo: 126,
+...     postTime: new Date("2025-12-20T11:20:00.000Z"),
+...     postDescription: "Food tasting in Mumbai",
+...     tags: ["food", "streetfood", "culinary"]
+...   }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6920497f70336f293073518a'),
+    '1': ObjectId('6920497f70336f293073518b'),
+    '2': ObjectId('6920497f70336f293073518c'),
+    '3': ObjectId('6920497f70336f293073518d'),
+    '4': ObjectId('6920497f70336f293073518e')
+  }
+}
+aifs> db.posts.insertMany([
+...   {
+...     postNo: 127,
+...     postTime: new Date("2025-12-25T08:00:00.000Z"),
+...     postDescription: "Christmas celebration with family",
+...     tags: ["christmas", "family", "holiday"]
+...   },
+...   {
+...     postNo: 128,
+...     postTime: new Date("2025-12-28T13:45:00.000Z"),
+...     postDescription: "New Year party planning",
+...     tags: ["newyear", "party", "celebration"]
+...   },
+...   {
+...     postNo: 129,
+...     postTime: new Date("2026-01-03T11:30:00.000Z"),
+...     postDescription: "Winter trek to Himalayas",
+...     tags: ["trekking", "winter", "adventure"]
+...   },
+...   {
+...     postNo: 130,
+...     postTime: new Date("2026-01-10T15:20:00.000Z"),
+...     postDescription: "Yoga retreat in Rishikesh",
+...     tags: ["yoga", "wellness", "meditation"]
+...   },
+...   {
+...     postNo: 131,
+...     postTime: new Date("2026-01-15T09:10:00.000Z"),
+...     postDescription: "Wildlife safari in Jim Corbett",
+...     tags: ["safari", "wildlife", "nature"]
+...   },
+...   {
+...     postNo: 132,
+...     postTime: new Date("2026-01-22T14:55:00.000Z"),
+...     postDescription: "Desert camping in Rajasthan",
+...     tags: ["desert", "camping", "bonfire"]
+...   },
+...   {
+...     postNo: 133,
+...     postTime: new Date("2026-01-30T10:25:00.000Z"),
+...     postDescription: "Backpacking through South India",
+...     tags: ["backpacking", "travel", "budget"]
+...   },
+...   {
+...     postNo: 134,
+...     postTime: new Date("2026-02-05T16:40:00.000Z"),
+...     postDescription: "Photography tour of Kerala backwaters",
+...     tags: ["photography", "backwaters", "scenic"]
+...   },
+...   {
+...     postNo: 135,
+...     postTime: new Date("2026-02-12T12:15:00.000Z"),
+...     postDescription: "Cultural festival in Kolkata",
+...     tags: ["festival", "culture", "tradition"]
+...   },
+...   {
+...     postNo: 136,
+...     postTime: new Date("2026-02-20T17:30:00.000Z"),
+...     postDescription: "River rafting in Rishikesh",
+...     tags: ["rafting", "adventure", "river"]
+...   }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('692049ac70336f293073518f'),
+    '1': ObjectId('692049ac70336f2930735190'),
+    '2': ObjectId('692049ac70336f2930735191'),
+    '3': ObjectId('692049ac70336f2930735192'),
+    '4': ObjectId('692049ac70336f2930735193'),
+    '5': ObjectId('692049ac70336f2930735194'),
+    '6': ObjectId('692049ac70336f2930735195'),
+    '7': ObjectId('692049ac70336f2930735196'),
+    '8': ObjectId('692049ac70336f2930735197'),
+    '9': ObjectId('692049ac70336f2930735198')
+  }
+}
+aifs> db.posts.find()
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735192'),
+    postNo: 130,
+    postTime: ISODate('2026-01-10T15:20:00.000Z'),
+    postDescription: 'Yoga retreat in Rishikesh',
+    tags: [ 'yoga', 'wellness', 'meditation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735193'),
+    postNo: 131,
+    postTime: ISODate('2026-01-15T09:10:00.000Z'),
+    postDescription: 'Wildlife safari in Jim Corbett',
+    tags: [ 'safari', 'wildlife', 'nature' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  }
+]
+aifs> db.posts.find({tags:"adventure"})
+[
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  }
+]
+aifs> db.posts.find({tags:"winter"})
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  }
+]
+aifs> db.posts.find({tags:"trekking"})
+[
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  }
+]
+aifs> db.posts.find({tags:{$all:['trekking', 'winter']}})
+[
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  }
+]
+aifs> db.posts.find({tags:{$all:['bali', 'winter']}})
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  }
+]
+aifs> db.posts.insertMany([
+...   {
+...     postNo: 142,
+...     postTime: new Date("2026-04-01T09:00:00.000Z"),
+...     postDescription: "Morning jog in the park",
+...     tags: ["fitness", "morning"] // 2 tags
+...   },
+...   {
+...     postNo: 143,
+...     postTime: new Date("2026-04-05T14:15:00.000Z"),
+...     postDescription: "Weekend beach getaway",
+...     tags: ["beach", "weekend", "relaxation"] // 3 tags
+...   },
+...   {
+...     postNo: 144,
+...     postTime: new Date("2026-04-10T11:30:00.000Z"),
+...     postDescription: "Mountain hiking adventure with friends",
+...     tags: ["hiking", "mountains", "friends", "adventure"] // 4 tags
+...   },
+...   {
+...     postNo: 145,
+...     postTime: new Date("2026-04-15T16:45:00.000Z"),
+...     postDescription: "Exploring ancient temples and local cuisine",
+...     tags: ["temples", "history", "food", "culture", "exploration"] // 5 tags
+...   },
+...   {
+...     postNo: 146,
+...     postTime: new Date("2026-04-20T08:20:00.000Z"),
+...     postDescription: "Coffee and reading",
+...     tags: ["coffee", "books"] // 2 tags
+...   },
+...   {
+...     postNo: 147,
+...     postTime: new Date("2026-04-25T13:10:00.000Z"),
+...     postDescription: "City tour and shopping",
+...     tags: ["city", "shopping", "sightseeing"] // 3 tags
+...   },
+...   {
+...     postNo: 148,
+...     postTime: new Date("2026-05-01T10:40:00.000Z"),
+...     postDescription: "Camping under the stars with bonfire",
+...     tags: ["camping", "stars", "bonfire", "night"] // 4 tags
+...   },
+...   {
+...     postNo: 149,
+...     postTime: new Date("2026-05-07T15:25:00.000Z"),
+...     postDescription: "Full day adventure sports and team activities",
+...     tags: ["adventure", "sports", "team", "fun", "extreme"] // 5 tags
+...   },
+...   {
+...     postNo: 150,
+...     postTime: new Date("2026-05-12T12:00:00.000Z"),
+...     postDescription: "Sunset photography",
+...     tags: ["sunset", "photography"] // 2 tags
+...   },
+...   {
+...     postNo: 151,
+...     postTime: new Date("2026-05-18T17:35:00.000Z"),
+...     postDescription: "Cooking traditional dishes",
+...     tags: ["cooking", "traditional", "food"] // 3 tags
+...   }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69204b3870336f2930735199'),
+    '1': ObjectId('69204b3870336f293073519a'),
+    '2': ObjectId('69204b3870336f293073519b'),
+    '3': ObjectId('69204b3870336f293073519c'),
+    '4': ObjectId('69204b3870336f293073519d'),
+    '5': ObjectId('69204b3870336f293073519e'),
+    '6': ObjectId('69204b3870336f293073519f'),
+    '7': ObjectId('69204b3870336f29307351a0'),
+    '8': ObjectId('69204b3870336f29307351a1'),
+    '9': ObjectId('69204b3870336f29307351a2')
+  }
+}
+aifs> db.posts.find({tags:{$size:2}})
+[
+  {
+    _id: ObjectId('69204b3870336f2930735199'),
+    postNo: 142,
+    postTime: ISODate('2026-04-01T09:00:00.000Z'),
+    postDescription: 'Morning jog in the park',
+    tags: [ 'fitness', 'morning' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519d'),
+    postNo: 146,
+    postTime: ISODate('2026-04-20T08:20:00.000Z'),
+    postDescription: 'Coffee and reading',
+    tags: [ 'coffee', 'books' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a1'),
+    postNo: 150,
+    postTime: ISODate('2026-05-12T12:00:00.000Z'),
+    postDescription: 'Sunset photography',
+    tags: [ 'sunset', 'photography' ]
+  }
+]
+aifs> db.posts.find({tags:{$size:3}})
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735192'),
+    postNo: 130,
+    postTime: ISODate('2026-01-10T15:20:00.000Z'),
+    postDescription: 'Yoga retreat in Rishikesh',
+    tags: [ 'yoga', 'wellness', 'meditation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735193'),
+    postNo: 131,
+    postTime: ISODate('2026-01-15T09:10:00.000Z'),
+    postDescription: 'Wildlife safari in Jim Corbett',
+    tags: [ 'safari', 'wildlife', 'nature' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519a'),
+    postNo: 143,
+    postTime: ISODate('2026-04-05T14:15:00.000Z'),
+    postDescription: 'Weekend beach getaway',
+    tags: [ 'beach', 'weekend', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519e'),
+    postNo: 147,
+    postTime: ISODate('2026-04-25T13:10:00.000Z'),
+    postDescription: 'City tour and shopping',
+    tags: [ 'city', 'shopping', 'sightseeing' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a2'),
+    postNo: 151,
+    postTime: ISODate('2026-05-18T17:35:00.000Z'),
+    postDescription: 'Cooking traditional dishes',
+    tags: [ 'cooking', 'traditional', 'food' ]
+  }
+]
+aifs> db.posts.find({tags:{$size:5}})
+[
+  {
+    _id: ObjectId('69204b3870336f293073519c'),
+    postNo: 145,
+    postTime: ISODate('2026-04-15T16:45:00.000Z'),
+    postDescription: 'Exploring ancient temples and local cuisine',
+    tags: [ 'temples', 'history', 'food', 'culture', 'exploration' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a0'),
+    postNo: 149,
+    postTime: ISODate('2026-05-07T15:25:00.000Z'),
+    postDescription: 'Full day adventure sports and team activities',
+    tags: [ 'adventure', 'sports', 'team', 'fun', 'extreme' ]
+  }
+]
+aifs> db.posts.find({tags:{$gt:3}})
+
+aifs> db.posts.find({tags:{$size:{$gt:3}}})
+MongoServerError[BadValue]: Failed to parse $size. Expected a number in: $size: { $gt: 3 }
+aifs> db.posts.find({tags:{$size:{$gt:3}}})
+MongoServerError[BadValue]: Failed to parse $size. Expected a number in: $size: { $gt: 3 }
+aifs> db.posts.find({$expr: {$gt: [{$size: "$tags"}, 3]}})
+[
+  {
+    _id: ObjectId('69204b3870336f293073519b'),
+    postNo: 144,
+    postTime: ISODate('2026-04-10T11:30:00.000Z'),
+    postDescription: 'Mountain hiking adventure with friends',
+    tags: [ 'hiking', 'mountains', 'friends', 'adventure' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519c'),
+    postNo: 145,
+    postTime: ISODate('2026-04-15T16:45:00.000Z'),
+    postDescription: 'Exploring ancient temples and local cuisine',
+    tags: [ 'temples', 'history', 'food', 'culture', 'exploration' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519f'),
+    postNo: 148,
+    postTime: ISODate('2026-05-01T10:40:00.000Z'),
+    postDescription: 'Camping under the stars with bonfire',
+    tags: [ 'camping', 'stars', 'bonfire', 'night' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a0'),
+    postNo: 149,
+    postTime: ISODate('2026-05-07T15:25:00.000Z'),
+    postDescription: 'Full day adventure sports and team activities',
+    tags: [ 'adventure', 'sports', 'team', 'fun', 'extreme' ]
+  }
+]
+aifs> db.posts.find().sort({tags:1})
+[
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519b'),
+    postNo: 144,
+    postTime: ISODate('2026-04-10T11:30:00.000Z'),
+    postDescription: 'Mountain hiking adventure with friends',
+    tags: [ 'hiking', 'mountains', 'friends', 'adventure' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a0'),
+    postNo: 149,
+    postTime: ISODate('2026-05-07T15:25:00.000Z'),
+    postDescription: 'Full day adventure sports and team activities',
+    tags: [ 'adventure', 'sports', 'team', 'fun', 'extreme' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519a'),
+    postNo: 143,
+    postTime: ISODate('2026-04-05T14:15:00.000Z'),
+    postDescription: 'Weekend beach getaway',
+    tags: [ 'beach', 'weekend', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519f'),
+    postNo: 148,
+    postTime: ISODate('2026-05-01T10:40:00.000Z'),
+    postDescription: 'Camping under the stars with bonfire',
+    tags: [ 'camping', 'stars', 'bonfire', 'night' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519d'),
+    postNo: 146,
+    postTime: ISODate('2026-04-20T08:20:00.000Z'),
+    postDescription: 'Coffee and reading',
+    tags: [ 'coffee', 'books' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519e'),
+    postNo: 147,
+    postTime: ISODate('2026-04-25T13:10:00.000Z'),
+    postDescription: 'City tour and shopping',
+    tags: [ 'city', 'shopping', 'sightseeing' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a2'),
+    postNo: 151,
+    postTime: ISODate('2026-05-18T17:35:00.000Z'),
+    postDescription: 'Cooking traditional dishes',
+    tags: [ 'cooking', 'traditional', 'food' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  }
+]
+Type "it" for more
+aifs> db.posts.find().sort({postNo:1})
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735192'),
+    postNo: 130,
+    postTime: ISODate('2026-01-10T15:20:00.000Z'),
+    postDescription: 'Yoga retreat in Rishikesh',
+    tags: [ 'yoga', 'wellness', 'meditation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735193'),
+    postNo: 131,
+    postTime: ISODate('2026-01-15T09:10:00.000Z'),
+    postDescription: 'Wildlife safari in Jim Corbett',
+    tags: [ 'safari', 'wildlife', 'nature' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f2930735199'),
+    postNo: 142,
+    postTime: ISODate('2026-04-01T09:00:00.000Z'),
+    postDescription: 'Morning jog in the park',
+    tags: [ 'fitness', 'morning' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519a'),
+    postNo: 143,
+    postTime: ISODate('2026-04-05T14:15:00.000Z'),
+    postDescription: 'Weekend beach getaway',
+    tags: [ 'beach', 'weekend', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519b'),
+    postNo: 144,
+    postTime: ISODate('2026-04-10T11:30:00.000Z'),
+    postDescription: 'Mountain hiking adventure with friends',
+    tags: [ 'hiking', 'mountains', 'friends', 'adventure' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519c'),
+    postNo: 145,
+    postTime: ISODate('2026-04-15T16:45:00.000Z'),
+    postDescription: 'Exploring ancient temples and local cuisine',
+    tags: [ 'temples', 'history', 'food', 'culture', 'exploration' ]
+  }
+]
+Type "it" for more
+aifs> db.posts.find().sort({postNo:-1})
+[
+  {
+    _id: ObjectId('69204b3870336f29307351a2'),
+    postNo: 151,
+    postTime: ISODate('2026-05-18T17:35:00.000Z'),
+    postDescription: 'Cooking traditional dishes',
+    tags: [ 'cooking', 'traditional', 'food' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a1'),
+    postNo: 150,
+    postTime: ISODate('2026-05-12T12:00:00.000Z'),
+    postDescription: 'Sunset photography',
+    tags: [ 'sunset', 'photography' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a0'),
+    postNo: 149,
+    postTime: ISODate('2026-05-07T15:25:00.000Z'),
+    postDescription: 'Full day adventure sports and team activities',
+    tags: [ 'adventure', 'sports', 'team', 'fun', 'extreme' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519f'),
+    postNo: 148,
+    postTime: ISODate('2026-05-01T10:40:00.000Z'),
+    postDescription: 'Camping under the stars with bonfire',
+    tags: [ 'camping', 'stars', 'bonfire', 'night' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519e'),
+    postNo: 147,
+    postTime: ISODate('2026-04-25T13:10:00.000Z'),
+    postDescription: 'City tour and shopping',
+    tags: [ 'city', 'shopping', 'sightseeing' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519d'),
+    postNo: 146,
+    postTime: ISODate('2026-04-20T08:20:00.000Z'),
+    postDescription: 'Coffee and reading',
+    tags: [ 'coffee', 'books' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519c'),
+    postNo: 145,
+    postTime: ISODate('2026-04-15T16:45:00.000Z'),
+    postDescription: 'Exploring ancient temples and local cuisine',
+    tags: [ 'temples', 'history', 'food', 'culture', 'exploration' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519b'),
+    postNo: 144,
+    postTime: ISODate('2026-04-10T11:30:00.000Z'),
+    postDescription: 'Mountain hiking adventure with friends',
+    tags: [ 'hiking', 'mountains', 'friends', 'adventure' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519a'),
+    postNo: 143,
+    postTime: ISODate('2026-04-05T14:15:00.000Z'),
+    postDescription: 'Weekend beach getaway',
+    tags: [ 'beach', 'weekend', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f2930735199'),
+    postNo: 142,
+    postTime: ISODate('2026-04-01T09:00:00.000Z'),
+    postDescription: 'Morning jog in the park',
+    tags: [ 'fitness', 'morning' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735193'),
+    postNo: 131,
+    postTime: ISODate('2026-01-15T09:10:00.000Z'),
+    postDescription: 'Wildlife safari in Jim Corbett',
+    tags: [ 'safari', 'wildlife', 'nature' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735192'),
+    postNo: 130,
+    postTime: ISODate('2026-01-10T15:20:00.000Z'),
+    postDescription: 'Yoga retreat in Rishikesh',
+    tags: [ 'yoga', 'wellness', 'meditation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  }
+]
+Type "it" for more
+aifs> db.posts.find().sort({postDescription : 1})
+[
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519f'),
+    postNo: 148,
+    postTime: ISODate('2026-05-01T10:40:00.000Z'),
+    postDescription: 'Camping under the stars with bonfire',
+    tags: [ 'camping', 'stars', 'bonfire', 'night' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519e'),
+    postNo: 147,
+    postTime: ISODate('2026-04-25T13:10:00.000Z'),
+    postDescription: 'City tour and shopping',
+    tags: [ 'city', 'shopping', 'sightseeing' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519d'),
+    postNo: 146,
+    postTime: ISODate('2026-04-20T08:20:00.000Z'),
+    postDescription: 'Coffee and reading',
+    tags: [ 'coffee', 'books' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a2'),
+    postNo: 151,
+    postTime: ISODate('2026-05-18T17:35:00.000Z'),
+    postDescription: 'Cooking traditional dishes',
+    tags: [ 'cooking', 'traditional', 'food' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519c'),
+    postNo: 145,
+    postTime: ISODate('2026-04-15T16:45:00.000Z'),
+    postDescription: 'Exploring ancient temples and local cuisine',
+    tags: [ 'temples', 'history', 'food', 'culture', 'exploration' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a0'),
+    postNo: 149,
+    postTime: ISODate('2026-05-07T15:25:00.000Z'),
+    postDescription: 'Full day adventure sports and team activities',
+    tags: [ 'adventure', 'sports', 'team', 'fun', 'extreme' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f2930735199'),
+    postNo: 142,
+    postTime: ISODate('2026-04-01T09:00:00.000Z'),
+    postDescription: 'Morning jog in the park',
+    tags: [ 'fitness', 'morning' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519b'),
+    postNo: 144,
+    postTime: ISODate('2026-04-10T11:30:00.000Z'),
+    postDescription: 'Mountain hiking adventure with friends',
+    tags: [ 'hiking', 'mountains', 'friends', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  }
+]
+Type "it" for more
+aifs> db.posts.find().sort({postDescription : -1})
+[
+  {
+    _id: ObjectId('692049ac70336f2930735192'),
+    postNo: 130,
+    postTime: ISODate('2026-01-10T15:20:00.000Z'),
+    postDescription: 'Yoga retreat in Rishikesh',
+    tags: [ 'yoga', 'wellness', 'meditation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735193'),
+    postNo: 131,
+    postTime: ISODate('2026-01-15T09:10:00.000Z'),
+    postDescription: 'Wildlife safari in Jim Corbett',
+    tags: [ 'safari', 'wildlife', 'nature' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519a'),
+    postNo: 143,
+    postTime: ISODate('2026-04-05T14:15:00.000Z'),
+    postDescription: 'Weekend beach getaway',
+    tags: [ 'beach', 'weekend', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a1'),
+    postNo: 150,
+    postTime: ISODate('2026-05-12T12:00:00.000Z'),
+    postDescription: 'Sunset photography',
+    tags: [ 'sunset', 'photography' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735198'),
+    postNo: 136,
+    postTime: ISODate('2026-02-20T17:30:00.000Z'),
+    postDescription: 'River rafting in Rishikesh',
+    tags: [ 'rafting', 'adventure', 'river' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735196'),
+    postNo: 134,
+    postTime: ISODate('2026-02-05T16:40:00.000Z'),
+    postDescription: 'Photography tour of Kerala backwaters',
+    tags: [ 'photography', 'backwaters', 'scenic' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519b'),
+    postNo: 144,
+    postTime: ISODate('2026-04-10T11:30:00.000Z'),
+    postDescription: 'Mountain hiking adventure with friends',
+    tags: [ 'hiking', 'mountains', 'friends', 'adventure' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f2930735199'),
+    postNo: 142,
+    postTime: ISODate('2026-04-01T09:00:00.000Z'),
+    postDescription: 'Morning jog in the park',
+    tags: [ 'fitness', 'morning' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a0'),
+    postNo: 149,
+    postTime: ISODate('2026-05-07T15:25:00.000Z'),
+    postDescription: 'Full day adventure sports and team activities',
+    tags: [ 'adventure', 'sports', 'team', 'fun', 'extreme' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519c'),
+    postNo: 145,
+    postTime: ISODate('2026-04-15T16:45:00.000Z'),
+    postDescription: 'Exploring ancient temples and local cuisine',
+    tags: [ 'temples', 'history', 'food', 'culture', 'exploration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735194'),
+    postNo: 132,
+    postTime: ISODate('2026-01-22T14:55:00.000Z'),
+    postDescription: 'Desert camping in Rajasthan',
+    tags: [ 'desert', 'camping', 'bonfire' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735197'),
+    postNo: 135,
+    postTime: ISODate('2026-02-12T12:15:00.000Z'),
+    postDescription: 'Cultural festival in Kolkata',
+    tags: [ 'festival', 'culture', 'tradition' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f29307351a2'),
+    postNo: 151,
+    postTime: ISODate('2026-05-18T17:35:00.000Z'),
+    postDescription: 'Cooking traditional dishes',
+    tags: [ 'cooking', 'traditional', 'food' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519d'),
+    postNo: 146,
+    postTime: ISODate('2026-04-20T08:20:00.000Z'),
+    postDescription: 'Coffee and reading',
+    tags: [ 'coffee', 'books' ]
+  }
+]
+Type "it" for more
+aifs> it
+[
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519e'),
+    postNo: 147,
+    postTime: ISODate('2026-04-25T13:10:00.000Z'),
+    postDescription: 'City tour and shopping',
+    tags: [ 'city', 'shopping', 'sightseeing' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519f'),
+    postNo: 148,
+    postTime: ISODate('2026-05-01T10:40:00.000Z'),
+    postDescription: 'Camping under the stars with bonfire',
+    tags: [ 'camping', 'stars', 'bonfire', 'night' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  }
+]
+aifs> db.posts.find().sort({postDescription : 1}).limit(5)
+[
+  {
+    _id: ObjectId('692049ac70336f2930735195'),
+    postNo: 133,
+    postTime: ISODate('2026-01-30T10:25:00.000Z'),
+    postDescription: 'Backpacking through South India',
+    tags: [ 'backpacking', 'travel', 'budget' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519f'),
+    postNo: 148,
+    postTime: ISODate('2026-05-01T10:40:00.000Z'),
+    postDescription: 'Camping under the stars with bonfire',
+    tags: [ 'camping', 'stars', 'bonfire', 'night' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('69204b3870336f293073519e'),
+    postNo: 147,
+    postTime: ISODate('2026-04-25T13:10:00.000Z'),
+    postDescription: 'City tour and shopping',
+    tags: [ 'city', 'shopping', 'sightseeing' ]
+  }
+]
+aifs> db.posts.find().sort({postNo : 1}).limit(5)
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  }
+]
+aifs> db.posts.find().sort({postNo : 1}).limit(10)
+[
+  {
+    _id: ObjectId('692048cf70336f2930735189'),
+    postNo: 121,
+    postTime: ISODate('2025-11-21T11:11:11.583Z'),
+    postDescription: 'Vaccation in Bali',
+    tags: [ 'winter', 'bali', 'vaccation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518a'),
+    postNo: 122,
+    postTime: ISODate('2025-12-01T10:00:00.000Z'),
+    postDescription: 'Hiking in the mountains',
+    tags: [ 'adventure', 'hiking', 'nature' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518b'),
+    postNo: 123,
+    postTime: ISODate('2025-12-05T14:30:00.000Z'),
+    postDescription: 'Beach holiday in Goa',
+    tags: [ 'summer', 'beach', 'relaxation' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735191'),
+    postNo: 129,
+    postTime: ISODate('2026-01-03T11:30:00.000Z'),
+    postDescription: 'Winter trek to Himalayas',
+    tags: [ 'trekking', 'winter', 'adventure' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735192'),
+    postNo: 130,
+    postTime: ISODate('2026-01-10T15:20:00.000Z'),
+    postDescription: 'Yoga retreat in Rishikesh',
+    tags: [ 'yoga', 'wellness', 'meditation' ]
+  }
+]
+aifs> db.posts.find().sort({postNo : 1}).skip(3).limit(5)
+[
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  }
+]
+aifs> db.posts.find().sort({postNo : 1}).limit(5).skip(3)
+[
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  }
+]
+aifs> db.posts.find().sort({postNo : 1}).skip(3).limit(5)
+[
+  {
+    _id: ObjectId('6920497f70336f293073518c'),
+    postNo: 124,
+    postTime: ISODate('2025-12-10T09:15:00.000Z'),
+    postDescription: 'City tour of Delhi',
+    tags: [ 'urban', 'sightseeing', 'culture' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  },
+  {
+    _id: ObjectId('6920497f70336f293073518e'),
+    postNo: 126,
+    postTime: ISODate('2025-12-20T11:20:00.000Z'),
+    postDescription: 'Food tasting in Mumbai',
+    tags: [ 'food', 'streetfood', 'culinary' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f293073518f'),
+    postNo: 127,
+    postTime: ISODate('2025-12-25T08:00:00.000Z'),
+    postDescription: 'Christmas celebration with family',
+    tags: [ 'christmas', 'family', 'holiday' ]
+  },
+  {
+    _id: ObjectId('692049ac70336f2930735190'),
+    postNo: 128,
+    postTime: ISODate('2025-12-28T13:45:00.000Z'),
+    postDescription: 'New Year party planning',
+    tags: [ 'newyear', 'party', 'celebration' ]
+  }
+]
+aifs> db.posts.find({postNo:125})
+[
+  {
+    _id: ObjectId('6920497f70336f293073518d'),
+    postNo: 125,
+    postTime: ISODate('2025-12-15T16:45:00.000Z'),
+    postDescription: 'Skiing in Manali',
+    tags: [ 'winter', 'snow', 'sports' ]
+  }
+]
+aifs> db.posts.find({postNo:125}).explain('executionStats')
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'aifs.posts',
+    parsedQuery: { postNo: { '$eq': 125 } },
+    indexFilterSet: false,
+    queryHash: 'AF9ECBF1',
+    planCacheShapeHash: 'AF9ECBF1',
+    planCacheKey: 'F52D5BA5',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: { postNo: { '$eq': 125 } },
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 1,
+    totalKeysExamined: 0,
+    totalDocsExamined: 26,
+    executionStages: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: { postNo: { '$eq': 125 } },
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      works: 27,
+      advanced: 1,
+      needTime: 25,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      direction: 'forward',
+      docsExamined: 26
+    }
+  },
+  queryShapeHash: 'BD177FCB0E025985D49DB5F07923E352DC335AE2EBEC0BC3EA3C26D2E149532D',
+  command: { find: 'posts', filter: { postNo: 125 }, '$db': 'aifs' },
+  serverInfo: {
+    host: 'Shivam',
+    port: 27017,
+    version: '8.0.13',
+    gitVersion: '8dc5cd2a30c4524132e2d44bb314544dc477e611'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+aifs> db.posts.find({ObjectId('692049ac70336f293073518f')}).explain('executionStats')
+Uncaught:
+SyntaxError: Unexpected token (1:24)
+
+> 1 | db.posts.find({ObjectId('692049ac70336f293073518f')}).explain('executionStats')
+    |                         ^
+  2 |
+
+aifs> db.posts.find({_id:ObjectId('692049ac70336f293073518f')}).explain('executionStats')
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'aifs.posts',
+    parsedQuery: { _id: { '$eq': ObjectId('692049ac70336f293073518f') } },
+    indexFilterSet: false,
+    queryHash: '9B5DE45B',
+    planCacheShapeHash: '9B5DE45B',
+    planCacheKey: 'B4738D99',
+    optimizationTimeMillis: 2,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'EXPRESS_IXSCAN',
+      keyPattern: '{ _id: 1 }',
+      indexName: '_id_'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 3,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    executionStages: {
+      isCached: false,
+      stage: 'EXPRESS_IXSCAN',
+      keyPattern: '{ _id: 1 }',
+      indexName: '_id_',
+      keysExamined: 1,
+      docsExamined: 1,
+      nReturned: 1
+    }
+  },
+  command: {
+    find: 'posts',
+    filter: { _id: ObjectId('692049ac70336f293073518f') },
+    '$db': 'aifs'
+  },
+  serverInfo: {
+    host: 'Shivam',
+    port: 27017,
+    version: '8.0.13',
+    gitVersion: '8dc5cd2a30c4524132e2d44bb314544dc477e611'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+aifs>
