@@ -1,6 +1,6 @@
 package com.cloud.abstraction;
 
-public class Test {
+public class Test{
 	
 	
 	
