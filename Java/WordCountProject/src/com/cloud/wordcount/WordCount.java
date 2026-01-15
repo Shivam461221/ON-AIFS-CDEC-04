@@ -2,6 +2,9 @@ package com.cloud.wordcount;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 public class WordCount {
 	
@@ -34,6 +37,40 @@ public class WordCount {
 		String dataWithoutStopwords = DataOperation.removeStopwords(dataWithoutSymbols, stopwordsPath);
 		System.out.println(dataWithoutStopwords);
 		
+		System.out.println();
+		System.out.println("------------------Unique words List--------------");
+		System.out.println();
+		
+		TreeSet<String> unique = UserOperation.uniqueWordList(dataWithoutStopwords);
+		
+		unique.forEach(element->System.out.println(element));
+		
+		System.out.println();
+		System.out.println("------------------Unique Words List with Frequency--------------");
+		System.out.println();
+		
+		Map<String, Integer> map = UserOperation.wordCount(dataWithoutStopwords);
+		System.out.println("--Word : Frequency--");
+		
+		map.forEach((k,v)->System.out.println(k+" : "+v));
+		
+		System.out.println();
+		System.out.println("------------------Characters Frequency--------------");
+		System.out.println();
+		
+		Map<Character, Integer> charCount = UserOperation.characterCount(dataWithoutStopwords);
+		charCount.forEach((k,v)->System.out.println(k+" : "+v));
+		
+		
+		System.out.println();
+		System.out.println("------------------Word list with Descending frequency--------------");
+		System.out.println();
+		
+		List<Map.Entry<String, Integer>> mapList = UserOperation.wordCountDescending(dataWithoutStopwords);
+		
+		for(Map.Entry<String, Integer> entry: mapList) {
+			System.out.println(entry.getKey()+" : "+entry.getValue());
+		}
 		
 //		ArrayList<Character> symbols = FileOperation.readSymbols(symbolsPath);
 //		
