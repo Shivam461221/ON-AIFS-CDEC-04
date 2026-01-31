@@ -20,9 +20,9 @@ public class User {
 	private String email;
 	private String password;
 	
-	private int age;
+	private Integer age;
 
-	public User(Long id, String username, String email, String password, int age) {
+	public User(Long id, String username, String email, String password, Integer age) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -68,11 +68,11 @@ public class User {
 		this.password = password;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 	
