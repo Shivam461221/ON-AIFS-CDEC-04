@@ -13,14 +13,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.cloud.clinic.security.JwtAuthFilter;
+import com.cloud.clinic.security.JwtAuthenticationFilter;
+
+
 
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
 
     @Autowired
-    private JwtAuthFilter jwtAuthFilter;
+    private JwtAuthenticationFilter jwtAuthFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
@@ -31,13 +33,10 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
 
                 .requestMatchers("/api/auth/**").permitAll()
-
+                .requestMatchers("/api/patient/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
-
                 .requestMatchers("/api/dcotor/**").hasRole("DOCTOR")
-
                 .requestMatchers("/api/receptionist/**").hasRole("RECEPTIONIST")
-
                 .anyRequest().authenticated()
             )
 
