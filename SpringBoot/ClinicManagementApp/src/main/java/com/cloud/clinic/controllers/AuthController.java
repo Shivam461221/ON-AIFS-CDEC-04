@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cloud.clinic.dtos.ApiResponse;
@@ -65,5 +67,15 @@ public class AuthController {
     @GetMapping("/health")
     public ResponseEntity<ApiResponse<String>> healthCheck() {
         return ResponseEntity.ok(ApiResponse.success("Auth service is up and running", "OK"));
+    }
+    
+    
+    @PutMapping("/change-password")
+    public ResponseEntity<ApiResponse<Void>> changePassword(
+            @RequestParam String oldPassword,
+            @RequestParam String newPassword,
+            Authentication authentication) {
+        authService.changePassword(authentication.getName(), oldPassword, newPassword);
+        return ResponseEntity.ok(ApiResponse.success("Password changed successfully"));
     }
 }

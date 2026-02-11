@@ -15,6 +15,7 @@ import com.cloud.clinic.dtos.UserResponseDto;
 import com.cloud.clinic.entities.Role;
 import com.cloud.clinic.entities.User;
 import com.cloud.clinic.exception.ResourceAlreadyExistsException;
+import com.cloud.clinic.exception.ResourceNotFoundException;
 import com.cloud.clinic.exception.UnauthorizedException;
 import com.cloud.clinic.repos.UserRepository;
 import com.cloud.clinic.security.JwtUtil;
@@ -158,6 +159,34 @@ public class AuthService {
 
         return mapToUserResponseDto(user);
     }
+    
+    
+    @Transactional
+    public void changePassword(String email, String oldPassword, String newPassword) {
+        log.info("Password change requested for: {}", email);
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        // Verify old password matches what is stored
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new UnauthorizedException("Current password is incorrect");
+        }
+
+        // Prevent reusing the same password
+        if (passwordEncoder.matches(newPassword, user.getPassword())) {
+            throw new IllegalArgumentException("New password must be different from current password");
+        }
+
+        if (newPassword.length() < 6) {
+            throw new IllegalArgumentException("New password must be at least 6 characters");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        log.info("Password changed successfully for: {}", email);
+    }
+
 
     private void validateRegistrationPermissions(User createdBy, Role targetRole) {
         switch (createdBy.getRole()) {

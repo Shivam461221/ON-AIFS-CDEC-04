@@ -1,7 +1,6 @@
 package com.cloud.clinic.dtos;
 
 import com.cloud.clinic.entities.Role;
-import com.cloud.clinic.entities.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
