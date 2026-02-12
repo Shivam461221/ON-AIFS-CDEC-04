@@ -33,9 +33,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
 
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/patient/**").permitAll()
+                .requestMatchers("/api/public/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                .requestMatchers("/api/dcotor/**").hasRole("DOCTOR")
+                .requestMatchers("/api/doctor/**").hasRole("DOCTOR")
                 .requestMatchers("/api/receptionist/**").hasRole("RECEPTIONIST")
                 .anyRequest().authenticated()
             )

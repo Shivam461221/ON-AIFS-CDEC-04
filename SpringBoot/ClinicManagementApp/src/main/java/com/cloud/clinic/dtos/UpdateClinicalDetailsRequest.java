@@ -12,4 +12,5 @@ public class UpdateClinicalDetailsRequest {
     // All optional — only provided fields will be updated
     private String notes;
     private String diagnosis;
+	private String prescription;
 }

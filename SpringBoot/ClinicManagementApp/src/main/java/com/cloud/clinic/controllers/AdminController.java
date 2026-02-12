@@ -33,186 +33,162 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/admin")
-@PreAuthorize("hasRole('ADMIN')")   // entire controller locked to ADMIN
+@PreAuthorize("hasRole('ADMIN')") // entire controller locked to ADMIN
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final UserService userService;
-    private final PatientService patientService;
+	private final UserService userService;
+	private final PatientService patientService;
 
-    // ════════════════════════════════════════════════
-    //  USER MANAGEMENT
-    // ════════════════════════════════════════════════
+	// ════════════════════════════════════════════════
+	// USER MANAGEMENT
+	// ════════════════════════════════════════════════
 
-    /**
-     * Create any user — Admin, Doctor, or Receptionist
-     * POST /api/admin/users
-     */
-    @PostMapping("/users")
-    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(
-            @Valid @RequestBody CreateUserRequest request,
-            Authentication authentication) {
+	/**
+	 * Create any user — Admin, Doctor, or Receptionist POST /api/admin/users
+	 */
+	@PostMapping("/users")
+	public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@Valid @RequestBody CreateUserRequest request,
+			Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        UserResponseDto created = userService.createUser(request, admin);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success("User created successfully", created));
-    }
+		User admin = getLoggedInUser(authentication);
+		UserResponseDto created = userService.createUser(request, admin);
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(ApiResponse.success("User created successfully", created));
+	}
 
-    /**
-     * Get all users in the system
-     * GET /api/admin/users
-     */
-    @GetMapping("/users")
-    public ResponseEntity<ApiResponse<List<UserResponseDto>>> getAllUsers() {
-        List<UserResponseDto> users = userService.getAllUsers();
-        return ResponseEntity.ok(ApiResponse.success("Users fetched successfully", users));
-    }
+	/**
+	 * Get all users in the system GET /api/admin/users
+	 */
+	@GetMapping("/users")
+	public ResponseEntity<ApiResponse<List<UserResponseDto>>> getAllUsers() {
+		List<UserResponseDto> users = userService.getAllUsers();
+		return ResponseEntity.ok(ApiResponse.success("Users fetched successfully", users));
+	}
 
-    /**
-     * Get all users by role
-     * GET /api/admin/users?role=DOCTOR
-     */
-    @GetMapping("/users/role/{role}")
-    public ResponseEntity<ApiResponse<List<UserResponseDto>>> getUsersByRole(@PathVariable Role role) {
-        List<UserResponseDto> users = userService.getAllByRole(role);
-        return ResponseEntity.ok(ApiResponse.success("Users fetched successfully", users));
-    }
+	/**
+	 * Get all users by role GET /api/admin/users?role=DOCTOR
+	 */
+	@GetMapping("/users/role/{role}")
+	public ResponseEntity<ApiResponse<List<UserResponseDto>>> getUsersByRole(@PathVariable Role role) {
+		List<UserResponseDto> users = userService.getAllByRole(role);
+		return ResponseEntity.ok(ApiResponse.success("Users fetched successfully", users));
+	}
 
-    /**
-     * Get a single user by ID
-     * GET /api/admin/users/{id}
-     */
-    @GetMapping("/users/{id}")
-    public ResponseEntity<ApiResponse<UserResponseDto>> getUserById(@PathVariable Long id) {
-        UserResponseDto user = userService.getUserById(id);
-        return ResponseEntity.ok(ApiResponse.success("User fetched successfully", user));
-    }
+	/**
+	 * Get a single user by ID GET /api/admin/users/{id}
+	 */
+	@GetMapping("/users/{id}")
+	public ResponseEntity<ApiResponse<UserResponseDto>> getUserById(@PathVariable Long id) {
+		UserResponseDto user = userService.getUserById(id);
+		return ResponseEntity.ok(ApiResponse.success("User fetched successfully", user));
+	}
 
-    /**
-     * Update any user's details
-     * PUT /api/admin/users/{id}
-     */
-    @PutMapping("/users/{id}")
-    public ResponseEntity<ApiResponse<UserResponseDto>> updateUser(
-            @PathVariable Long id,
-            @Valid @RequestBody UpdateUserRequest request,
-            Authentication authentication) {
+	/**
+	 * Update any user's details PUT /api/admin/users/{id}
+	 */
+	@PutMapping("/users/{id}")
+	public ResponseEntity<ApiResponse<UserResponseDto>> updateUser(@PathVariable Long id,
+			@Valid @RequestBody UpdateUserRequest request, Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        UserResponseDto updated = userService.updateUser(id, request, admin);
-        return ResponseEntity.ok(ApiResponse.success("User updated successfully", updated));
-    }
+		User admin = getLoggedInUser(authentication);
+		UserResponseDto updated = userService.updateUser(id, request, admin);
+		return ResponseEntity.ok(ApiResponse.success("User updated successfully", updated));
+	}
 
-    /**
-     * Deactivate (soft-delete) a user
-     * DELETE /api/admin/users/{id}
-     */
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<ApiResponse<Void>> deactivateUser(
-            @PathVariable Long id,
-            Authentication authentication) {
+	/**
+	 * Deactivate (soft-delete) a user DELETE /api/admin/users/{id}
+	 */
+	@DeleteMapping("/users/{id}")
+	public ResponseEntity<ApiResponse<Void>> deactivateUser(@PathVariable Long id, Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        userService.deactivateUser(id, admin);
-        return ResponseEntity.ok(ApiResponse.success("User deactivated successfully"));
-    }
+		User admin = getLoggedInUser(authentication);
+		userService.deactivateUser(id, admin);
+		return ResponseEntity.ok(ApiResponse.success("User deactivated successfully"));
+	}
 
-    /**
-     * Reactivate a previously deactivated user
-     * PATCH /api/admin/users/{id}/reactivate
-     */
-    @PatchMapping("/users/{id}/reactivate")
-    public ResponseEntity<ApiResponse<Void>> reactivateUser(
-            @PathVariable Long id,
-            Authentication authentication) {
+	/**
+	 * Reactivate a previously deactivated user PATCH
+	 * /api/admin/users/{id}/reactivate
+	 */
+	@PatchMapping("/users/{id}/reactivate")
+	public ResponseEntity<ApiResponse<Void>> reactivateUser(@PathVariable Long id, Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        userService.reactivateUser(id, admin);
-        return ResponseEntity.ok(ApiResponse.success("User reactivated successfully"));
-    }
+		User admin = getLoggedInUser(authentication);
+		userService.reactivateUser(id, admin);
+		return ResponseEntity.ok(ApiResponse.success("User reactivated successfully"));
+	}
 
-    // ════════════════════════════════════════════════
-    //  PATIENT MANAGEMENT
-    // ════════════════════════════════════════════════
+	// ════════════════════════════════════════════════
+	// PATIENT MANAGEMENT
+	// ════════════════════════════════════════════════
 
-    /**
-     * Create a new patient
-     * POST /api/admin/patients
-     */
-    @PostMapping("/patients")
-    public ResponseEntity<ApiResponse<PatientResponseDto>> createPatient(
-            @Valid @RequestBody CreatePatientRequest request,
-            Authentication authentication) {
+	/**
+	 * Create a new patient POST /api/admin/patients
+	 */
+	@PostMapping("/patients")
+	public ResponseEntity<ApiResponse<PatientResponseDto>> createPatient(
+			@Valid @RequestBody CreatePatientRequest request, Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        PatientResponseDto created = patientService.createPatient(request, admin);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success("Patient created successfully", created));
-    }
+		User admin = getLoggedInUser(authentication);
+		PatientResponseDto created = patientService.createPatient(request, admin);
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(ApiResponse.success("Patient created successfully", created));
+	}
 
-    /**
-     * Get all patients in the system
-     * GET /api/admin/patients
-     */
-    @GetMapping("/patients")
-    public ResponseEntity<ApiResponse<List<PatientResponseDto>>> getAllPatients() {
-        List<PatientResponseDto> patients = patientService.getAllPatients();
-        return ResponseEntity.ok(ApiResponse.success("Patients fetched successfully", patients));
-    }
+	/**
+	 * Get all patients in the system GET /api/admin/patients
+	 */
+	@GetMapping("/patients")
+	public ResponseEntity<ApiResponse<List<PatientResponseDto>>> getAllPatients() {
+		List<PatientResponseDto> patients = patientService.getAllPatients();
+		return ResponseEntity.ok(ApiResponse.success("Patients fetched successfully", patients));
+	}
 
-    /**
-     * Get a single patient by ID
-     * GET /api/admin/patients/{id}
-     */
-    @GetMapping("/patients/{id}")
-    public ResponseEntity<ApiResponse<PatientResponseDto>> getPatientById(
-            @PathVariable Long id,
-            Authentication authentication) {
+	/**
+	 * Get a single patient by ID GET /api/admin/patients/{id}
+	 */
+	@GetMapping("/patients/{id}")
+	public ResponseEntity<ApiResponse<PatientResponseDto>> getPatientById(@PathVariable Long id,
+			Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        PatientResponseDto patient = patientService.getPatientById(id, admin);
-        return ResponseEntity.ok(ApiResponse.success("Patient fetched successfully", patient));
-    }
+		User admin = getLoggedInUser(authentication);
+		PatientResponseDto patient = patientService.getPatientById(id, admin);
+		return ResponseEntity.ok(ApiResponse.success("Patient fetched successfully", patient));
+	}
 
-    /**
-     * Update a patient's details
-     * PUT /api/admin/patients/{id}
-     */
-    @PutMapping("/patients/{id}")
-    public ResponseEntity<ApiResponse<PatientResponseDto>> updatePatient(
-            @PathVariable Long id,
-            @Valid @RequestBody UpdatePatientRequest request,
-            Authentication authentication) {
+	/**
+	 * Update a patient's details PUT /api/admin/patients/{id}
+	 */
+	@PutMapping("/patients/{id}")
+	public ResponseEntity<ApiResponse<PatientResponseDto>> updatePatient(@PathVariable Long id,
+			@Valid @RequestBody UpdatePatientRequest request, Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        PatientResponseDto updated = patientService.updatePatient(id, request, admin);
-        return ResponseEntity.ok(ApiResponse.success("Patient updated successfully", updated));
-    }
+		User admin = getLoggedInUser(authentication);
+		PatientResponseDto updated = patientService.updatePatient(id, request, admin);
+		return ResponseEntity.ok(ApiResponse.success("Patient updated successfully", updated));
+	}
 
-    /**
-     * Delete a patient permanently
-     * DELETE /api/admin/patients/{id}
-     */
-    @DeleteMapping("/patients/{id}")
-    public ResponseEntity<ApiResponse<Void>> deletePatient(
-            @PathVariable Long id,
-            Authentication authentication) {
+	/**
+	 * Delete a patient permanently DELETE /api/admin/patients/{id}
+	 */
+	@DeleteMapping("/patients/{id}")
+	public ResponseEntity<ApiResponse<Void>> deletePatient(@PathVariable Long id, Authentication authentication) {
 
-        User admin = getLoggedInUser(authentication);
-        patientService.deletePatient(id, admin);
-        return ResponseEntity.ok(ApiResponse.success("Patient deleted successfully"));
-    }
+		User admin = getLoggedInUser(authentication);
+		patientService.deletePatient(id, admin);
+		return ResponseEntity.ok(ApiResponse.success("Patient deleted successfully"));
+	}
 
-    // ════════════════════════════════════════════════
-    //  HELPER
-    // ════════════════════════════════════════════════
+	// ════════════════════════════════════════════════
+	// HELPER
+	// ════════════════════════════════════════════════
 
-    /**
-     * Resolves the currently logged-in User entity from the JWT principal.
-     * We never trust role/id from the request body — always from the token.
-     */
-    private User getLoggedInUser(Authentication authentication) {
-        return userService.findUserByEmail(authentication.getName());
-    }
+	/**
+	 * Resolves the currently logged-in User entity from the JWT principal. We never
+	 * trust role/id from the request body — always from the token.
+	 */
+	private User getLoggedInUser(Authentication authentication) {
+		return userService.findUserByEmail(authentication.getName());
+	}
 }
